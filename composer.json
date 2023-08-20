@@ -1,0 +1,24 @@
+{
+  "name": "space48/bigcommerce-php-api",
+  "description": "A PHP SDK for the BigCommerce APIs",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Space48\\BigcommerceApi\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Tom Robertshaw",
+      "email": "tom.robertshaw@space48.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "symfony/console": "^6.3",
+    "crescat-io/saloon-sdk-generator": "^1.0"
+  }
+}

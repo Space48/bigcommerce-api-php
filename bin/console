@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__.'/../vendor/autoload.php';
+
+use Space48\BigcommerceApi\Commands\GenerateSdk;
+use Symfony\Component\Console\Application;
+
+$application = new Application('BigCommerce API SDK Generator');
+
+$application->add(new GenerateSdk());
+
+$application->run();
