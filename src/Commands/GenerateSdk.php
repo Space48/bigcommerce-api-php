@@ -1,6 +1,6 @@
 <?php
 
-namespace Space48\BigcommerceApi\Commands;
+namespace Space48\Bigcommerce\Commands;
 
 use Crescat\SaloonSdkGenerator\CodeGenerator;
 use Crescat\SaloonSdkGenerator\Data\Generator\Config;
@@ -8,8 +8,8 @@ use Crescat\SaloonSdkGenerator\Data\Generator\GeneratedCode;
 use Crescat\SaloonSdkGenerator\Factory;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpFile;
-use Space48\BigcommerceApi\RequestGenerator;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -20,28 +20,36 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand(name: 'sdk:generate', description: 'Generates Saloon SDK based on OpenAPI sepc')]
 class GenerateSdk extends Command
 {
+    const NAMESPACE = 'Space48\Bigcommerce';
+
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $config = new Config(
             connectorName: 'Bigcommerce',
-            namespace: 'Space48\BigcommerceApi',
+            namespace: static::NAMESPACE,
             ignoredQueryParams: ['limit', 'page']
         );
 
-        $generator = new CodeGenerator(
-            $config,
-            requestGenerator: new RequestGenerator($config)
-        );
+        $generator = new CodeGenerator($config);
 
         $specFiles = $this->getSpecFiles($input->getArgument('specs'));
 
+        $connectorClass = null;
         foreach ($specFiles as $specFile) {
             $output->writeln('Generating SDK for ' . $specFile);
             $spec = Factory::parse('openapi', $specFile);
             $result = $generator->run($spec);
 
+            if (is_null($connectorClass)) {
+                $connectorClass = $result->connectorClass;
+            } else {
+                $connectorClass = $this->mergeConnectorClasses($connectorClass, $result->connectorClass);
+            }
+
             $this->dumpGeneratedFiles($input, $output, $result);
         }
+
+        $this->dumpToFile($input, $output, $connectorClass);
 
         $output->writeln('Complete');
 
@@ -52,6 +60,34 @@ class GenerateSdk extends Command
     {
         $this->addOption('force', '-f', InputOption::VALUE_NONE, 'Allow files to be overriden');
         $this->addArgument('specs', InputArgument::REQUIRED, 'Path to BigCommerce API spec repo');
+    }
+
+    protected function mergeConnectorClasses(PhpFile $original, PhpFile $additional): PhpFile
+    {
+
+        foreach ($original->getNamespaces() as $origNamespace) {
+            foreach ($additional->getNamespaces() as $additionalNamespace) {
+                foreach ($additionalNamespace->getUses() as $use) {
+                    $origNamespace->addUse($use);
+                }
+
+                /** @var ClassType $origClass */
+                foreach ($origNamespace->getClasses() as $origClass) {
+                    /** @var ClassType $additionalClass */
+                    foreach ($additionalNamespace->getClasses() as $additionalClass) {
+                        foreach ($additionalClass->getMethods() as $methodName => $methodBody) {
+                            if (!$origClass->hasMethod($methodName)) {
+                                $origClass->addMethod($methodName)
+                                    ->setReturnType($methodBody->getReturnType())
+                                    ->addBody($methodBody->getBody());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return $original;
     }
 
     protected function getSpecFiles(string $path): array
@@ -94,11 +130,6 @@ class GenerateSdk extends Command
     {
 
         $output->writeln('Generated Files');
-
-        $output->writeln("\nConnector:");
-        if ($result->connectorClass) {
-            $this->dumpToFile($input, $output, $result->connectorClass);
-        }
 
         $output->writeln("\nBase Resource:");
         if ($result->resourceBaseClass) {

@@ -5,7 +5,7 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Space48\\BigcommerceApi\\": "src/"
+      "Space48\\Bigcommerce\\": "src/"
     }
   },
   "authors": [
@@ -14,11 +14,17 @@
       "email": "tom.robertshaw@space48.com"
     }
   ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/crescat-io/saloon-sdk-generator.git"
+    }
+  ],
   "require": {
     "php": "^8.1"
   },
   "require-dev": {
     "symfony/console": "^6.3",
-    "crescat-io/saloon-sdk-generator": "^1.0"
+    "crescat-io/saloon-sdk-generator": "dev-feature/name-collision-reserved-keywords"
   }
 }

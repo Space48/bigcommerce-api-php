@@ -3,7 +3,7 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
-use Space48\BigcommerceApi\Commands\GenerateSdk;
+use Space48\Bigcommerce\Commands\GenerateSdk;
 use Symfony\Component\Console\Application;
 
 $application = new Application('BigCommerce API SDK Generator');
