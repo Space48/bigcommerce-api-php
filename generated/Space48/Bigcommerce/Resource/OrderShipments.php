@@ -4,11 +4,11 @@ namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
 use Space48\Bigcommerce\Requests\OrderShipments\CreateOrderShipments;
-use Space48\Bigcommerce\Requests\OrderShipments\DeleteAllOrderShipments;
 use Space48\Bigcommerce\Requests\OrderShipments\DeleteOrderShipment;
-use Space48\Bigcommerce\Requests\OrderShipments\GetAllOrderShipments;
-use Space48\Bigcommerce\Requests\OrderShipments\GetCountShipments;
+use Space48\Bigcommerce\Requests\OrderShipments\DeleteOrderShipments;
 use Space48\Bigcommerce\Requests\OrderShipments\GetOrderShipment;
+use Space48\Bigcommerce\Requests\OrderShipments\GetOrderShipments;
+use Space48\Bigcommerce\Requests\OrderShipments\GetOrderShipmentsCount;
 use Space48\Bigcommerce\Requests\OrderShipments\UpdateOrderShipment;
 use Space48\Bigcommerce\Resource;
 
@@ -17,9 +17,9 @@ class OrderShipments extends Resource
 	/**
 	 * @param int $orderId ID of the order.
 	 */
-	public function getAllOrderShipments(int $orderId): Response
+	public function getOrderShipments(int $orderId): Response
 	{
-		return $this->connector->send(new GetAllOrderShipments($orderId));
+		return $this->connector->send(new GetOrderShipments($orderId));
 	}
 
 
@@ -35,18 +35,18 @@ class OrderShipments extends Resource
 	/**
 	 * @param int $orderId ID of the order.
 	 */
-	public function deleteAllOrderShipments(int $orderId): Response
+	public function deleteOrderShipments(int $orderId): Response
 	{
-		return $this->connector->send(new DeleteAllOrderShipments($orderId));
+		return $this->connector->send(new DeleteOrderShipments($orderId));
 	}
 
 
 	/**
 	 * @param int $orderId ID of the order.
 	 */
-	public function getCountShipments(int $orderId): Response
+	public function getOrderShipmentsCount(int $orderId): Response
 	{
-		return $this->connector->send(new GetCountShipments($orderId));
+		return $this->connector->send(new GetOrderShipmentsCount($orderId));
 	}
 
 

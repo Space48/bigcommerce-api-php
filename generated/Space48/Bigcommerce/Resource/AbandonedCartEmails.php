@@ -3,12 +3,12 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\AbandonedCartEmails\CreateEmailTemplate;
-use Space48\Bigcommerce\Requests\AbandonedCartEmails\DeleteAbandonedCartEmailTemplateId;
-use Space48\Bigcommerce\Requests\AbandonedCartEmails\GetAbandonedCartEmailTemplateId;
-use Space48\Bigcommerce\Requests\AbandonedCartEmails\GetAbandonedCartEmails;
+use Space48\Bigcommerce\Requests\AbandonedCartEmails\CreateAbandonedCartEmailTemplate;
+use Space48\Bigcommerce\Requests\AbandonedCartEmails\DeleteAbandonedCartEmailTemplate;
+use Space48\Bigcommerce\Requests\AbandonedCartEmails\GetAbandonedCartEmailTemplate;
+use Space48\Bigcommerce\Requests\AbandonedCartEmails\GetAbandonedCartEmailTemplates;
 use Space48\Bigcommerce\Requests\AbandonedCartEmails\GetDefaultAbandonedCartEmailTemplate;
-use Space48\Bigcommerce\Requests\AbandonedCartEmails\UpdateAbandonedCartEmailsId;
+use Space48\Bigcommerce\Requests\AbandonedCartEmails\UpdateAbandonedCartEmailTemplate;
 use Space48\Bigcommerce\Resource;
 
 class AbandonedCartEmails extends Resource
@@ -16,45 +16,45 @@ class AbandonedCartEmails extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-level data.
 	 */
-	public function getAbandonedCartEmails(int $channelId): Response
+	public function getAbandonedCartEmailTemplates(?int $channelId): Response
 	{
-		return $this->connector->send(new GetAbandonedCartEmails($channelId));
+		return $this->connector->send(new GetAbandonedCartEmailTemplates($channelId));
 	}
 
 
 	/**
 	 * @param int $channelId Channel ID to use for channel-level data.
 	 */
-	public function createEmailTemplate(int $channelId): Response
+	public function createAbandonedCartEmailTemplate(?int $channelId): Response
 	{
-		return $this->connector->send(new CreateEmailTemplate($channelId));
+		return $this->connector->send(new CreateAbandonedCartEmailTemplate($channelId));
 	}
 
 
 	/**
 	 * @param int $id ID of the Abandoned Cart Email template.
 	 */
-	public function getAbandonedCartEmailTemplateId(int $id): Response
+	public function getAbandonedCartEmailTemplate(int $id): Response
 	{
-		return $this->connector->send(new GetAbandonedCartEmailTemplateId($id));
+		return $this->connector->send(new GetAbandonedCartEmailTemplate($id));
 	}
 
 
 	/**
 	 * @param int $id ID of the Abandoned Cart Email template.
 	 */
-	public function updateAbandonedCartEmailsId(int $id): Response
+	public function updateAbandonedCartEmailTemplate(int $id): Response
 	{
-		return $this->connector->send(new UpdateAbandonedCartEmailsId($id));
+		return $this->connector->send(new UpdateAbandonedCartEmailTemplate($id));
 	}
 
 
 	/**
 	 * @param int $id ID of the Abandoned Cart Email template.
 	 */
-	public function deleteAbandonedCartEmailTemplateId(int $id): Response
+	public function deleteAbandonedCartEmailTemplate(int $id): Response
 	{
-		return $this->connector->send(new DeleteAbandonedCartEmailTemplateId($id));
+		return $this->connector->send(new DeleteAbandonedCartEmailTemplate($id));
 	}
 
 

@@ -3,9 +3,9 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\CustomerAttributeValues\CustomersAttributeValuesDelete;
-use Space48\Bigcommerce\Requests\CustomerAttributeValues\CustomersAttributeValuesGet;
-use Space48\Bigcommerce\Requests\CustomerAttributeValues\CustomersAttributeValuesPut;
+use Space48\Bigcommerce\Requests\CustomerAttributeValues\DelteCustomersAttributeValues;
+use Space48\Bigcommerce\Requests\CustomerAttributeValues\GetCustomersAttributeValues;
+use Space48\Bigcommerce\Requests\CustomerAttributeValues\UpsertCustomersAttributeValues;
 use Space48\Bigcommerce\Resource;
 
 class CustomerAttributeValues extends Resource
@@ -21,25 +21,25 @@ class CustomerAttributeValues extends Resource
 	 * @param string $dateModifiedMax Filter items by maximum `date_modified`. ISO 8601 full-date is required, ISO 8601 full-time is not required. UNIX timestamp also accepted. `date_created=2021-01-07` or `date_created=1610051296000`
 	 * @param string $dateModifiedMin Filter items by minimum `date_modified`. ISO 8601 full-date is required, ISO 8601 full-time is not required. UNIX timestamp also accepted. `date_created=2021-01-07` or `date_created=1610051296000`
 	 */
-	public function customersAttributeValuesGet(
-		array $customerIdIn,
-		array $attributeIdIn,
-		string $name,
-		string $dateCreated,
-		string $dateCreatedMax,
-		string $dateCreatedMin,
-		string $dateModified,
-		string $dateModifiedMax,
-		string $dateModifiedMin,
+	public function getCustomersAttributeValues(
+		?array $customerIdIn,
+		?array $attributeIdIn,
+		?string $name,
+		?string $dateCreated,
+		?string $dateCreatedMax,
+		?string $dateCreatedMin,
+		?string $dateModified,
+		?string $dateModifiedMax,
+		?string $dateModifiedMin,
 	): Response
 	{
-		return $this->connector->send(new CustomersAttributeValuesGet($customerIdIn, $attributeIdIn, $name, $dateCreated, $dateCreatedMax, $dateCreatedMin, $dateModified, $dateModifiedMax, $dateModifiedMin));
+		return $this->connector->send(new GetCustomersAttributeValues($customerIdIn, $attributeIdIn, $name, $dateCreated, $dateCreatedMax, $dateCreatedMin, $dateModified, $dateModifiedMax, $dateModifiedMin));
 	}
 
 
-	public function customersAttributeValuesPut(): Response
+	public function upsertCustomersAttributeValues(): Response
 	{
-		return $this->connector->send(new CustomersAttributeValuesPut());
+		return $this->connector->send(new UpsertCustomersAttributeValues());
 	}
 
 
@@ -47,8 +47,8 @@ class CustomerAttributeValues extends Resource
 	 * @param array $idIn Filter items by ID.
 	 * `id:in=4,5,6`
 	 */
-	public function customersAttributeValuesDelete(array $idIn): Response
+	public function delteCustomersAttributeValues(array $idIn): Response
 	{
-		return $this->connector->send(new CustomersAttributeValuesDelete($idIn));
+		return $this->connector->send(new DelteCustomersAttributeValues($idIn));
 	}
 }

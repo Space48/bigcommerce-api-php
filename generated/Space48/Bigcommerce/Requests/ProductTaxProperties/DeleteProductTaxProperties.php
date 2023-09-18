@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * delete-product-tax-properties
+ * deleteProductTaxProperties
  *
  * Delete tax properties that are associated with one or more products.
  */
@@ -33,6 +33,6 @@ class DeleteProductTaxProperties extends Request
 
 	public function defaultQuery(): array
 	{
-		return ['product_id:in' => $this->productIdIn];
+		return array_filter(['product_id:in' => $this->productIdIn]);
 	}
 }

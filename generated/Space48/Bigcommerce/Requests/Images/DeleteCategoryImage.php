@@ -24,7 +24,6 @@ class DeleteCategoryImage extends Request
 
 	/**
 	 * @param int $categoryId The ID of the `Category` to which the resource belongs.
-	 * @param int $categoryId The ID of the `Category` to which the resource belongs.
 	 */
 	public function __construct(
 		protected int $categoryId,

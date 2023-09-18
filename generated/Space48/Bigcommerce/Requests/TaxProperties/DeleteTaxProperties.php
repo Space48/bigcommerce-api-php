@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * delete-tax-properties
+ * deleteTaxProperties
  *
  * Delete one or multiple tax properties. A tax property must have zero usages within product tax
  * properties before you can delete it.
@@ -34,6 +34,6 @@ class DeleteTaxProperties extends Request
 
 	public function defaultQuery(): array
 	{
-		return ['id:in' => $this->idIn];
+		return array_filter(['id:in' => $this->idIn]);
 	}
 }

@@ -3,8 +3,8 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\CustomerConsent\CustomersConsentByCustomerIdGet;
-use Space48\Bigcommerce\Requests\CustomerConsent\CustomersConsentByCustomerIdPut;
+use Space48\Bigcommerce\Requests\CustomerConsent\GetCustomerConsent;
+use Space48\Bigcommerce\Requests\CustomerConsent\UpdateCustomerConsent;
 use Space48\Bigcommerce\Resource;
 
 class CustomerConsent extends Resource
@@ -12,18 +12,17 @@ class CustomerConsent extends Resource
 	/**
 	 * @param string $customerId
 	 */
-	public function customersConsentByCustomerIdGet(string $customerId): Response
+	public function getCustomerConsent(string $customerId): Response
 	{
-		return $this->connector->send(new CustomersConsentByCustomerIdGet($customerId));
+		return $this->connector->send(new GetCustomerConsent($customerId));
 	}
 
 
 	/**
 	 * @param string $customerId
-	 * @param string $customerId
 	 */
-	public function customersConsentByCustomerIdPut(string $customerId): Response
+	public function updateCustomerConsent(string $customerId): Response
 	{
-		return $this->connector->send(new CustomersConsentByCustomerIdPut($customerId, $customerId));
+		return $this->connector->send(new UpdateCustomerConsent($customerId));
 	}
 }

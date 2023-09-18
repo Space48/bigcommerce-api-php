@@ -12,7 +12,7 @@ class OrderTaxes extends Resource
 	 * @param int $orderId ID of the order.
 	 * @param string $details To return detailed tax information, pass in the details query.
 	 */
-	public function getOrderTaxes(int $orderId, string $details): Response
+	public function getOrderTaxes(int $orderId, ?string $details): Response
 	{
 		return $this->connector->send(new GetOrderTaxes($orderId, $details));
 	}

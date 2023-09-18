@@ -3,8 +3,8 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\CustomerFormFieldValues\CustomerFormFieldValuePut;
-use Space48\Bigcommerce\Requests\CustomerFormFieldValues\CustomerFormFieldsGet;
+use Space48\Bigcommerce\Requests\CustomerFormFieldValues\GetCustomersFormFieldValues;
+use Space48\Bigcommerce\Requests\CustomerFormFieldValues\UpdateCustomerFormFieldValues;
 use Space48\Bigcommerce\Resource;
 
 class CustomerFormFieldValues extends Resource
@@ -23,19 +23,19 @@ class CustomerFormFieldValues extends Resource
 	 *  * `text` - text field
 	 *  * `picklist` - pick list field
 	 */
-	public function customerFormFieldsGet(
-		int $customerId,
-		int $addressId,
-		string $fieldName,
-		string $fieldType,
+	public function getCustomersFormFieldValues(
+		?int $customerId,
+		?int $addressId,
+		?string $fieldName,
+		?string $fieldType,
 	): Response
 	{
-		return $this->connector->send(new CustomerFormFieldsGet($customerId, $addressId, $fieldName, $fieldType));
+		return $this->connector->send(new GetCustomersFormFieldValues($customerId, $addressId, $fieldName, $fieldType));
 	}
 
 
-	public function customerFormFieldValuePut(): Response
+	public function updateCustomerFormFieldValues(): Response
 	{
-		return $this->connector->send(new CustomerFormFieldValuePut());
+		return $this->connector->send(new UpdateCustomerFormFieldValues());
 	}
 }

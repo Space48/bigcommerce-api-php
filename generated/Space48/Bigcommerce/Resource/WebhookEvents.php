@@ -12,7 +12,7 @@ class WebhookEvents extends Resource
 	 * @param string $createdAtMax Maximum value for returned data.
 	 * @param string $createdAtMin Minimum value for returned data.
 	 */
-	public function getWebhookEvents(string $createdAtMax, string $createdAtMin): Response
+	public function getWebhookEvents(?string $createdAtMax, ?string $createdAtMin): Response
 	{
 		return $this->connector->send(new GetWebhookEvents($createdAtMax, $createdAtMin));
 	}

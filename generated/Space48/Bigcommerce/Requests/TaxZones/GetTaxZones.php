@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * get-tax-zones
+ * getTaxZones
  *
  * Retrieve a selection of tax zones when you provide a list of tax zone IDs. Otherwise, retrieve all
  * tax zones defined on the store.
@@ -24,16 +24,16 @@ class GetTaxZones extends Request
 
 
 	/**
-	 * @param array $idIn Filter by tax zone `id`. Use a comma-separated CSV string of IDs for multiple tax zones. For example, `5` or `12,34,56`.
+	 * @param null|array $idIn Filter by tax zone `id`. Use a comma-separated CSV string of IDs for multiple tax zones. For example, `5` or `12,34,56`.
 	 */
 	public function __construct(
-		protected array $idIn,
+		protected ?array $idIn = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['id:in' => $this->idIn];
+		return array_filter(['id:in' => $this->idIn]);
 	}
 }

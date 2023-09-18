@@ -4,10 +4,12 @@
 require __DIR__.'/../vendor/autoload.php';
 
 use Space48\Bigcommerce\Commands\GenerateSdk;
+use Space48\Bigcommerce\Commands\MergeOpenApiSpecs;
 use Symfony\Component\Console\Application;
 
 $application = new Application('BigCommerce API SDK Generator');
 
+$application->add(new MergeOpenApiSpecs());
 $application->add(new GenerateSdk());
 
 $application->run();

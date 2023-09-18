@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * UpsertCustomTemplateAssociations
+ * upsertCustomTemplateAssociations
  *
  * Upsert new custom template associations data across all storefronts. If an existing record is found
  * for the combination of channel ID, entity ID, and type, the existing record will be overwritten with

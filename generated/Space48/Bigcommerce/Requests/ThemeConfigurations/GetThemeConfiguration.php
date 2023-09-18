@@ -26,23 +26,22 @@ class GetThemeConfiguration extends Request
 
 
 	/**
-	 * @param string $uuid
 	 * @param string $uuid The theme identifier.
-	 * @param array $uuidIn Filter configurations by a list of configuration UUIDs.
-	 * @param array $channelIdIn Filter configurations by a list of channel_ids.
-	 * @param string $variationUuid Filter configurations by a variation_uuid.
+	 * @param null|array $uuidIn Filter configurations by a list of configuration UUIDs.
+	 * @param null|array $channelIdIn Filter configurations by a list of channel_ids.
+	 * @param null|string $variationUuid Filter configurations by a variation_uuid.
 	 */
 	public function __construct(
 		protected string $uuid,
-		protected array $uuidIn,
-		protected array $channelIdIn,
-		protected string $variationUuid,
+		protected ?array $uuidIn = null,
+		protected ?array $channelIdIn = null,
+		protected ?string $variationUuid = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['uuid:in' => $this->uuidIn, 'channel_id:in' => $this->channelIdIn, 'variation_uuid' => $this->variationUuid];
+		return array_filter(['uuid:in' => $this->uuidIn, 'channel_id:in' => $this->channelIdIn, 'variation_uuid' => $this->variationUuid]);
 	}
 }

@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * UpdateGlobalOrderSettings
+ * updateGlobalOrderSettings
  *
  * Updates global order settings.
  */

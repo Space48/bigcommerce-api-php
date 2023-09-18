@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * get-site-route
+ * getSiteRoute
  *
  * Get a site’s route.
  */

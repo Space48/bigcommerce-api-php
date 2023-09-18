@@ -23,33 +23,33 @@ class GetVariants extends Request
 
 
 	/**
-	 * @param int $id Filter items by ID.
-	 * @param string $sku Filter items by SKU.
-	 * @param string $upc Filter items by UPC.
-	 * @param string $includeFields Fields to include, in a comma-separated list. The ID and the specified fields will be returned.
-	 * @param string $excludeFields Fields to exclude, in a comma-separated list. The specified fields will be excluded from a response. The ID cannot be excluded.
-	 * @param string $productId A comma-separated list of IDs of products whose variants were requested. For example:`?product_id=:id``?product_id:in=77,80,81`
+	 * @param null|int $id Filter items by ID.
+	 * @param null|string $sku Filter items by SKU.
+	 * @param null|string $upc Filter items by UPC.
+	 * @param null|string $includeFields Fields to include, in a comma-separated list. The ID and the specified fields will be returned.
+	 * @param null|string $excludeFields Fields to exclude, in a comma-separated list. The specified fields will be excluded from a response. The ID cannot be excluded.
+	 * @param null|string $productId A comma-separated list of IDs of products whose variants were requested. For example:`?product_id=:id``?product_id:in=77,80,81`
 	 */
 	public function __construct(
-		protected int $id,
-		protected string $sku,
-		protected string $upc,
-		protected string $includeFields,
-		protected string $excludeFields,
-		protected string $productId,
+		protected ?int $id = null,
+		protected ?string $sku = null,
+		protected ?string $upc = null,
+		protected ?string $includeFields = null,
+		protected ?string $excludeFields = null,
+		protected ?string $productId = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return [
+		return array_filter([
 			'id' => $this->id,
 			'sku' => $this->sku,
 			'upc' => $this->upc,
 			'include_fields' => $this->includeFields,
 			'exclude_fields' => $this->excludeFields,
 			'product_id' => $this->productId,
-		];
+		]);
 	}
 }

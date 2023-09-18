@@ -3,7 +3,7 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\OrderShippingAddressesQuotes\GetShippingQuotes;
+use Space48\Bigcommerce\Requests\OrderShippingAddressesQuotes\GetOrderShippingAddressShippingQuotes;
 use Space48\Bigcommerce\Resource;
 
 class OrderShippingAddressesQuotes extends Resource
@@ -12,8 +12,8 @@ class OrderShippingAddressesQuotes extends Resource
 	 * @param int $orderId ID of the order.
 	 * @param int $shippingAddressId Shipping address ID.
 	 */
-	public function getShippingQuotes(int $orderId, int $shippingAddressId): Response
+	public function getOrderShippingAddressShippingQuotes(int $orderId, int $shippingAddressId): Response
 	{
-		return $this->connector->send(new GetShippingQuotes($orderId, $shippingAddressId));
+		return $this->connector->send(new GetOrderShippingAddressShippingQuotes($orderId, $shippingAddressId));
 	}
 }

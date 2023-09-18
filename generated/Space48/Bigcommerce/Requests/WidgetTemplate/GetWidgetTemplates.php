@@ -23,18 +23,18 @@ class GetWidgetTemplates extends Request
 
 
 	/**
-	 * @param string $widgetTemplateKind The kind of widget template.
-	 * @param int $channelIdIn Filter items by channel_id.
+	 * @param null|string $widgetTemplateKind The kind of widget template.
+	 * @param null|int $channelIdIn Filter items by channel_id.
 	 */
 	public function __construct(
-		protected string $widgetTemplateKind,
-		protected int $channelIdIn,
+		protected ?string $widgetTemplateKind = null,
+		protected ?int $channelIdIn = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['widget_template_kind' => $this->widgetTemplateKind, 'channel_id:in' => $this->channelIdIn];
+		return array_filter(['widget_template_kind' => $this->widgetTemplateKind, 'channel_id:in' => $this->channelIdIn]);
 	}
 }

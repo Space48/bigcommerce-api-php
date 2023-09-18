@@ -17,7 +17,7 @@ class WidgetTemplate extends Resource
 	 * @param string $widgetTemplateKind The kind of widget template.
 	 * @param int $channelIdIn Filter items by channel_id.
 	 */
-	public function getWidgetTemplates(string $widgetTemplateKind, int $channelIdIn): Response
+	public function getWidgetTemplates(?string $widgetTemplateKind, ?int $channelIdIn): Response
 	{
 		return $this->connector->send(new GetWidgetTemplates($widgetTemplateKind, $channelIdIn));
 	}
@@ -42,7 +42,7 @@ class WidgetTemplate extends Resource
 	 * @param string $uuid The identifier for a specific template.
 	 * @param string $versionUuid This is an optional query parameter used to attempt to fetch a specific Widget Template version.
 	 */
-	public function getWidgetTemplate(string $uuid, string $versionUuid): Response
+	public function getWidgetTemplate(string $uuid, ?string $versionUuid): Response
 	{
 		return $this->connector->send(new GetWidgetTemplate($uuid, $versionUuid));
 	}

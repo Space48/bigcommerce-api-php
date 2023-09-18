@@ -24,18 +24,18 @@ class GetSites extends Request
 
 
 	/**
-	 * @param int $channelIdIn Filters returned sites by channel ID.
-	 * @param string $urlTypeIn Filters sites returned in the `data.urls` array by their URL type.
+	 * @param null|int $channelIdIn Filters returned sites by channel ID.
+	 * @param null|string $urlTypeIn Filters sites returned in the `data.urls` array by their URL type.
 	 */
 	public function __construct(
-		protected int $channelIdIn,
-		protected string $urlTypeIn,
+		protected ?int $channelIdIn = null,
+		protected ?string $urlTypeIn = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['channel_id:in' => $this->channelIdIn, 'url_type:in' => $this->urlTypeIn];
+		return array_filter(['channel_id:in' => $this->channelIdIn, 'url_type:in' => $this->urlTypeIn]);
 	}
 }

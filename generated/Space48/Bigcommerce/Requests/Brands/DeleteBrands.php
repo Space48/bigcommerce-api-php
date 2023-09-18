@@ -24,18 +24,18 @@ class DeleteBrands extends Request
 
 
 	/**
-	 * @param string $name Filter items by name.
-	 * @param string $pageTitle Filter items by page_title.
+	 * @param null|string $name Filter items by name.
+	 * @param null|string $pageTitle Filter items by page_title.
 	 */
 	public function __construct(
-		protected string $name,
-		protected string $pageTitle,
+		protected ?string $name = null,
+		protected ?string $pageTitle = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['name' => $this->name, 'page_title' => $this->pageTitle];
+		return array_filter(['name' => $this->name, 'page_title' => $this->pageTitle]);
 	}
 }

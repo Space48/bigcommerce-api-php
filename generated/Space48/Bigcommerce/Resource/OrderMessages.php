@@ -28,13 +28,13 @@ class OrderMessages extends Resource
 	 */
 	public function getOrderMessages(
 		int $orderId,
-		int $minId,
-		int $maxId,
-		int $customerId,
-		string $minDateCreated,
-		string $maxDateCreated,
-		bool $isFlagged,
-		string $status,
+		?int $minId,
+		?int $maxId,
+		?int $customerId,
+		?string $minDateCreated,
+		?string $maxDateCreated,
+		?bool $isFlagged,
+		?string $status,
 	): Response
 	{
 		return $this->connector->send(new GetOrderMessages($orderId, $minId, $maxId, $customerId, $minDateCreated, $maxDateCreated, $isFlagged, $status));

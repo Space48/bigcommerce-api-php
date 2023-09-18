@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * get-channel-menus
+ * getChannelMenus
  *
  * Returns list of Control Panel side navigation menus for a channel.
  */

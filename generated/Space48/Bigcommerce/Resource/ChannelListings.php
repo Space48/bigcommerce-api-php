@@ -5,7 +5,7 @@ namespace Space48\Bigcommerce\Resource;
 use Saloon\Contracts\Response;
 use Space48\Bigcommerce\Requests\ChannelListings\CreateChannelListings;
 use Space48\Bigcommerce\Requests\ChannelListings\GetChannelListing;
-use Space48\Bigcommerce\Requests\ChannelListings\ListChannelListings;
+use Space48\Bigcommerce\Requests\ChannelListings\GetChannelListings;
 use Space48\Bigcommerce\Requests\ChannelListings\UpdateChannelListings;
 use Space48\Bigcommerce\Resource;
 
@@ -22,19 +22,19 @@ class ChannelListings extends Resource
 	 * @param string $dateModifiedMin Filter items by minimum date_modified. For example, `date_modified:min=2019-09-04T00:00:00`, `date_modified:min=2019-09-04`, or `date_modified:min=1567573200`
 	 * @param string $dateModifiedMax Filter items by maximum date_modified. For example, `date_modified:max=2019-09-04T00:00:00`, `date_modified:max=2019-09-04`, or `date_modified:max=1567573200`
 	 */
-	public function listChannelListings(
+	public function getChannelListings(
 		int $channelId,
-		int $after,
-		array $productIdIn,
-		string $dateCreated,
-		string $dateCreatedMin,
-		string $dateCreatedMax,
-		string $dateModified,
-		string $dateModifiedMin,
-		string $dateModifiedMax,
+		?int $after,
+		?array $productIdIn,
+		?string $dateCreated,
+		?string $dateCreatedMin,
+		?string $dateCreatedMax,
+		?string $dateModified,
+		?string $dateModifiedMin,
+		?string $dateModifiedMax,
 	): Response
 	{
-		return $this->connector->send(new ListChannelListings($channelId, $after, $productIdIn, $dateCreated, $dateCreatedMin, $dateCreatedMax, $dateModified, $dateModifiedMin, $dateModifiedMax));
+		return $this->connector->send(new GetChannelListings($channelId, $after, $productIdIn, $dateCreated, $dateCreatedMin, $dateCreatedMax, $dateModified, $dateModifiedMin, $dateModifiedMax));
 	}
 
 

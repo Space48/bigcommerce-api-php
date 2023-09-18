@@ -23,41 +23,41 @@ class GetBrands extends Request
 
 
 	/**
-	 * @param int $id Filter items by ID.
-	 * @param array $idIn
-	 * @param array $idNotIn
-	 * @param array $idMin
-	 * @param array $idMax
-	 * @param array $idGreater
-	 * @param array $idLess
-	 * @param string $name Filter items by name.
-	 * @param string $nameLike Filter items by part of a name. For example, `name:like=new` returns brands with names that include `new`.
-	 * @param string $pageTitle Filter items by page_title.
-	 * @param string $includeFields Fields to include, in a comma-separated list. The ID and the specified fields will be returned.
-	 * @param string $excludeFields Fields to exclude, in a comma-separated list. The specified fields will be excluded from a response. The ID cannot be excluded.
-	 * @param string $sort Field name to sort by.
+	 * @param null|int $id Filter items by ID.
+	 * @param null|array $idIn
+	 * @param null|array $idNotIn
+	 * @param null|array $idMin
+	 * @param null|array $idMax
+	 * @param null|array $idGreater
+	 * @param null|array $idLess
+	 * @param null|string $name Filter items by name.
+	 * @param null|string $nameLike Filter items by part of a name. For example, `name:like=new` returns brands with names that include `new`.
+	 * @param null|string $pageTitle Filter items by page_title.
+	 * @param null|string $includeFields Fields to include, in a comma-separated list. The ID and the specified fields will be returned.
+	 * @param null|string $excludeFields Fields to exclude, in a comma-separated list. The specified fields will be excluded from a response. The ID cannot be excluded.
+	 * @param null|string $sort Field name to sort by.
 	 */
 	public function __construct(
-		protected int $id,
-		protected array $idIn,
-		protected array $idNotIn,
-		protected array $idMin,
-		protected array $idMax,
-		protected array $idGreater,
-		protected array $idLess,
-		protected string $name,
-		protected string $nameLike,
-		protected string $pageTitle,
-		protected string $includeFields,
-		protected string $excludeFields,
-		protected string $sort,
+		protected ?int $id = null,
+		protected ?array $idIn = null,
+		protected ?array $idNotIn = null,
+		protected ?array $idMin = null,
+		protected ?array $idMax = null,
+		protected ?array $idGreater = null,
+		protected ?array $idLess = null,
+		protected ?string $name = null,
+		protected ?string $nameLike = null,
+		protected ?string $pageTitle = null,
+		protected ?string $includeFields = null,
+		protected ?string $excludeFields = null,
+		protected ?string $sort = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return [
+		return array_filter([
 			'id' => $this->id,
 			'id:in' => $this->idIn,
 			'id:not_in' => $this->idNotIn,
@@ -71,6 +71,6 @@ class GetBrands extends Request
 			'include_fields' => $this->includeFields,
 			'exclude_fields' => $this->excludeFields,
 			'sort' => $this->sort,
-		];
+		]);
 	}
 }

@@ -12,7 +12,7 @@ class StorefrontSecurity extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function getStorefrontSecuritySettings(int $channelId): Response
+	public function getStorefrontSecuritySettings(?int $channelId): Response
 	{
 		return $this->connector->send(new GetStorefrontSecuritySettings($channelId));
 	}
@@ -21,7 +21,7 @@ class StorefrontSecurity extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function updateStorefrontSecuritySettings(int $channelId): Response
+	public function updateStorefrontSecuritySettings(?int $channelId): Response
 	{
 		return $this->connector->send(new UpdateStorefrontSecuritySettings($channelId));
 	}

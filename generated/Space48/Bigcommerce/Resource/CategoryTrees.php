@@ -14,7 +14,7 @@ class CategoryTrees extends Resource
 	 * @param string $idIn
 	 * @param string $channelIdIn
 	 */
-	public function getCategoryTrees(string $idIn, string $channelIdIn): Response
+	public function getCategoryTrees(?string $idIn, ?string $channelIdIn): Response
 	{
 		return $this->connector->send(new GetCategoryTrees($idIn, $channelIdIn));
 	}
@@ -29,7 +29,7 @@ class CategoryTrees extends Resource
 	/**
 	 * @param string $idIn
 	 */
-	public function deleteCategoryTrees(string $idIn): Response
+	public function deleteCategoryTrees(?string $idIn): Response
 	{
 		return $this->connector->send(new DeleteCategoryTrees($idIn));
 	}

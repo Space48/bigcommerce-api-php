@@ -3,8 +3,8 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\OrderProducts\GetAllOrderProducts;
-use Space48\Bigcommerce\Requests\OrderProducts\GetAnOrderProduct;
+use Space48\Bigcommerce\Requests\OrderProducts\GetOrderProduct;
+use Space48\Bigcommerce\Requests\OrderProducts\GetOrderProducts;
 use Space48\Bigcommerce\Resource;
 
 class OrderProducts extends Resource
@@ -12,9 +12,9 @@ class OrderProducts extends Resource
 	/**
 	 * @param int $orderId ID of the order.
 	 */
-	public function getAllOrderProducts(int $orderId): Response
+	public function getOrderProducts(int $orderId): Response
 	{
-		return $this->connector->send(new GetAllOrderProducts($orderId));
+		return $this->connector->send(new GetOrderProducts($orderId));
 	}
 
 
@@ -22,8 +22,8 @@ class OrderProducts extends Resource
 	 * @param int $orderId ID of the order.
 	 * @param int $productId ID of the product.
 	 */
-	public function getAnOrderProduct(int $orderId, int $productId): Response
+	public function getOrderProduct(int $orderId, int $productId): Response
 	{
-		return $this->connector->send(new GetAnOrderProduct($orderId, $productId));
+		return $this->connector->send(new GetOrderProduct($orderId, $productId));
 	}
 }

@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * delete-tax-zones
+ * deleteTaxZones
  *
  * Delete one or more tax zones. Deleting a tax zone removes all associated tax rates.
  *
@@ -27,16 +27,16 @@ class DeleteTaxZones extends Request
 
 
 	/**
-	 * @param array $idIn Filter by tax zone `id`. Use a comma-separated CSV string of IDs for multiple tax zones. For example, `5` or `12,34,56`.
+	 * @param null|array $idIn Filter by tax zone `id`. Use a comma-separated CSV string of IDs for multiple tax zones. For example, `5` or `12,34,56`.
 	 */
 	public function __construct(
-		protected array $idIn,
+		protected ?array $idIn = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['id:in' => $this->idIn];
+		return array_filter(['id:in' => $this->idIn]);
 	}
 }

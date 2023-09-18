@@ -4,7 +4,7 @@ namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
 use Space48\Bigcommerce\Requests\PriceListsAssignments\CreatePriceListAssignments;
-use Space48\Bigcommerce\Requests\PriceListsAssignments\DeletePriceListAssignmentsByFilter;
+use Space48\Bigcommerce\Requests\PriceListsAssignments\DeletePriceListAssignments;
 use Space48\Bigcommerce\Requests\PriceListsAssignments\GetListOfPriceListAssignments;
 use Space48\Bigcommerce\Requests\PriceListsAssignments\UpsertPriceListAssignment;
 use Space48\Bigcommerce\Resource;
@@ -22,14 +22,14 @@ class PriceListsAssignments extends Resource
 	 * @param array $channelIdIn Filter items by a comma-separated list of `channel_id`s.
 	 */
 	public function getListOfPriceListAssignments(
-		int $id,
-		int $priceListId,
-		int $customerGroupId,
-		int $channelId,
-		array $idIn,
-		array $customerGroupIdIn,
-		array $priceListIdIn,
-		array $channelIdIn,
+		?int $id,
+		?int $priceListId,
+		?int $customerGroupId,
+		?int $channelId,
+		?array $idIn,
+		?array $customerGroupIdIn,
+		?array $priceListIdIn,
+		?array $channelIdIn,
 	): Response
 	{
 		return $this->connector->send(new GetListOfPriceListAssignments($id, $priceListId, $customerGroupId, $channelId, $idIn, $customerGroupIdIn, $priceListIdIn, $channelIdIn));
@@ -49,15 +49,15 @@ class PriceListsAssignments extends Resource
 	 * @param int $channelId The ID of the `Channel`.
 	 * @param string $channelIdIn Filter results by a comma-separated list of `channel_id`s.
 	 */
-	public function deletePriceListAssignmentsByFilter(
-		int $id,
-		int $priceListId,
-		int $customerGroupId,
-		int $channelId,
-		string $channelIdIn,
+	public function deletePriceListAssignments(
+		?int $id,
+		?int $priceListId,
+		?int $customerGroupId,
+		?int $channelId,
+		?string $channelIdIn,
 	): Response
 	{
-		return $this->connector->send(new DeletePriceListAssignmentsByFilter($id, $priceListId, $customerGroupId, $channelId, $channelIdIn));
+		return $this->connector->send(new DeletePriceListAssignments($id, $priceListId, $customerGroupId, $channelId, $channelIdIn));
 	}
 
 

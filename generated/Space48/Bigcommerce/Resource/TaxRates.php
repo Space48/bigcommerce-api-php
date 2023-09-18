@@ -15,7 +15,7 @@ class TaxRates extends Resource
 	 * @param array $idIn Filter by tax rate `id`. Use a comma-separated CSV string of IDs for multiple tax rates. For example, `5` or `12,34,56`.
 	 * @param array $taxZoneIdIn Filter by tax zone `id`. Use a comma-separated CSV string of IDs for multiple tax zones. For example, `5` or `12,34,56`.
 	 */
-	public function getTaxRates(array $idIn, array $taxZoneIdIn): Response
+	public function getTaxRates(?array $idIn, ?array $taxZoneIdIn): Response
 	{
 		return $this->connector->send(new GetTaxRates($idIn, $taxZoneIdIn));
 	}
@@ -36,7 +36,7 @@ class TaxRates extends Resource
 	/**
 	 * @param array $idIn Filter by tax rate `id`. Use a comma-separated CSV string of IDs for multiple tax rates. For example, `5` or `12,34,56`.
 	 */
-	public function deleteTaxRates(array $idIn): Response
+	public function deleteTaxRates(?array $idIn): Response
 	{
 		return $this->connector->send(new DeleteTaxRates($idIn));
 	}

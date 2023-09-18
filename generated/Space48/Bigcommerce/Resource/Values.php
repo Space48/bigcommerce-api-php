@@ -3,82 +3,82 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\Values\CreateOptionValue;
-use Space48\Bigcommerce\Requests\Values\DeleteOptionValueById;
-use Space48\Bigcommerce\Requests\Values\GetOptionValueById;
-use Space48\Bigcommerce\Requests\Values\GetOptionValues;
-use Space48\Bigcommerce\Requests\Values\UpdateOptionValue;
+use Space48\Bigcommerce\Requests\Values\CreateProductModifierValue;
+use Space48\Bigcommerce\Requests\Values\DeleteProductModifierValue;
+use Space48\Bigcommerce\Requests\Values\GetProductModifierValue;
+use Space48\Bigcommerce\Requests\Values\GetProductModifierValues;
+use Space48\Bigcommerce\Requests\Values\UpdateProductModifierValue;
 use Space48\Bigcommerce\Resource;
 
 class Values extends Resource
 {
 	/**
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
-	 * @param int $optionId The ID of the `Option`.
-	 * @param int $optionId The ID of the `Option`.
+	 * @param int $modifierId The ID of the `Modifier`.
+	 * @param int $modifierId The ID of the `Modifier`.
 	 * @param string $includeFields Fields to include, in a comma-separated list. The ID and the specified fields will be returned.
 	 * @param string $excludeFields Fields to exclude, in a comma-separated list. The specified fields will be excluded from a response. The ID cannot be excluded.
 	 */
-	public function getOptionValues(
+	public function getProductModifierValues(
 		int $productId,
-		int $optionId,
-		string $includeFields,
-		string $excludeFields,
+		int $modifierId,
+		?string $includeFields,
+		?string $excludeFields,
 	): Response
 	{
-		return $this->connector->send(new GetOptionValues($productId, $optionId, $optionId, $includeFields, $excludeFields));
+		return $this->connector->send(new GetProductModifierValues($productId, $modifierId, $modifierId, $includeFields, $excludeFields));
 	}
 
 
 	/**
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
-	 * @param int $optionId The ID of the `Option`.
+	 * @param int $modifierId The ID of the `Modifier`.
 	 */
-	public function createOptionValue(int $productId, int $optionId): Response
+	public function createProductModifierValue(int $productId, int $modifierId): Response
 	{
-		return $this->connector->send(new CreateOptionValue($productId, $optionId));
+		return $this->connector->send(new CreateProductModifierValue($productId, $modifierId));
 	}
 
 
 	/**
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
-	 * @param int $optionId The ID of the `Option`.
+	 * @param int $modifierId The ID of the `Modifier`.
 	 * @param int $valueId The ID of the `Modifier/Option Value`.
-	 * @param int $optionId The ID of the `Option`.
+	 * @param int $modifierId The ID of the `Modifier`.
 	 * @param string $includeFields Fields to include, in a comma-separated list. The ID and the specified fields will be returned.
 	 * @param string $excludeFields Fields to exclude, in a comma-separated list. The specified fields will be excluded from a response. The ID cannot be excluded.
 	 */
-	public function getOptionValueById(
+	public function getProductModifierValue(
 		int $productId,
-		int $optionId,
+		int $modifierId,
 		int $valueId,
-		string $includeFields,
-		string $excludeFields,
+		?string $includeFields,
+		?string $excludeFields,
 	): Response
 	{
-		return $this->connector->send(new GetOptionValueById($productId, $optionId, $valueId, $optionId, $includeFields, $excludeFields));
+		return $this->connector->send(new GetProductModifierValue($productId, $modifierId, $valueId, $modifierId, $includeFields, $excludeFields));
 	}
 
 
 	/**
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
-	 * @param int $optionId The ID of the `Option`.
+	 * @param int $modifierId The ID of the `Modifier`.
 	 * @param int $valueId The ID of the `Modifier/Option Value`.
 	 */
-	public function updateOptionValue(int $productId, int $optionId, int $valueId): Response
+	public function updateProductModifierValue(int $productId, int $modifierId, int $valueId): Response
 	{
-		return $this->connector->send(new UpdateOptionValue($productId, $optionId, $valueId));
+		return $this->connector->send(new UpdateProductModifierValue($productId, $modifierId, $valueId));
 	}
 
 
 	/**
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
-	 * @param int $optionId The ID of the `Option`.
+	 * @param int $modifierId The ID of the `Modifier`.
 	 * @param int $valueId The ID of the `Modifier/Option Value`.
-	 * @param int $optionId The ID of the `Option`.
+	 * @param int $modifierId The ID of the `Modifier`.
 	 */
-	public function deleteOptionValueById(int $productId, int $optionId, int $valueId): Response
+	public function deleteProductModifierValue(int $productId, int $modifierId, int $valueId): Response
 	{
-		return $this->connector->send(new DeleteOptionValueById($productId, $optionId, $valueId, $optionId));
+		return $this->connector->send(new DeleteProductModifierValue($productId, $modifierId, $valueId, $modifierId));
 	}
 }

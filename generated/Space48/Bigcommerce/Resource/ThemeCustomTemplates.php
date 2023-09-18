@@ -3,7 +3,7 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\ThemeCustomTemplates\GetThemesThemeUuidCustomTemplates;
+use Space48\Bigcommerce\Requests\ThemeCustomTemplates\GetThemeCustomTemplates;
 use Space48\Bigcommerce\Resource;
 
 class ThemeCustomTemplates extends Resource
@@ -11,8 +11,8 @@ class ThemeCustomTemplates extends Resource
 	/**
 	 * @param string $versionUuid
 	 */
-	public function getThemesThemeUuidCustomTemplates(string $versionUuid): Response
+	public function getThemeCustomTemplates(string $versionUuid): Response
 	{
-		return $this->connector->send(new GetThemesThemeUuidCustomTemplates($versionUuid));
+		return $this->connector->send(new GetThemeCustomTemplates($versionUuid));
 	}
 }

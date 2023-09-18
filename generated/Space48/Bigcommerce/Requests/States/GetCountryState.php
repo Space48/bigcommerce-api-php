@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * Get a Country's State
+ * getCountryState
  *
  * Returns a *State*.
  * A state or province, identifiable by an ISO 3166 subdivision code.

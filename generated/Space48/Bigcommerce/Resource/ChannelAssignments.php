@@ -14,7 +14,7 @@ class ChannelAssignments extends Resource
 	 * @param string $productIdIn
 	 * @param string $channelIdIn
 	 */
-	public function getProductsChannelAssignments(string $productIdIn, string $channelIdIn): Response
+	public function getProductsChannelAssignments(?string $productIdIn, ?string $channelIdIn): Response
 	{
 		return $this->connector->send(new GetProductsChannelAssignments($productIdIn, $channelIdIn));
 	}
@@ -30,7 +30,7 @@ class ChannelAssignments extends Resource
 	 * @param string $productIdIn
 	 * @param string $channelIdIn
 	 */
-	public function deleteProductsChannelAssignments(string $productIdIn, string $channelIdIn): Response
+	public function deleteProductsChannelAssignments(?string $productIdIn, ?string $channelIdIn): Response
 	{
 		return $this->connector->send(new DeleteProductsChannelAssignments($productIdIn, $channelIdIn));
 	}

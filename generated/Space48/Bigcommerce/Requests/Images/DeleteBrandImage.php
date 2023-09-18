@@ -24,7 +24,6 @@ class DeleteBrandImage extends Request
 
 	/**
 	 * @param int $brandId The ID of the `Brand` to which the resource belongs.
-	 * @param int $brandId The ID of the `Brand` to which the resource belongs.
 	 */
 	public function __construct(
 		protected int $brandId,

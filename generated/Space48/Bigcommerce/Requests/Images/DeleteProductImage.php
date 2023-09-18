@@ -25,7 +25,6 @@ class DeleteProductImage extends Request
 	/**
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
 	 * @param int $imageId The ID of the `Image` that is being operated on.
-	 * @param int $imageId The ID of the `Image` that is being operated on.
 	 */
 	public function __construct(
 		protected int $productId,

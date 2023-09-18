@@ -9,7 +9,7 @@ use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
 
 /**
- * create-tax-properties
+ * createTaxProperties
  *
  * Create one or more tax properties. A **code** and a **display name** must be included when creating
  * tax properties.

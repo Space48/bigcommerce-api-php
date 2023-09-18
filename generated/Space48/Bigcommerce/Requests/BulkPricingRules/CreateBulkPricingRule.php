@@ -50,6 +50,6 @@ class CreateBulkPricingRule extends Request implements HasBody
 
 	public function defaultQuery(): array
 	{
-		return [];
+		return array_filter([]);
 	}
 }

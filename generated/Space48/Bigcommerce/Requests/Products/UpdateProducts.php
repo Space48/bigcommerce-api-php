@@ -35,16 +35,16 @@ class UpdateProducts extends Request
 
 
 	/**
-	 * @param string $includeFields Fields to include, in a comma-separated list. The ID and the specified fields will be returned.
+	 * @param null|string $includeFields Fields to include, in a comma-separated list. The ID and the specified fields will be returned.
 	 */
 	public function __construct(
-		protected string $includeFields,
+		protected ?string $includeFields = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['include_fields' => $this->includeFields];
+		return array_filter(['include_fields' => $this->includeFields]);
 	}
 }

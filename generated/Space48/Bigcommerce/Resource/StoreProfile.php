@@ -12,7 +12,7 @@ class StoreProfile extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function getStoreProfileSettings(int $channelId): Response
+	public function getStoreProfileSettings(?int $channelId): Response
 	{
 		return $this->connector->send(new GetStoreProfileSettings($channelId));
 	}
@@ -21,7 +21,7 @@ class StoreProfile extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function updateStoreProfileSettings(int $channelId): Response
+	public function updateStoreProfileSettings(?int $channelId): Response
 	{
 		return $this->connector->send(new UpdateStoreProfileSettings($channelId));
 	}

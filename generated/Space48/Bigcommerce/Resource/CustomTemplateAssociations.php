@@ -17,10 +17,10 @@ class CustomTemplateAssociations extends Resource
 	 * @param bool $isValid Optional toggle to filter for exclusively valid or invalid associations entries. An invalid entry is one where its file name does not match up to an existing custom layout file in the currently active theme for the channel.
 	 */
 	public function getCustomTemplateAssociations(
-		int $channelId,
-		string $entityIdIn,
-		string $type,
-		bool $isValid,
+		?int $channelId,
+		?string $entityIdIn,
+		?string $type,
+		?bool $isValid,
 	): Response
 	{
 		return $this->connector->send(new GetCustomTemplateAssociations($channelId, $entityIdIn, $type, $isValid));
@@ -39,7 +39,12 @@ class CustomTemplateAssociations extends Resource
 	 * @param int $channelId Channel ID provided to delete all custom template associations for a given Channel
 	 * @param string $type Filter associations by type
 	 */
-	public function deleteCustomTemplateAssociations(int $idIn, int $entityIdIn, int $channelId, string $type): Response
+	public function deleteCustomTemplateAssociations(
+		?int $idIn,
+		?int $entityIdIn,
+		?int $channelId,
+		?string $type,
+	): Response
 	{
 		return $this->connector->send(new DeleteCustomTemplateAssociations($idIn, $entityIdIn, $channelId, $type));
 	}

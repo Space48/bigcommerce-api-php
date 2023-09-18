@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * update-tax-rates
+ * updateTaxRates
  *
  * Update one or more tax rates. Only the tax rate `id` field is required. Fields unspecified by the
  * request will retain their current state.

@@ -21,12 +21,12 @@ class Widget extends Resource
 	 * @param string $siteIdIn A comma-separated list of site ids to filter the results by.
 	 */
 	public function getWidgets(
-		string $widgetTemplateKind,
-		string $widgetTemplateUuid,
-		string $name,
-		array $nameIn,
-		int $channelIdIn,
-		string $siteIdIn,
+		?string $widgetTemplateKind,
+		?string $widgetTemplateUuid,
+		?string $name,
+		?array $nameIn,
+		?int $channelIdIn,
+		?string $siteIdIn,
 	): Response
 	{
 		return $this->connector->send(new GetWidgets($widgetTemplateKind, $widgetTemplateUuid, $name, $nameIn, $channelIdIn, $siteIdIn));

@@ -25,47 +25,47 @@ class GetAllCategories extends Request
 
 
 	/**
-	 * @param string $categoryUuidIn
-	 * @param string $categoryUuidNotIn
-	 * @param string $categoryIdIn
-	 * @param string $categoryIdNotIn
-	 * @param string $treeIdIn
-	 * @param string $treeIdNotIn
-	 * @param string $parentIdIn
-	 * @param string $parentIdNotIn
-	 * @param string $name
-	 * @param string $nameLike
-	 * @param string $pageTitle
-	 * @param string $pageTitleLike
-	 * @param string $keyword
-	 * @param bool $isVisible
-	 * @param string $includeFields
-	 * @param string $excludeFields
+	 * @param null|string $categoryUuidIn
+	 * @param null|string $categoryUuidNotIn
+	 * @param null|string $categoryIdIn
+	 * @param null|string $categoryIdNotIn
+	 * @param null|string $treeIdIn
+	 * @param null|string $treeIdNotIn
+	 * @param null|string $parentIdIn
+	 * @param null|string $parentIdNotIn
+	 * @param null|string $name
+	 * @param null|string $nameLike
+	 * @param null|string $pageTitle
+	 * @param null|string $pageTitleLike
+	 * @param null|string $keyword
+	 * @param null|bool $isVisible
+	 * @param null|string $includeFields
+	 * @param null|string $excludeFields
 	 */
 	public function __construct(
-		protected string $categoryUuidIn,
-		protected string $categoryUuidNotIn,
-		protected string $categoryIdIn,
-		protected string $categoryIdNotIn,
-		protected string $treeIdIn,
-		protected string $treeIdNotIn,
-		protected string $parentIdIn,
-		protected string $parentIdNotIn,
-		protected string $name,
-		protected string $nameLike,
-		protected string $pageTitle,
-		protected string $pageTitleLike,
-		protected string $keyword,
-		protected bool $isVisible,
-		protected string $includeFields,
-		protected string $excludeFields,
+		protected ?string $categoryUuidIn = null,
+		protected ?string $categoryUuidNotIn = null,
+		protected ?string $categoryIdIn = null,
+		protected ?string $categoryIdNotIn = null,
+		protected ?string $treeIdIn = null,
+		protected ?string $treeIdNotIn = null,
+		protected ?string $parentIdIn = null,
+		protected ?string $parentIdNotIn = null,
+		protected ?string $name = null,
+		protected ?string $nameLike = null,
+		protected ?string $pageTitle = null,
+		protected ?string $pageTitleLike = null,
+		protected ?string $keyword = null,
+		protected ?bool $isVisible = null,
+		protected ?string $includeFields = null,
+		protected ?string $excludeFields = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return [
+		return array_filter([
 			'category_uuid:in' => $this->categoryUuidIn,
 			'category_uuid:not_in' => $this->categoryUuidNotIn,
 			'category_id:in' => $this->categoryIdIn,
@@ -82,6 +82,6 @@ class GetAllCategories extends Request
 			'is_visible' => $this->isVisible,
 			'include_fields' => $this->includeFields,
 			'exclude_fields' => $this->excludeFields,
-		];
+		]);
 	}
 }

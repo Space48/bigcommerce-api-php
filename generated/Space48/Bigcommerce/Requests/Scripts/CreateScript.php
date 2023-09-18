@@ -19,20 +19,24 @@ use Saloon\Traits\Body\HasJsonBody;
  * **Read Only Fields**
  * * uuid
  *
- * **Notes**
- * * If the
- * `kind` is `src`:
- *   * Specify the `src` property.
- *   * Optionally, you can supply a `load_method`.
+ * **Limits**
+ * * 50
+ * scripts per channel.
  *
- * * Do not specify the `html` field.
- * * If the `kind` is `script_tag`:
- *   * Specify the `html`
- * property.
+ * **Notes**
+ * * If the `kind` is `src`:
+ *   * Specify the `src` property.
+ *   *
+ * Optionally, you can supply a `load_method`.
+ *   * Do not specify the `html` field.
+ * * If the `kind` is
+ * `script_tag`:
+ *   * Specify the `html` property.
  *   * Do not specify the `src` field.
- * * Each app can have 10 scripts installed.
- * * Multiple
- * scripts can be created [per call](/api-docs/store-management/scripts#notes).
+ * * Each app can
+ * have 10 scripts installed.
+ * * Multiple scripts can be created [per
+ * call](/api-docs/store-management/scripts#notes).
  */
 class CreateScript extends Request implements HasBody
 {

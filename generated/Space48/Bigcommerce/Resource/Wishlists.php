@@ -3,11 +3,11 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\Wishlists\WishlistsByIdDelete;
-use Space48\Bigcommerce\Requests\Wishlists\WishlistsByIdGet;
-use Space48\Bigcommerce\Requests\Wishlists\WishlistsByIdPut;
-use Space48\Bigcommerce\Requests\Wishlists\WishlistsGet;
-use Space48\Bigcommerce\Requests\Wishlists\WishlistsPost;
+use Space48\Bigcommerce\Requests\Wishlists\CreateWishlist;
+use Space48\Bigcommerce\Requests\Wishlists\DeleteWishlist;
+use Space48\Bigcommerce\Requests\Wishlists\GetWishlist;
+use Space48\Bigcommerce\Requests\Wishlists\GetWishlists;
+use Space48\Bigcommerce\Requests\Wishlists\UpdateWishlist;
 use Space48\Bigcommerce\Resource;
 
 class Wishlists extends Resource
@@ -15,41 +15,41 @@ class Wishlists extends Resource
 	/**
 	 * @param int $customerId All wishlists relating to the customer.
 	 */
-	public function wishlistsGet(int $customerId): Response
+	public function getWishlists(?int $customerId): Response
 	{
-		return $this->connector->send(new WishlistsGet($customerId));
+		return $this->connector->send(new GetWishlists($customerId));
 	}
 
 
-	public function wishlistsPost(): Response
+	public function createWishlist(): Response
 	{
-		return $this->connector->send(new WishlistsPost());
-	}
-
-
-	/**
-	 * @param int $wishlistId ID of the Wishlist.
-	 */
-	public function wishlistsByIdGet(int $wishlistId): Response
-	{
-		return $this->connector->send(new WishlistsByIdGet($wishlistId));
+		return $this->connector->send(new CreateWishlist());
 	}
 
 
 	/**
 	 * @param int $wishlistId ID of the Wishlist.
 	 */
-	public function wishlistsByIdPut(int $wishlistId): Response
+	public function getWishlist(int $wishlistId): Response
 	{
-		return $this->connector->send(new WishlistsByIdPut($wishlistId));
+		return $this->connector->send(new GetWishlist($wishlistId));
 	}
 
 
 	/**
 	 * @param int $wishlistId ID of the Wishlist.
 	 */
-	public function wishlistsByIdDelete(int $wishlistId): Response
+	public function updateWishlist(int $wishlistId): Response
 	{
-		return $this->connector->send(new WishlistsByIdDelete($wishlistId));
+		return $this->connector->send(new UpdateWishlist($wishlistId));
+	}
+
+
+	/**
+	 * @param int $wishlistId ID of the Wishlist.
+	 */
+	public function deleteWishlist(int $wishlistId): Response
+	{
+		return $this->connector->send(new DeleteWishlist($wishlistId));
 	}
 }

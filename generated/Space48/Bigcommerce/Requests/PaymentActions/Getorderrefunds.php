@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * getorderrefunds
+ * getOrderRefunds
  *
  * Returns a list of refunds ordered by refund ID in ascending order for the given order.
  *
@@ -19,7 +19,7 @@ use Saloon\Http\Request;
  * `store_v2_orders_read_only`
  * * `store_v2_orders`
  */
-class Getorderrefunds extends Request
+class GetOrderRefunds extends Request
 {
 	protected Method $method = Method::GET;
 

@@ -5,7 +5,7 @@ namespace Space48\Bigcommerce\Resource;
 use Saloon\Contracts\Response;
 use Space48\Bigcommerce\Requests\Channels\CreateChannel;
 use Space48\Bigcommerce\Requests\Channels\GetChannel;
-use Space48\Bigcommerce\Requests\Channels\ListChannels;
+use Space48\Bigcommerce\Requests\Channels\GetChannels;
 use Space48\Bigcommerce\Requests\Channels\UpdateChannel;
 use Space48\Bigcommerce\Resource;
 
@@ -24,21 +24,21 @@ class Channels extends Resource
 	 * @param string $dateModifiedMin Filter items by minimum date_modified. For example, `date_modified:min=2019-09-04T00:00:00`, `date_modified:min=2019-09-04`, or `date_modified:min=1567573200`
 	 * @param string $dateModifiedMax Filter items by maximum date_modified. For example, `date_modified:max=2019-09-04T00:00:00`, `date_modified:max=2019-09-04`, or `date_modified:max=1567573200`
 	 */
-	public function listChannels(
-		string $include,
-		bool $available,
-		array $statusIn,
-		array $typeIn,
-		array $platformIn,
-		string $dateCreated,
-		string $dateCreatedMin,
-		string $dateCreatedMax,
-		string $dateModified,
-		string $dateModifiedMin,
-		string $dateModifiedMax,
+	public function getChannels(
+		?string $include,
+		?bool $available,
+		?array $statusIn,
+		?array $typeIn,
+		?array $platformIn,
+		?string $dateCreated,
+		?string $dateCreatedMin,
+		?string $dateCreatedMax,
+		?string $dateModified,
+		?string $dateModifiedMin,
+		?string $dateModifiedMax,
 	): Response
 	{
-		return $this->connector->send(new ListChannels($include, $available, $statusIn, $typeIn, $platformIn, $dateCreated, $dateCreatedMin, $dateCreatedMax, $dateModified, $dateModifiedMin, $dateModifiedMax));
+		return $this->connector->send(new GetChannels($include, $available, $statusIn, $typeIn, $platformIn, $dateCreated, $dateCreatedMin, $dateCreatedMax, $dateModified, $dateModifiedMin, $dateModifiedMax));
 	}
 
 
@@ -52,7 +52,7 @@ class Channels extends Resource
 	 * @param int $channelId The ID of a channel.
 	 * @param string $include Channels subresources that can be included in the response.
 	 */
-	public function getChannel(int $channelId, string $include): Response
+	public function getChannel(int $channelId, ?string $include): Response
 	{
 		return $this->connector->send(new GetChannel($channelId, $include));
 	}

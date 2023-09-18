@@ -10,7 +10,6 @@ use Space48\Bigcommerce\Resource;
 class ThemeConfigurations extends Resource
 {
 	/**
-	 * @param string $uuid
 	 * @param string $uuid The theme identifier.
 	 * @param array $uuidIn Filter configurations by a list of configuration UUIDs.
 	 * @param array $channelIdIn Filter configurations by a list of channel_ids.
@@ -18,12 +17,12 @@ class ThemeConfigurations extends Resource
 	 */
 	public function getThemeConfiguration(
 		string $uuid,
-		array $uuidIn,
-		array $channelIdIn,
-		string $variationUuid,
+		?array $uuidIn,
+		?array $channelIdIn,
+		?string $variationUuid,
 	): Response
 	{
-		return $this->connector->send(new GetThemeConfiguration($uuid, $uuid, $uuidIn, $channelIdIn, $variationUuid));
+		return $this->connector->send(new GetThemeConfiguration($uuid, $uuidIn, $channelIdIn, $variationUuid));
 	}
 
 

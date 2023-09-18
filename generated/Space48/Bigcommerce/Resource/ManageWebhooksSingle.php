@@ -3,9 +3,9 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\ManageWebhooksSingle\DeleteAwebhook;
+use Space48\Bigcommerce\Requests\ManageWebhooksSingle\DeleteWebhook;
 use Space48\Bigcommerce\Requests\ManageWebhooksSingle\GetWebhook;
-use Space48\Bigcommerce\Requests\ManageWebhooksSingle\UpdateAwebhook;
+use Space48\Bigcommerce\Requests\ManageWebhooksSingle\UpdateWebhook;
 use Space48\Bigcommerce\Resource;
 
 class ManageWebhooksSingle extends Resource
@@ -22,17 +22,17 @@ class ManageWebhooksSingle extends Resource
 	/**
 	 * @param int $webhookId The ID of a Webhook.
 	 */
-	public function updateAwebhook(int $webhookId): Response
+	public function updateWebhook(int $webhookId): Response
 	{
-		return $this->connector->send(new UpdateAwebhook($webhookId));
+		return $this->connector->send(new UpdateWebhook($webhookId));
 	}
 
 
 	/**
 	 * @param int $webhookId The ID of a Webhook.
 	 */
-	public function deleteAwebhook(int $webhookId): Response
+	public function deleteWebhook(int $webhookId): Response
 	{
-		return $this->connector->send(new DeleteAwebhook($webhookId));
+		return $this->connector->send(new DeleteWebhook($webhookId));
 	}
 }

@@ -3,13 +3,13 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\CustomerGroups\CreateAcustomerGroup;
-use Space48\Bigcommerce\Requests\CustomerGroups\DeleteAcustomerGroup;
-use Space48\Bigcommerce\Requests\CustomerGroups\DeleteAllCustomerGroups;
-use Space48\Bigcommerce\Requests\CustomerGroups\GetAcountOfCustomerGroups;
-use Space48\Bigcommerce\Requests\CustomerGroups\GetAcustomerGroup;
-use Space48\Bigcommerce\Requests\CustomerGroups\GetAllCustomerGroups;
-use Space48\Bigcommerce\Requests\CustomerGroups\UpdateAcustomerGroup;
+use Space48\Bigcommerce\Requests\CustomerGroups\CreateCustomerGroup;
+use Space48\Bigcommerce\Requests\CustomerGroups\DeleteCustomerGroup;
+use Space48\Bigcommerce\Requests\CustomerGroups\DeleteCustomerGroups;
+use Space48\Bigcommerce\Requests\CustomerGroups\GetCustomerGroup;
+use Space48\Bigcommerce\Requests\CustomerGroups\GetCustomerGroups;
+use Space48\Bigcommerce\Requests\CustomerGroups\GetCustomerGroupsCount;
+use Space48\Bigcommerce\Requests\CustomerGroups\UpdateCustomerGroup;
 use Space48\Bigcommerce\Resource;
 
 class CustomerGroups extends Resource
@@ -26,32 +26,32 @@ class CustomerGroups extends Resource
 	 * @param string $dateModifiedMax Filter customer groups by maximum date_modified. `date_modified:max=2018-09-05T13:45:03` or `date_modified:max=2019-09-04`
 	 * @param bool $isGroupForGuests Filter whether the group is for guests. There can only be one customer group for guests at a time.
 	 */
-	public function getAllCustomerGroups(
-		string $name,
-		string $nameLike,
-		bool $isDefault,
-		string $dateCreated,
-		string $dateCreatedMax,
-		string $dateCreatedMin,
-		string $dateModified,
-		string $dateModifiedMin,
-		string $dateModifiedMax,
-		bool $isGroupForGuests,
+	public function getCustomerGroups(
+		?string $name,
+		?string $nameLike,
+		?bool $isDefault,
+		?string $dateCreated,
+		?string $dateCreatedMax,
+		?string $dateCreatedMin,
+		?string $dateModified,
+		?string $dateModifiedMin,
+		?string $dateModifiedMax,
+		?bool $isGroupForGuests,
 	): Response
 	{
-		return $this->connector->send(new GetAllCustomerGroups($name, $nameLike, $isDefault, $dateCreated, $dateCreatedMax, $dateCreatedMin, $dateModified, $dateModifiedMin, $dateModifiedMax, $isGroupForGuests));
+		return $this->connector->send(new GetCustomerGroups($name, $nameLike, $isDefault, $dateCreated, $dateCreatedMax, $dateCreatedMin, $dateModified, $dateModifiedMin, $dateModifiedMax, $isGroupForGuests));
 	}
 
 
-	public function createAcustomerGroup(): Response
+	public function createCustomerGroup(): Response
 	{
-		return $this->connector->send(new CreateAcustomerGroup());
+		return $this->connector->send(new CreateCustomerGroup());
 	}
 
 
-	public function deleteAllCustomerGroups(): Response
+	public function deleteCustomerGroups(): Response
 	{
-		return $this->connector->send(new DeleteAllCustomerGroups());
+		return $this->connector->send(new DeleteCustomerGroups());
 	}
 
 
@@ -66,42 +66,42 @@ class CustomerGroups extends Resource
 	 * @param string $dateModifiedMax Filter items by maximum date_modified. `date_modified:max=2018-09-05T13:45:03` or `date_modified:max=2019-09-04`
 	 * @param bool $isDefault Whether customers who sign up are added to this group by default.
 	 */
-	public function getAcustomerGroup(
+	public function getCustomerGroup(
 		int $customerGroupId,
-		string $name,
-		string $dateCreated,
-		string $dateCreatedMax,
-		string $dateCreatedMin,
-		string $dateModified,
-		string $dateModifiedMin,
-		string $dateModifiedMax,
-		bool $isDefault,
+		?string $name,
+		?string $dateCreated,
+		?string $dateCreatedMax,
+		?string $dateCreatedMin,
+		?string $dateModified,
+		?string $dateModifiedMin,
+		?string $dateModifiedMax,
+		?bool $isDefault,
 	): Response
 	{
-		return $this->connector->send(new GetAcustomerGroup($customerGroupId, $name, $dateCreated, $dateCreatedMax, $dateCreatedMin, $dateModified, $dateModifiedMin, $dateModifiedMax, $isDefault));
+		return $this->connector->send(new GetCustomerGroup($customerGroupId, $name, $dateCreated, $dateCreatedMax, $dateCreatedMin, $dateModified, $dateModifiedMin, $dateModifiedMax, $isDefault));
 	}
 
 
 	/**
 	 * @param int $customerGroupId The ID of the customer group.
 	 */
-	public function updateAcustomerGroup(int $customerGroupId): Response
+	public function updateCustomerGroup(int $customerGroupId): Response
 	{
-		return $this->connector->send(new UpdateAcustomerGroup($customerGroupId));
+		return $this->connector->send(new UpdateCustomerGroup($customerGroupId));
 	}
 
 
 	/**
 	 * @param int $customerGroupId The ID of the customer group.
 	 */
-	public function deleteAcustomerGroup(int $customerGroupId): Response
+	public function deleteCustomerGroup(int $customerGroupId): Response
 	{
-		return $this->connector->send(new DeleteAcustomerGroup($customerGroupId));
+		return $this->connector->send(new DeleteCustomerGroup($customerGroupId));
 	}
 
 
-	public function getAcountOfCustomerGroups(): Response
+	public function getCustomerGroupsCount(): Response
 	{
-		return $this->connector->send(new GetAcountOfCustomerGroups());
+		return $this->connector->send(new GetCustomerGroupsCount());
 	}
 }

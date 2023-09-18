@@ -3,27 +3,27 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\CurrenciesBulk\CreateAcurrency;
-use Space48\Bigcommerce\Requests\CurrenciesBulk\DeleteAllCurrencies;
-use Space48\Bigcommerce\Requests\CurrenciesBulk\GetAllCurrencies;
+use Space48\Bigcommerce\Requests\CurrenciesBulk\CreateCurrency;
+use Space48\Bigcommerce\Requests\CurrenciesBulk\DeleteCurrencies;
+use Space48\Bigcommerce\Requests\CurrenciesBulk\GetCurrencies;
 use Space48\Bigcommerce\Resource;
 
 class CurrenciesBulk extends Resource
 {
-	public function getAllCurrencies(): Response
+	public function getCurrencies(): Response
 	{
-		return $this->connector->send(new GetAllCurrencies());
+		return $this->connector->send(new GetCurrencies());
 	}
 
 
-	public function createAcurrency(): Response
+	public function createCurrency(): Response
 	{
-		return $this->connector->send(new CreateAcurrency());
+		return $this->connector->send(new CreateCurrency());
 	}
 
 
-	public function deleteAllCurrencies(): Response
+	public function deleteCurrencies(): Response
 	{
-		return $this->connector->send(new DeleteAllCurrencies());
+		return $this->connector->send(new DeleteCurrencies());
 	}
 }

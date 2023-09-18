@@ -3,8 +3,8 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\CheckoutBillingAddress\CheckoutsBillingAddressByCheckoutIdAndAddressIdPut;
-use Space48\Bigcommerce\Requests\CheckoutBillingAddress\CheckoutsBillingAddressByCheckoutIdPost;
+use Space48\Bigcommerce\Requests\CheckoutBillingAddress\AddCheckoutBillingAddress;
+use Space48\Bigcommerce\Requests\CheckoutBillingAddress\UpdateCheckoutBillingAddress;
 use Space48\Bigcommerce\Resource;
 
 class CheckoutBillingAddress extends Resource
@@ -12,9 +12,9 @@ class CheckoutBillingAddress extends Resource
 	/**
 	 * @param string $checkoutId ID of the checkout; the same as the cart ID.
 	 */
-	public function checkoutsBillingAddressByCheckoutIdPost(string $checkoutId): Response
+	public function addCheckoutBillingAddress(string $checkoutId): Response
 	{
-		return $this->connector->send(new CheckoutsBillingAddressByCheckoutIdPost($checkoutId));
+		return $this->connector->send(new AddCheckoutBillingAddress($checkoutId));
 	}
 
 
@@ -22,8 +22,8 @@ class CheckoutBillingAddress extends Resource
 	 * @param string $checkoutId ID of the checkout; the same as the cart ID.
 	 * @param int $addressId
 	 */
-	public function checkoutsBillingAddressByCheckoutIdAndAddressIdPut(string $checkoutId, int $addressId): Response
+	public function updateCheckoutBillingAddress(string $checkoutId, int $addressId): Response
 	{
-		return $this->connector->send(new CheckoutsBillingAddressByCheckoutIdAndAddressIdPut($checkoutId, $addressId));
+		return $this->connector->send(new UpdateCheckoutBillingAddress($checkoutId, $addressId));
 	}
 }

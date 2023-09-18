@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * DeleteChannelMenus
+ * deleteChannelMenus
  *
  * Deletes control panel side navigation menus for a channel.
  */

@@ -32,48 +32,48 @@ class DeleteProducts extends Request
 
 
 	/**
-	 * @param string $name Filter items by name.
-	 * @param string $sku Filter items by SKU.
-	 * @param float|int $price Filter items by price.
-	 * @param float|int $weight Filter items by weight.
-	 * @param string $condition Filter items by condition.
-	 * @param int $brandId Filter items by brand_id.
-	 * @param string $dateModified Filter items by date_modified. For example `v3/catalog/products?date_modified:min=2018-06-15`
-	 * @param string $dateLastImported Filter items by date_last_imported. For example `v3/catalog/products?date_last_imported:min=2018-06-15`
-	 * @param bool $isVisible Filter items by if visible on the storefront.
-	 * @param int $isFeatured Filter items by is_featured.
-	 * @param array $idIn Filter by product ID(s).
-	 * @param int $inventoryLevel Filter items by inventory_level.
-	 * @param int $totalSold Filter items by total_sold.
-	 * @param string $type Filter items by type: `physical` or `digital`.
-	 * @param int $categories Filter items by categories.
+	 * @param null|string $name Filter items by name.
+	 * @param null|string $sku Filter items by SKU.
+	 * @param null|float|int $price Filter items by price.
+	 * @param null|float|int $weight Filter items by weight.
+	 * @param null|string $condition Filter items by condition.
+	 * @param null|int $brandId Filter items by brand_id.
+	 * @param null|string $dateModified Filter items by date_modified. For example `v3/catalog/products?date_modified:min=2018-06-15`
+	 * @param null|string $dateLastImported Filter items by date_last_imported. For example `v3/catalog/products?date_last_imported:min=2018-06-15`
+	 * @param null|bool $isVisible Filter items by if visible on the storefront.
+	 * @param null|int $isFeatured Filter items by is_featured.
+	 * @param null|array $idIn Filter by product ID(s).
+	 * @param null|int $inventoryLevel Filter items by inventory_level.
+	 * @param null|int $totalSold Filter items by total_sold.
+	 * @param null|string $type Filter items by type: `physical` or `digital`.
+	 * @param null|int $categories Filter items by categories.
 	 *  If a product is in more than one category, using this query will not return the product. Instead use `categories:in=12`.
-	 * @param string $keyword Filter items by keywords found in the `name`, `description`, or `sku` fields, or in the brand name.
+	 * @param null|string $keyword Filter items by keywords found in the `name`, `description`, or `sku` fields, or in the brand name.
 	 */
 	public function __construct(
-		protected string $name,
-		protected string $sku,
-		protected float|int $price,
-		protected float|int $weight,
-		protected string $condition,
-		protected int $brandId,
-		protected string $dateModified,
-		protected string $dateLastImported,
-		protected bool $isVisible,
-		protected int $isFeatured,
-		protected array $idIn,
-		protected int $inventoryLevel,
-		protected int $totalSold,
-		protected string $type,
-		protected int $categories,
-		protected string $keyword,
+		protected ?string $name = null,
+		protected ?string $sku = null,
+		protected float|int|null $price = null,
+		protected float|int|null $weight = null,
+		protected ?string $condition = null,
+		protected ?int $brandId = null,
+		protected ?string $dateModified = null,
+		protected ?string $dateLastImported = null,
+		protected ?bool $isVisible = null,
+		protected ?int $isFeatured = null,
+		protected ?array $idIn = null,
+		protected ?int $inventoryLevel = null,
+		protected ?int $totalSold = null,
+		protected ?string $type = null,
+		protected ?int $categories = null,
+		protected ?string $keyword = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return [
+		return array_filter([
 			'name' => $this->name,
 			'sku' => $this->sku,
 			'price' => $this->price,
@@ -90,6 +90,6 @@ class DeleteProducts extends Request
 			'type' => $this->type,
 			'categories' => $this->categories,
 			'keyword' => $this->keyword,
-		];
+		]);
 	}
 }

@@ -3,7 +3,7 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\Items\AddCartLineItem;
+use Space48\Bigcommerce\Requests\Items\AddCartLineItems;
 use Space48\Bigcommerce\Requests\Items\DeleteCartLineItem;
 use Space48\Bigcommerce\Requests\Items\UpdateCartLineItem;
 use Space48\Bigcommerce\Resource;
@@ -17,9 +17,9 @@ class Items extends Resource
 	 * * `line_items.digital_items.options`: The cart returns an abbreviated result. Use this to return digital items product options. To return the extended cart object, use in a /POST request.
 	 * * `promotions.banners`: Returns a list of eligible banners.
 	 */
-	public function addCartLineItem(string $cartId, string $include): Response
+	public function addCartLineItems(string $cartId, ?string $include): Response
 	{
-		return $this->connector->send(new AddCartLineItem($cartId, $include));
+		return $this->connector->send(new AddCartLineItems($cartId, $include));
 	}
 
 
@@ -31,7 +31,7 @@ class Items extends Resource
 	 * * `line_items.digital_items.options`: The cart returns an abbreviated result. Use this to return digital items product options. To return the extended cart object, use in a /POST request.
 	 * * `promotions.banners`: Returns a list of eligible banners.
 	 */
-	public function updateCartLineItem(string $cartId, string $itemId, string $include): Response
+	public function updateCartLineItem(string $cartId, string $itemId, ?string $include): Response
 	{
 		return $this->connector->send(new UpdateCartLineItem($cartId, $itemId, $include));
 	}
@@ -45,7 +45,7 @@ class Items extends Resource
 	 * * `line_items.digital_items.options`: The cart returns an abbreviated result. Use this to return digital items product options. To return the extended cart object, use in a /POST request.
 	 * * `promotions.banners`: Returns a list of eligible banners.
 	 */
-	public function deleteCartLineItem(string $cartId, string $itemId, string $include): Response
+	public function deleteCartLineItem(string $cartId, string $itemId, ?string $include): Response
 	{
 		return $this->connector->send(new DeleteCartLineItem($cartId, $itemId, $include));
 	}

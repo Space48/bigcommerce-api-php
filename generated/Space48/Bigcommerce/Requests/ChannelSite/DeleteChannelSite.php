@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * DeleteChannelSite
+ * deleteChannelSite
  *
  * Deletes the Channel's site.
  */

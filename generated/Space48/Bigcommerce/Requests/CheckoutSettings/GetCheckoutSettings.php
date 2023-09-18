@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * GetCheckoutSettings
+ * getCheckoutSettings
  *
  * Get checkout settings
  */

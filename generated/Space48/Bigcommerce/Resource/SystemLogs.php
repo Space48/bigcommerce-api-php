@@ -3,7 +3,7 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\SystemLogs\GetSites;
+use Space48\Bigcommerce\Requests\SystemLogs\GetStoreSystemLogs;
 use Space48\Bigcommerce\Resource;
 
 class SystemLogs extends Resource
@@ -18,17 +18,17 @@ class SystemLogs extends Resource
 	 * @param int $severityMax Query parameter that lets you filter by maximum severity, as an integer.
 	 * @param string $idIn Query parameter that lets you filter by a list of log IDs, as a CSV. For example ?id:in=3,4,6
 	 */
-	public function getSites(
-		string $type,
-		string $typeNot,
-		string $module,
-		string $moduleNot,
-		int $severity,
-		int $severityMin,
-		int $severityMax,
-		string $idIn,
+	public function getStoreSystemLogs(
+		?string $type,
+		?string $typeNot,
+		?string $module,
+		?string $moduleNot,
+		?int $severity,
+		?int $severityMin,
+		?int $severityMax,
+		?string $idIn,
 	): Response
 	{
-		return $this->connector->send(new GetSites($type, $typeNot, $module, $moduleNot, $severity, $severityMin, $severityMax, $idIn));
+		return $this->connector->send(new GetStoreSystemLogs($type, $typeNot, $module, $moduleNot, $severity, $severityMin, $severityMax, $idIn));
 	}
 }

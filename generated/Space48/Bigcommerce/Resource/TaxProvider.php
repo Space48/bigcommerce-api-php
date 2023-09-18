@@ -3,40 +3,40 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\TaxProvider\Adjust;
-use Space48\Bigcommerce\Requests\TaxProvider\Commit;
-use Space48\Bigcommerce\Requests\TaxProvider\Estimate;
-use Space48\Bigcommerce\Requests\TaxProvider\VoidRequest;
+use Space48\Bigcommerce\Requests\TaxProvider\AdjustTaxQuote;
+use Space48\Bigcommerce\Requests\TaxProvider\CommitTaxQuote;
+use Space48\Bigcommerce\Requests\TaxProvider\EstimateTaxes;
+use Space48\Bigcommerce\Requests\TaxProvider\VoidTaxQuote;
 use Space48\Bigcommerce\Resource;
 
 class TaxProvider extends Resource
 {
-	public function estimate(): Response
+	public function estimateTaxes(): Response
 	{
-		return $this->connector->send(new Estimate());
+		return $this->connector->send(new EstimateTaxes());
 	}
 
 
 	/**
 	 * @param string $id Unique ID identifying the existing, persisted Tax Quote that will be voided.
 	 */
-	public function voidRequest(string $id): Response
+	public function voidTaxQuote(string $id): Response
 	{
-		return $this->connector->send(new VoidRequest($id));
+		return $this->connector->send(new VoidTaxQuote($id));
 	}
 
 
-	public function commit(): Response
+	public function commitTaxQuote(): Response
 	{
-		return $this->connector->send(new Commit());
+		return $this->connector->send(new CommitTaxQuote());
 	}
 
 
 	/**
 	 * @param string $id Unique ID identifying the existing, persisted Tax Quote that will be adjusted.
 	 */
-	public function adjust(string $id): Response
+	public function adjustTaxQuote(string $id): Response
 	{
-		return $this->connector->send(new Adjust($id));
+		return $this->connector->send(new AdjustTaxQuote($id));
 	}
 }

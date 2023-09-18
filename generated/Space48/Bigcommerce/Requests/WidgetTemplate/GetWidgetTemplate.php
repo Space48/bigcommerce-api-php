@@ -24,17 +24,17 @@ class GetWidgetTemplate extends Request
 
 	/**
 	 * @param string $uuid The identifier for a specific template.
-	 * @param string $versionUuid This is an optional query parameter used to attempt to fetch a specific Widget Template version.
+	 * @param null|string $versionUuid This is an optional query parameter used to attempt to fetch a specific Widget Template version.
 	 */
 	public function __construct(
 		protected string $uuid,
-		protected string $versionUuid,
+		protected ?string $versionUuid = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['version_uuid' => $this->versionUuid];
+		return array_filter(['version_uuid' => $this->versionUuid]);
 	}
 }

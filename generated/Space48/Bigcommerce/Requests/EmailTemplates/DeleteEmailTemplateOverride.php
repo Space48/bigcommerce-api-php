@@ -35,6 +35,6 @@ class DeleteEmailTemplateOverride extends Request
 
 	public function defaultQuery(): array
 	{
-		return ['channel_id' => $this->channelId];
+		return array_filter(['channel_id' => $this->channelId]);
 	}
 }

@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * UpsertPriceListRecords
+ * upsertPriceListRecords
  *
  * Creates a batch of `Price Lists Records`; may include price list records from more than one price
  * list.  Concurrency limit of 1.

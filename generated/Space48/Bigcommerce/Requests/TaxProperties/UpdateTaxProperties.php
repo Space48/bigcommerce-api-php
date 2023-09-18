@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * update-tax-properties
+ * updateTaxProperties
  *
  * Update one or more tax properties. Only fields specified will be adjusted.
  */

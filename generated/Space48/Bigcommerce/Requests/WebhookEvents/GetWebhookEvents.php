@@ -24,18 +24,18 @@ class GetWebhookEvents extends Request
 
 
 	/**
-	 * @param string $createdAtMax Maximum value for returned data.
-	 * @param string $createdAtMin Minimum value for returned data.
+	 * @param null|string $createdAtMax Maximum value for returned data.
+	 * @param null|string $createdAtMin Minimum value for returned data.
 	 */
 	public function __construct(
-		protected string $createdAtMax,
-		protected string $createdAtMin,
+		protected ?string $createdAtMax = null,
+		protected ?string $createdAtMin = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['created_at:max' => $this->createdAtMax, 'created_at:min' => $this->createdAtMin];
+		return array_filter(['created_at:max' => $this->createdAtMax, 'created_at:min' => $this->createdAtMin]);
 	}
 }

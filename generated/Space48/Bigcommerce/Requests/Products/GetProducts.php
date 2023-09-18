@@ -23,45 +23,45 @@ class GetProducts extends Request
 
 
 	/**
-	 * @param int $id Filter items by ID.
-	 * @param array $idIn
-	 * @param array $idNotIn
-	 * @param array $idMin
-	 * @param array $idMax
-	 * @param array $idGreater
-	 * @param array $idLess
-	 * @param string $name Filter items by name.
-	 * @param string $upc Filter items by UPC.
-	 * @param float|int $price Filter items by price.
-	 * @param float|int $weight Filter items by weight.
-	 * @param string $condition Filter items by condition.
-	 * @param int $brandId Filter items by brand_id.
-	 * @param string $dateModified Filter items by `date_modified`.
-	 * @param string $dateModifiedMax Filter items by `date_modified`. For example, `date_modified:max=2020-06-15`.
-	 * @param string $dateModifiedMin Filter items by `date_modified`. For example, `date_modified:min=2018-06-15`.
-	 * @param string $dateLastImported Filter items by date_last_imported.
-	 * @param string $dateLastImportedMax Filter items by date_last_imported. For example, `date_last_imported:max=2020-06-15`.
-	 * @param string $dateLastImportedMin Filter items by date_last_imported. For example, `date_last_imported:min=2018-06-15`.
-	 * @param bool $isVisible Filter items based on whether the product is currently visible on the storefront.
-	 * @param int $isFeatured Filter items by is_featured. `1` for true, `0` for false.
-	 * @param int $isFreeShipping Filter items by is_free_shipping. `1` for true, `0` for false.
-	 * @param int $inventoryLevel Filter items by inventory_level.
-	 * @param int $inventoryLevelIn
-	 * @param int $inventoryLevelNotIn
-	 * @param int $inventoryLevelMin
-	 * @param int $inventoryLevelMax
-	 * @param int $inventoryLevelGreater
-	 * @param int $inventoryLevelLess
-	 * @param int $inventoryLow Filter items by inventory_low. Values: 1, 0.
-	 * @param int $outOfStock Filter items by out_of_stock. To enable the filter, pass `out_of_stock`=`1`.
-	 * @param int $totalSold Filter items by total_sold.
-	 * @param string $type Filter items by type.
-	 * @param int $categories Filter items by categories.
+	 * @param null|int $id Filter items by ID.
+	 * @param null|array $idIn
+	 * @param null|array $idNotIn
+	 * @param null|array $idMin
+	 * @param null|array $idMax
+	 * @param null|array $idGreater
+	 * @param null|array $idLess
+	 * @param null|string $name Filter items by name.
+	 * @param null|string $upc Filter items by UPC.
+	 * @param null|float|int $price Filter items by price.
+	 * @param null|float|int $weight Filter items by weight.
+	 * @param null|string $condition Filter items by condition.
+	 * @param null|int $brandId Filter items by brand_id.
+	 * @param null|string $dateModified Filter items by `date_modified`.
+	 * @param null|string $dateModifiedMax Filter items by `date_modified`. For example, `date_modified:max=2020-06-15`.
+	 * @param null|string $dateModifiedMin Filter items by `date_modified`. For example, `date_modified:min=2018-06-15`.
+	 * @param null|string $dateLastImported Filter items by date_last_imported.
+	 * @param null|string $dateLastImportedMax Filter items by date_last_imported. For example, `date_last_imported:max=2020-06-15`.
+	 * @param null|string $dateLastImportedMin Filter items by date_last_imported. For example, `date_last_imported:min=2018-06-15`.
+	 * @param null|bool $isVisible Filter items based on whether the product is currently visible on the storefront.
+	 * @param null|int $isFeatured Filter items by is_featured. `1` for true, `0` for false.
+	 * @param null|int $isFreeShipping Filter items by is_free_shipping. `1` for true, `0` for false.
+	 * @param null|int $inventoryLevel Filter items by inventory_level.
+	 * @param null|int $inventoryLevelIn
+	 * @param null|int $inventoryLevelNotIn
+	 * @param null|int $inventoryLevelMin
+	 * @param null|int $inventoryLevelMax
+	 * @param null|int $inventoryLevelGreater
+	 * @param null|int $inventoryLevelLess
+	 * @param null|int $inventoryLow Filter items by inventory_low. Values: 1, 0.
+	 * @param null|int $outOfStock Filter items by out_of_stock. To enable the filter, pass `out_of_stock`=`1`.
+	 * @param null|int $totalSold Filter items by total_sold.
+	 * @param null|string $type Filter items by type.
+	 * @param null|int $categories Filter items by categories.
 	 *  If a product is in more than one category, using this query will not return the product. Instead use `categories:in=12`.
-	 * @param string $keyword Filter items by keywords found in the `name` or `sku` fields
-	 * @param string $keywordContext Set context used by the search algorithm to return results targeted towards the specified group. Use `merchant` to help merchants search their own catalog. Use `shopper` to return shopper-facing search results.
-	 * @param int $status Filter items by status.
-	 * @param string $include Sub-resources to include on a product, in a comma-separated list. If `options` or `modifiers` is used, results are limited to 10 per page.
+	 * @param null|string $keyword Filter items by keywords found in the `name` or `sku` fields
+	 * @param null|string $keywordContext Set context used by the search algorithm to return results targeted towards the specified group. Use `merchant` to help merchants search their own catalog. Use `shopper` to return shopper-facing search results.
+	 * @param null|int $status Filter items by status.
+	 * @param null|string $include Sub-resources to include on a product, in a comma-separated list. If `options` or `modifiers` is used, results are limited to 10 per page.
 	 *
 	 * **Note:** The following sub-resources include:
 	 *   * variants
@@ -72,69 +72,69 @@ class GetProducts extends Request
 	 *   * modifiers
 	 *   * options
 	 *   * videos
-	 * @param string $includeFields Fields to include, in a comma-separated list. The ID and the specified fields will be returned.
-	 * @param string $excludeFields Fields to exclude, in a comma-separated list. The specified fields will be excluded from a response. The ID cannot be excluded.
-	 * @param string $availability Filter items by availability. Values are: available, disabled, preorder.
-	 * @param string $direction Sort direction. Acceptable values are: `asc`, `desc`.
-	 * @param string $sort Field name to sort by. Note: Since `id` increments when new products are added, you can use that field to sort by product create date.
-	 * @param int $categoriesIn Filter items by categories. Use for products in multiple categories. For example, `categories:in=12`.
-	 * @param string $sku Filter items by main SKU. To filter by variant SKU, see [Get All Variants](/docs/rest-catalog/product-variants#get-all-product-variants).
-	 * @param array $skuIn Filter items by SKU.
+	 * @param null|string $includeFields Fields to include, in a comma-separated list. The ID and the specified fields will be returned.
+	 * @param null|string $excludeFields Fields to exclude, in a comma-separated list. The specified fields will be excluded from a response. The ID cannot be excluded.
+	 * @param null|string $availability Filter items by availability. Values are: available, disabled, preorder.
+	 * @param null|string $direction Sort direction. Acceptable values are: `asc`, `desc`.
+	 * @param null|string $sort Field name to sort by. Note: Since `id` increments when new products are added, you can use that field to sort by product create date.
+	 * @param null|int $categoriesIn Filter items by categories. Use for products in multiple categories. For example, `categories:in=12`.
+	 * @param null|string $sku Filter items by main SKU. To filter by variant SKU, see [Get All Variants](/docs/rest-catalog/product-variants#get-all-product-variants).
+	 * @param null|array $skuIn Filter items by SKU.
 	 */
 	public function __construct(
-		protected int $id,
-		protected array $idIn,
-		protected array $idNotIn,
-		protected array $idMin,
-		protected array $idMax,
-		protected array $idGreater,
-		protected array $idLess,
-		protected string $name,
-		protected string $upc,
-		protected float|int $price,
-		protected float|int $weight,
-		protected string $condition,
-		protected int $brandId,
-		protected string $dateModified,
-		protected string $dateModifiedMax,
-		protected string $dateModifiedMin,
-		protected string $dateLastImported,
-		protected string $dateLastImportedMax,
-		protected string $dateLastImportedMin,
-		protected bool $isVisible,
-		protected int $isFeatured,
-		protected int $isFreeShipping,
-		protected int $inventoryLevel,
-		protected int $inventoryLevelIn,
-		protected int $inventoryLevelNotIn,
-		protected int $inventoryLevelMin,
-		protected int $inventoryLevelMax,
-		protected int $inventoryLevelGreater,
-		protected int $inventoryLevelLess,
-		protected int $inventoryLow,
-		protected int $outOfStock,
-		protected int $totalSold,
-		protected string $type,
-		protected int $categories,
-		protected string $keyword,
-		protected string $keywordContext,
-		protected int $status,
-		protected string $include,
-		protected string $includeFields,
-		protected string $excludeFields,
-		protected string $availability,
-		protected string $direction,
-		protected string $sort,
-		protected int $categoriesIn,
-		protected string $sku,
-		protected array $skuIn,
+		protected ?int $id = null,
+		protected ?array $idIn = null,
+		protected ?array $idNotIn = null,
+		protected ?array $idMin = null,
+		protected ?array $idMax = null,
+		protected ?array $idGreater = null,
+		protected ?array $idLess = null,
+		protected ?string $name = null,
+		protected ?string $upc = null,
+		protected float|int|null $price = null,
+		protected float|int|null $weight = null,
+		protected ?string $condition = null,
+		protected ?int $brandId = null,
+		protected ?string $dateModified = null,
+		protected ?string $dateModifiedMax = null,
+		protected ?string $dateModifiedMin = null,
+		protected ?string $dateLastImported = null,
+		protected ?string $dateLastImportedMax = null,
+		protected ?string $dateLastImportedMin = null,
+		protected ?bool $isVisible = null,
+		protected ?int $isFeatured = null,
+		protected ?int $isFreeShipping = null,
+		protected ?int $inventoryLevel = null,
+		protected ?int $inventoryLevelIn = null,
+		protected ?int $inventoryLevelNotIn = null,
+		protected ?int $inventoryLevelMin = null,
+		protected ?int $inventoryLevelMax = null,
+		protected ?int $inventoryLevelGreater = null,
+		protected ?int $inventoryLevelLess = null,
+		protected ?int $inventoryLow = null,
+		protected ?int $outOfStock = null,
+		protected ?int $totalSold = null,
+		protected ?string $type = null,
+		protected ?int $categories = null,
+		protected ?string $keyword = null,
+		protected ?string $keywordContext = null,
+		protected ?int $status = null,
+		protected ?string $include = null,
+		protected ?string $includeFields = null,
+		protected ?string $excludeFields = null,
+		protected ?string $availability = null,
+		protected ?string $direction = null,
+		protected ?string $sort = null,
+		protected ?int $categoriesIn = null,
+		protected ?string $sku = null,
+		protected ?array $skuIn = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return [
+		return array_filter([
 			'id' => $this->id,
 			'id:in' => $this->idIn,
 			'id:not_in' => $this->idNotIn,
@@ -181,6 +181,6 @@ class GetProducts extends Request
 			'categories:in' => $this->categoriesIn,
 			'sku' => $this->sku,
 			'sku:in' => $this->skuIn,
-		];
+		]);
 	}
 }

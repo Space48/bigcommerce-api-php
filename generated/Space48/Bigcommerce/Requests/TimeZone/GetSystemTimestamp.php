@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * Get System Timestamp
+ * getSystemTimestamp
  *
  * Returns the system timestamp at the time of the request. The time resource is useful for validating
  * API authentication details and testing client connections.

@@ -3,24 +3,24 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\SearchFilters\GetAvailable;
-use Space48\Bigcommerce\Requests\SearchFilters\GetContexts;
-use Space48\Bigcommerce\Requests\SearchFilters\GetEnabled;
-use Space48\Bigcommerce\Requests\SearchFilters\UpdateEnabled;
-use Space48\Bigcommerce\Requests\SearchFilters\UpsertContexts;
+use Space48\Bigcommerce\Requests\SearchFilters\GetSettingsAvailableFilters;
+use Space48\Bigcommerce\Requests\SearchFilters\GetSettingsEnabledSearchFilters;
+use Space48\Bigcommerce\Requests\SearchFilters\GetSettingsFiltersContexts;
+use Space48\Bigcommerce\Requests\SearchFilters\UpdateSettingsEnabledSearchFilters;
+use Space48\Bigcommerce\Requests\SearchFilters\UpsertSettingsFiltersContexts;
 use Space48\Bigcommerce\Resource;
 
 class SearchFilters extends Resource
 {
-	public function getEnabled(): Response
+	public function getSettingsEnabledSearchFilters(): Response
 	{
-		return $this->connector->send(new GetEnabled());
+		return $this->connector->send(new GetSettingsEnabledSearchFilters());
 	}
 
 
-	public function updateEnabled(): Response
+	public function updateSettingsEnabledSearchFilters(): Response
 	{
-		return $this->connector->send(new UpdateEnabled());
+		return $this->connector->send(new UpdateSettingsEnabledSearchFilters());
 	}
 
 
@@ -28,9 +28,9 @@ class SearchFilters extends Resource
 	 * @param int $channelId Narrows the list of available filters based on channel ID. Only products currently assigned to the given Channel will be considered.
 	 * @param int $categoryId Narrows the list of available filters based on category ID. You can display settings to show products from the provided category, subcategories only, or both the category and its child categories.
 	 */
-	public function getAvailable(int $channelId, int $categoryId): Response
+	public function getSettingsAvailableFilters(?int $channelId, ?int $categoryId): Response
 	{
-		return $this->connector->send(new GetAvailable($channelId, $categoryId));
+		return $this->connector->send(new GetSettingsAvailableFilters($channelId, $categoryId));
 	}
 
 
@@ -38,14 +38,14 @@ class SearchFilters extends Resource
 	 * @param int $channelId Only return contextual overrides related to a particular Channel.
 	 * @param int $categoryId Only return contextual overrides related to a particular Category.
 	 */
-	public function getContexts(int $channelId, int $categoryId): Response
+	public function getSettingsFiltersContexts(?int $channelId, ?int $categoryId): Response
 	{
-		return $this->connector->send(new GetContexts($channelId, $categoryId));
+		return $this->connector->send(new GetSettingsFiltersContexts($channelId, $categoryId));
 	}
 
 
-	public function upsertContexts(): Response
+	public function upsertSettingsFiltersContexts(): Response
 	{
-		return $this->connector->send(new UpsertContexts());
+		return $this->connector->send(new UpsertSettingsFiltersContexts());
 	}
 }

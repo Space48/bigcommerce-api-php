@@ -16,15 +16,16 @@
   ],
   "repositories": [
     {
-      "type": "vcs",
-      "url": "https://github.com/crescat-io/saloon-sdk-generator.git"
+      "type": "path",
+      "url": "../saloon-sdk-generator/"
     }
   ],
   "require": {
-    "php": "^8.1"
+    "php": "^8.1",
+    "marcelthole/openapi-merge": "^1.5"
   },
   "require-dev": {
     "symfony/console": "^6.3",
-    "crescat-io/saloon-sdk-generator": "dev-feature/name-collision-reserved-keywords"
+    "crescat-io/saloon-sdk-generator": "dev-master"
   }
 }

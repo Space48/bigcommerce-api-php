@@ -3,11 +3,11 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\ProductVariantOptions\CreateOption;
-use Space48\Bigcommerce\Requests\ProductVariantOptions\DeleteOptionById;
-use Space48\Bigcommerce\Requests\ProductVariantOptions\GetOptionById;
-use Space48\Bigcommerce\Requests\ProductVariantOptions\GetOptions;
-use Space48\Bigcommerce\Requests\ProductVariantOptions\UpdateOption;
+use Space48\Bigcommerce\Requests\ProductVariantOptions\CreateProductVariantOption;
+use Space48\Bigcommerce\Requests\ProductVariantOptions\DeleteProductVariantOption;
+use Space48\Bigcommerce\Requests\ProductVariantOptions\GetProductVariantOption;
+use Space48\Bigcommerce\Requests\ProductVariantOptions\GetProductVariantOptions;
+use Space48\Bigcommerce\Requests\ProductVariantOptions\UpdateProductVariantOption;
 use Space48\Bigcommerce\Resource;
 
 class ProductVariantOptions extends Resource
@@ -17,31 +17,35 @@ class ProductVariantOptions extends Resource
 	 * @param string $includeFields Fields to include, in a comma-separated list. The ID and the specified fields will be returned.
 	 * @param string $excludeFields Fields to exclude, in a comma-separated list. The specified fields will be excluded from a response. The ID cannot be excluded.
 	 */
-	public function getOptions(int $productId, string $includeFields, string $excludeFields): Response
+	public function getProductVariantOptions(int $productId, ?string $includeFields, ?string $excludeFields): Response
 	{
-		return $this->connector->send(new GetOptions($productId, $includeFields, $excludeFields));
+		return $this->connector->send(new GetProductVariantOptions($productId, $includeFields, $excludeFields));
 	}
 
 
 	/**
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
 	 */
-	public function createOption(int $productId): Response
+	public function createProductVariantOption(int $productId): Response
 	{
-		return $this->connector->send(new CreateOption($productId));
+		return $this->connector->send(new CreateProductVariantOption($productId));
 	}
 
 
 	/**
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
-	 * @param int $optionId The ID of the `Option`.
 	 * @param int $optionId The ID of the `Option`.
 	 * @param string $includeFields Fields to include, in a comma-separated list. The ID and the specified fields will be returned.
 	 * @param string $excludeFields Fields to exclude, in a comma-separated list. The specified fields will be excluded from a response. The ID cannot be excluded.
 	 */
-	public function getOptionById(int $productId, int $optionId, string $includeFields, string $excludeFields): Response
+	public function getProductVariantOption(
+		int $productId,
+		int $optionId,
+		?string $includeFields,
+		?string $excludeFields,
+	): Response
 	{
-		return $this->connector->send(new GetOptionById($productId, $optionId, $optionId, $includeFields, $excludeFields));
+		return $this->connector->send(new GetProductVariantOption($productId, $optionId, $includeFields, $excludeFields));
 	}
 
 
@@ -49,19 +53,18 @@ class ProductVariantOptions extends Resource
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
 	 * @param int $optionId The ID of the `Option`.
 	 */
-	public function updateOption(int $productId, int $optionId): Response
+	public function updateProductVariantOption(int $productId, int $optionId): Response
 	{
-		return $this->connector->send(new UpdateOption($productId, $optionId));
+		return $this->connector->send(new UpdateProductVariantOption($productId, $optionId));
 	}
 
 
 	/**
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
 	 * @param int $optionId The ID of the `Option`.
-	 * @param int $optionId The ID of the `Option`.
 	 */
-	public function deleteOptionById(int $productId, int $optionId): Response
+	public function deleteProductVariantOption(int $productId, int $optionId): Response
 	{
-		return $this->connector->send(new DeleteOptionById($productId, $optionId, $optionId));
+		return $this->connector->send(new DeleteProductVariantOption($productId, $optionId));
 	}
 }

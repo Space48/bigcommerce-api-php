@@ -3,11 +3,11 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\ComplexRules\CreateComplexRule;
-use Space48\Bigcommerce\Requests\ComplexRules\DeleteComplexRuleById;
-use Space48\Bigcommerce\Requests\ComplexRules\GetComplexRuleById;
-use Space48\Bigcommerce\Requests\ComplexRules\GetComplexRules;
-use Space48\Bigcommerce\Requests\ComplexRules\UpdateComplexRule;
+use Space48\Bigcommerce\Requests\ComplexRules\CreateProductComplexRule;
+use Space48\Bigcommerce\Requests\ComplexRules\DeleteProductComplexRule;
+use Space48\Bigcommerce\Requests\ComplexRules\GetProductComplexRule;
+use Space48\Bigcommerce\Requests\ComplexRules\GetProductComplexRules;
+use Space48\Bigcommerce\Requests\ComplexRules\UpdateProductComplexRule;
 use Space48\Bigcommerce\Resource;
 
 class ComplexRules extends Resource
@@ -17,36 +17,35 @@ class ComplexRules extends Resource
 	 * @param string $includeFields Fields to include, in a comma-separated list. The ID and the specified fields will be returned.
 	 * @param string $excludeFields Fields to exclude, in a comma-separated list. The specified fields will be excluded from a response. The ID cannot be excluded.
 	 */
-	public function getComplexRules(int $productId, string $includeFields, string $excludeFields): Response
+	public function getProductComplexRules(int $productId, ?string $includeFields, ?string $excludeFields): Response
 	{
-		return $this->connector->send(new GetComplexRules($productId, $includeFields, $excludeFields));
+		return $this->connector->send(new GetProductComplexRules($productId, $includeFields, $excludeFields));
 	}
 
 
 	/**
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
 	 */
-	public function createComplexRule(int $productId): Response
+	public function createProductComplexRule(int $productId): Response
 	{
-		return $this->connector->send(new CreateComplexRule($productId));
+		return $this->connector->send(new CreateProductComplexRule($productId));
 	}
 
 
 	/**
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
-	 * @param int $complexRuleId The ID of the `ComplexRule`.
 	 * @param int $complexRuleId The ID of the `ComplexRule`.
 	 * @param string $includeFields Fields to include, in a comma-separated list. The ID and the specified fields will be returned.
 	 * @param string $excludeFields Fields to exclude, in a comma-separated list. The specified fields will be excluded from a response. The ID cannot be excluded.
 	 */
-	public function getComplexRuleById(
+	public function getProductComplexRule(
 		int $productId,
 		int $complexRuleId,
-		string $includeFields,
-		string $excludeFields,
+		?string $includeFields,
+		?string $excludeFields,
 	): Response
 	{
-		return $this->connector->send(new GetComplexRuleById($productId, $complexRuleId, $complexRuleId, $includeFields, $excludeFields));
+		return $this->connector->send(new GetProductComplexRule($productId, $complexRuleId, $includeFields, $excludeFields));
 	}
 
 
@@ -54,19 +53,18 @@ class ComplexRules extends Resource
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
 	 * @param int $complexRuleId The ID of the `ComplexRule`.
 	 */
-	public function updateComplexRule(int $productId, int $complexRuleId): Response
+	public function updateProductComplexRule(int $productId, int $complexRuleId): Response
 	{
-		return $this->connector->send(new UpdateComplexRule($productId, $complexRuleId));
+		return $this->connector->send(new UpdateProductComplexRule($productId, $complexRuleId));
 	}
 
 
 	/**
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
 	 * @param int $complexRuleId The ID of the `ComplexRule`.
-	 * @param int $complexRuleId The ID of the `ComplexRule`.
 	 */
-	public function deleteComplexRuleById(int $productId, int $complexRuleId): Response
+	public function deleteProductComplexRule(int $productId, int $complexRuleId): Response
 	{
-		return $this->connector->send(new DeleteComplexRuleById($productId, $complexRuleId, $complexRuleId));
+		return $this->connector->send(new DeleteProductComplexRule($productId, $complexRuleId));
 	}
 }

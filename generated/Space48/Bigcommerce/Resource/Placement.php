@@ -21,12 +21,12 @@ class Placement extends Resource
 	 * @param string $siteIdIn A comma-separated list of site IDs to filter the results by.
 	 */
 	public function getPlacements(
-		string $widgetTemplateKind,
-		string $templateFile,
-		string $widgetUuid,
-		string $widgetTemplateUuid,
-		string $channelIdIn,
-		string $siteIdIn,
+		?string $widgetTemplateKind,
+		?string $templateFile,
+		?string $widgetUuid,
+		?string $widgetTemplateUuid,
+		?string $channelIdIn,
+		?string $siteIdIn,
 	): Response
 	{
 		return $this->connector->send(new GetPlacements($widgetTemplateKind, $templateFile, $widgetUuid, $widgetTemplateUuid, $channelIdIn, $siteIdIn));

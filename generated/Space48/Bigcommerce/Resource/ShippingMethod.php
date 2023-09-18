@@ -3,11 +3,11 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\ShippingMethod\CreateAshippingMethod;
-use Space48\Bigcommerce\Requests\ShippingMethod\DeleteAshippingMethod;
-use Space48\Bigcommerce\Requests\ShippingMethod\GetAshippingMethod;
-use Space48\Bigcommerce\Requests\ShippingMethod\GetShippingMethodsZone;
-use Space48\Bigcommerce\Requests\ShippingMethod\UpdateAshippingMethod;
+use Space48\Bigcommerce\Requests\ShippingMethod\CreateShippingMethod;
+use Space48\Bigcommerce\Requests\ShippingMethod\DeleteShippingMethod;
+use Space48\Bigcommerce\Requests\ShippingMethod\GetShippingMethod;
+use Space48\Bigcommerce\Requests\ShippingMethod\GetShippingZoneMethods;
+use Space48\Bigcommerce\Requests\ShippingMethod\UpdateShippingMethod;
 use Space48\Bigcommerce\Resource;
 
 class ShippingMethod extends Resource
@@ -15,28 +15,18 @@ class ShippingMethod extends Resource
 	/**
 	 * @param int $zoneId ID of the shipping zone.
 	 */
-	public function getShippingMethodsZone(int $zoneId): Response
+	public function getShippingZoneMethods(int $zoneId): Response
 	{
-		return $this->connector->send(new GetShippingMethodsZone($zoneId));
+		return $this->connector->send(new GetShippingZoneMethods($zoneId));
 	}
 
 
 	/**
 	 * @param int $zoneId ID of the shipping zone.
 	 */
-	public function createAshippingMethod(int $zoneId): Response
+	public function createShippingMethod(int $zoneId): Response
 	{
-		return $this->connector->send(new CreateAshippingMethod($zoneId));
-	}
-
-
-	/**
-	 * @param int $zoneId ID of the shipping zone.
-	 * @param int $methodId ID of the shipping method within the shipping zone.
-	 */
-	public function getAshippingMethod(int $zoneId, int $methodId): Response
-	{
-		return $this->connector->send(new GetAshippingMethod($zoneId, $methodId));
+		return $this->connector->send(new CreateShippingMethod($zoneId));
 	}
 
 
@@ -44,9 +34,9 @@ class ShippingMethod extends Resource
 	 * @param int $zoneId ID of the shipping zone.
 	 * @param int $methodId ID of the shipping method within the shipping zone.
 	 */
-	public function updateAshippingMethod(int $zoneId, int $methodId): Response
+	public function getShippingMethod(int $zoneId, int $methodId): Response
 	{
-		return $this->connector->send(new UpdateAshippingMethod($zoneId, $methodId));
+		return $this->connector->send(new GetShippingMethod($zoneId, $methodId));
 	}
 
 
@@ -54,8 +44,18 @@ class ShippingMethod extends Resource
 	 * @param int $zoneId ID of the shipping zone.
 	 * @param int $methodId ID of the shipping method within the shipping zone.
 	 */
-	public function deleteAshippingMethod(int $zoneId, int $methodId): Response
+	public function updateShippingMethod(int $zoneId, int $methodId): Response
 	{
-		return $this->connector->send(new DeleteAshippingMethod($zoneId, $methodId));
+		return $this->connector->send(new UpdateShippingMethod($zoneId, $methodId));
+	}
+
+
+	/**
+	 * @param int $zoneId ID of the shipping zone.
+	 * @param int $methodId ID of the shipping method within the shipping zone.
+	 */
+	public function deleteShippingMethod(int $zoneId, int $methodId): Response
+	{
+		return $this->connector->send(new DeleteShippingMethod($zoneId, $methodId));
 	}
 }

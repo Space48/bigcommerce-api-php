@@ -3,27 +3,26 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\SortOrder\Getsortorders;
-use Space48\Bigcommerce\Requests\SortOrder\Updatesortorder;
+use Space48\Bigcommerce\Requests\SortOrder\GetCategorySortOrders;
+use Space48\Bigcommerce\Requests\SortOrder\UpdateCategorySortOrders;
 use Space48\Bigcommerce\Resource;
 
 class SortOrder extends Resource
 {
 	/**
 	 * @param int $categoryId The ID of the `Category` to which the resource belongs.
-	 * @param int $categoryId The ID of the `Category` to which the resource belongs.
 	 */
-	public function getsortorders(int $categoryId): Response
+	public function getCategorySortOrders(int $categoryId): Response
 	{
-		return $this->connector->send(new Getsortorders($categoryId, $categoryId));
+		return $this->connector->send(new GetCategorySortOrders($categoryId));
 	}
 
 
 	/**
 	 * @param int $categoryId The ID of the `Category` to which the resource belongs.
 	 */
-	public function updatesortorder(int $categoryId): Response
+	public function updateCategorySortOrders(int $categoryId): Response
 	{
-		return $this->connector->send(new Updatesortorder($categoryId));
+		return $this->connector->send(new UpdateCategorySortOrders($categoryId));
 	}
 }

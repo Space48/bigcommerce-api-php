@@ -14,7 +14,7 @@ class TaxProperties extends Resource
 	/**
 	 * @param string $idIn ID of tax property. To target multiple tax properties, provide a comma-separated list of IDs such as `12,34,56`
 	 */
-	public function getTaxProperties(string $idIn): Response
+	public function getTaxProperties(?string $idIn): Response
 	{
 		return $this->connector->send(new GetTaxProperties($idIn));
 	}

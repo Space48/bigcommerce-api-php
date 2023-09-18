@@ -12,7 +12,7 @@ class StorefrontStatus extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function getStorefrontStatus(int $channelId): Response
+	public function getStorefrontStatus(?int $channelId): Response
 	{
 		return $this->connector->send(new GetStorefrontStatus($channelId));
 	}
@@ -21,7 +21,7 @@ class StorefrontStatus extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function updateStorefrontStatus(int $channelId): Response
+	public function updateStorefrontStatus(?int $channelId): Response
 	{
 		return $this->connector->send(new UpdateStorefrontStatus($channelId));
 	}

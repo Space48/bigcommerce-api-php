@@ -14,7 +14,7 @@ class CategoryAssignments extends Resource
 	 * @param string $productIdIn
 	 * @param string $categoryIdIn
 	 */
-	public function getProductsCategoryAssignments(string $productIdIn, string $categoryIdIn): Response
+	public function getProductsCategoryAssignments(?string $productIdIn, ?string $categoryIdIn): Response
 	{
 		return $this->connector->send(new GetProductsCategoryAssignments($productIdIn, $categoryIdIn));
 	}
@@ -30,7 +30,7 @@ class CategoryAssignments extends Resource
 	 * @param string $productIdIn
 	 * @param string $categoryIdIn
 	 */
-	public function deleteProductsCategoryAssignments(string $productIdIn, string $categoryIdIn): Response
+	public function deleteProductsCategoryAssignments(?string $productIdIn, ?string $categoryIdIn): Response
 	{
 		return $this->connector->send(new DeleteProductsCategoryAssignments($productIdIn, $categoryIdIn));
 	}

@@ -6,7 +6,7 @@ use Saloon\Contracts\Response;
 use Space48\Bigcommerce\Requests\Themes\DeleteStoreTheme;
 use Space48\Bigcommerce\Requests\Themes\GetStoreTheme;
 use Space48\Bigcommerce\Requests\Themes\GetStoreThemes;
-use Space48\Bigcommerce\Requests\Themes\UploadTheme;
+use Space48\Bigcommerce\Requests\Themes\UploadStoreTheme;
 use Space48\Bigcommerce\Resource;
 
 class Themes extends Resource
@@ -17,9 +17,9 @@ class Themes extends Resource
 	}
 
 
-	public function uploadTheme(): Response
+	public function uploadStoreTheme(): Response
 	{
-		return $this->connector->send(new UploadTheme());
+		return $this->connector->send(new UploadStoreTheme());
 	}
 
 

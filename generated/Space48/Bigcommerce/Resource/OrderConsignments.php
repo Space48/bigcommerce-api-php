@@ -3,8 +3,8 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\OrderConsignments\GetOrdersOrderIdConsignments;
-use Space48\Bigcommerce\Requests\OrderConsignments\GetOrdersOrderIdConsignmentsShippingShippingIdShippingQuotes;
+use Space48\Bigcommerce\Requests\OrderConsignments\GetOrderConsignmentShippingQuotes;
+use Space48\Bigcommerce\Requests\OrderConsignments\GetOrderConsignments;
 use Space48\Bigcommerce\Resource;
 
 class OrderConsignments extends Resource
@@ -12,9 +12,9 @@ class OrderConsignments extends Resource
 	/**
 	 * @param string $orderId
 	 */
-	public function getOrdersOrderIdConsignments(string $orderId): Response
+	public function getOrderConsignments(string $orderId): Response
 	{
-		return $this->connector->send(new GetOrdersOrderIdConsignments($orderId));
+		return $this->connector->send(new GetOrderConsignments($orderId));
 	}
 
 
@@ -22,11 +22,8 @@ class OrderConsignments extends Resource
 	 * @param int $orderId ID of the order.
 	 * @param int $shippingConsignmentId Shipping consignment ID.
 	 */
-	public function getOrdersOrderIdConsignmentsShippingShippingIdShippingQuotes(
-		int $orderId,
-		int $shippingConsignmentId,
-	): Response
+	public function getOrderConsignmentShippingQuotes(int $orderId, int $shippingConsignmentId): Response
 	{
-		return $this->connector->send(new GetOrdersOrderIdConsignmentsShippingShippingIdShippingQuotes($orderId, $shippingConsignmentId));
+		return $this->connector->send(new GetOrderConsignmentShippingQuotes($orderId, $shippingConsignmentId));
 	}
 }

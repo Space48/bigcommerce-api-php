@@ -26,20 +26,20 @@ class GetScripts extends Request
 
 
 	/**
-	 * @param string $sort Field name to sort the scripts by. Note: Since `id` increments when new scripts are added, you can use that field to sort by script create date.
-	 * @param string $direction Sort direction. Acceptable values are: `asc`, `desc`.
-	 * @param array $channelIdIn Filters list of scripts by the associated channel_id.
+	 * @param null|string $sort Field name to sort the scripts by. Note: Since `id` increments when new scripts are added, you can use that field to sort by script create date.
+	 * @param null|string $direction Sort direction. Acceptable values are: `asc`, `desc`.
+	 * @param null|array $channelIdIn Filters list of scripts by the associated channel_id.
 	 */
 	public function __construct(
-		protected string $sort,
-		protected string $direction,
-		protected array $channelIdIn,
+		protected ?string $sort = null,
+		protected ?string $direction = null,
+		protected ?array $channelIdIn = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['sort' => $this->sort, 'direction' => $this->direction, 'channel_id:in' => $this->channelIdIn];
+		return array_filter(['sort' => $this->sort, 'direction' => $this->direction, 'channel_id:in' => $this->channelIdIn]);
 	}
 }

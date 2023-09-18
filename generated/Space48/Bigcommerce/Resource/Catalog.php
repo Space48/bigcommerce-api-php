@@ -12,7 +12,7 @@ class Catalog extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function getCatalogSettings(int $channelId): Response
+	public function getCatalogSettings(?int $channelId): Response
 	{
 		return $this->connector->send(new GetCatalogSettings($channelId));
 	}
@@ -21,7 +21,7 @@ class Catalog extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function updateCatalogSettings(int $channelId): Response
+	public function updateCatalogSettings(?int $channelId): Response
 	{
 		return $this->connector->send(new UpdateCatalogSettings($channelId));
 	}

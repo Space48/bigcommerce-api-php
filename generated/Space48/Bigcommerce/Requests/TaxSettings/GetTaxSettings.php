@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * get-tax-settings
+ * getTaxSettings
  *
  * Retrieves global-level tax settings.
  */

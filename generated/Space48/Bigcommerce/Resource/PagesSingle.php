@@ -3,9 +3,9 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\PagesSingle\ContentPageDelete;
-use Space48\Bigcommerce\Requests\PagesSingle\ContentPageGet;
-use Space48\Bigcommerce\Requests\PagesSingle\ContentPagePut;
+use Space48\Bigcommerce\Requests\PagesSingle\DeletePage;
+use Space48\Bigcommerce\Requests\PagesSingle\GetPage;
+use Space48\Bigcommerce\Requests\PagesSingle\UpdatePage;
 use Space48\Bigcommerce\Resource;
 
 class PagesSingle extends Resource
@@ -14,9 +14,9 @@ class PagesSingle extends Resource
 	 * @param string $pageId The ID of the page to be operated on.
 	 * @param string $include Include the requested property in the response. The `body` property returns the page’s markup, text, or raw content.
 	 */
-	public function contentPageGet(string $pageId, string $include): Response
+	public function getPage(string $pageId, ?string $include): Response
 	{
-		return $this->connector->send(new ContentPageGet($pageId, $include));
+		return $this->connector->send(new GetPage($pageId, $include));
 	}
 
 
@@ -24,17 +24,17 @@ class PagesSingle extends Resource
 	 * @param string $pageId The ID of the page to be operated on.
 	 * @param string $include Include the requested property in the response. The `body` property returns the page’s markup, text, or raw content.
 	 */
-	public function contentPagePut(string $pageId, string $include): Response
+	public function updatePage(string $pageId, ?string $include): Response
 	{
-		return $this->connector->send(new ContentPagePut($pageId, $include));
+		return $this->connector->send(new UpdatePage($pageId, $include));
 	}
 
 
 	/**
 	 * @param string $pageId The ID of the page to be operated on.
 	 */
-	public function contentPageDelete(string $pageId): Response
+	public function deletePage(string $pageId): Response
 	{
-		return $this->connector->send(new ContentPageDelete($pageId));
+		return $this->connector->send(new DeletePage($pageId));
 	}
 }

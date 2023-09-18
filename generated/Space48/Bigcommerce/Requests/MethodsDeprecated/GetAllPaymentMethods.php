@@ -34,6 +34,6 @@ class GetAllPaymentMethods extends Request
 
 	public function defaultQuery(): array
 	{
-		return [];
+		return array_filter([]);
 	}
 }

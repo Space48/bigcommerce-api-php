@@ -4,7 +4,7 @@ namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
 use Space48\Bigcommerce\Requests\TaxSettings\GetTaxSettings;
-use Space48\Bigcommerce\Requests\TaxSettings\SetTaxSettings;
+use Space48\Bigcommerce\Requests\TaxSettings\UpdateTaxSettings;
 use Space48\Bigcommerce\Resource;
 
 class TaxSettings extends Resource
@@ -15,8 +15,8 @@ class TaxSettings extends Resource
 	}
 
 
-	public function setTaxSettings(): Response
+	public function updateTaxSettings(): Response
 	{
-		return $this->connector->send(new SetTaxSettings());
+		return $this->connector->send(new UpdateTaxSettings());
 	}
 }

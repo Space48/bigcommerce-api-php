@@ -3,13 +3,13 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\Orders\CreateAnOrder;
-use Space48\Bigcommerce\Requests\Orders\DeleteAllOrders;
-use Space48\Bigcommerce\Requests\Orders\DeleteAnOrder;
-use Space48\Bigcommerce\Requests\Orders\GetAllOrders;
-use Space48\Bigcommerce\Requests\Orders\GetAnOrder;
-use Space48\Bigcommerce\Requests\Orders\GetCountOrder;
-use Space48\Bigcommerce\Requests\Orders\UpdateAnOrder;
+use Space48\Bigcommerce\Requests\Orders\CreateOrder;
+use Space48\Bigcommerce\Requests\Orders\DeleteOrder;
+use Space48\Bigcommerce\Requests\Orders\DeleteOrders;
+use Space48\Bigcommerce\Requests\Orders\GetOrder;
+use Space48\Bigcommerce\Requests\Orders\GetOrders;
+use Space48\Bigcommerce\Requests\Orders\GetOrdersCount;
+use Space48\Bigcommerce\Requests\Orders\UpdateOrder;
 use Space48\Bigcommerce\Resource;
 
 class Orders extends Resource
@@ -20,33 +20,33 @@ class Orders extends Resource
 	 *
 	 * * `consignments.line_items` - include the response returned from the request to the `/orders/{order_id}/products` endpoint in consignments. This implies `include=consignments`.
 	 */
-	public function getAnOrder(int $orderId, string $include): Response
+	public function getOrder(int $orderId, ?string $include): Response
 	{
-		return $this->connector->send(new GetAnOrder($orderId, $include));
+		return $this->connector->send(new GetOrder($orderId, $include));
 	}
 
 
 	/**
 	 * @param int $orderId ID of the order.
 	 */
-	public function updateAnOrder(int $orderId): Response
+	public function updateOrder(int $orderId): Response
 	{
-		return $this->connector->send(new UpdateAnOrder($orderId));
+		return $this->connector->send(new UpdateOrder($orderId));
 	}
 
 
 	/**
 	 * @param int $orderId ID of the order.
 	 */
-	public function deleteAnOrder(int $orderId): Response
+	public function deleteOrder(int $orderId): Response
 	{
-		return $this->connector->send(new DeleteAnOrder($orderId));
+		return $this->connector->send(new DeleteOrder($orderId));
 	}
 
 
-	public function getCountOrder(): Response
+	public function getOrdersCount(): Response
 	{
-		return $this->connector->send(new GetCountOrder());
+		return $this->connector->send(new GetOrdersCount());
 	}
 
 
@@ -87,27 +87,27 @@ class Orders extends Resource
 	 *
 	 * * `consignments.line_items` - include the response returned from the request to the `/orders/{order_id}/products` endpoint in consignments. This implies `include=consignments`.
 	 */
-	public function getAllOrders(
-		int $minId,
-		int $maxId,
-		float|int $minTotal,
-		float|int $maxTotal,
-		int $customerId,
-		string $email,
-		int $statusId,
-		string $cartId,
-		string $paymentMethod,
-		string $minDateCreated,
-		string $maxDateCreated,
-		string $minDateModified,
-		string $maxDateModified,
-		string $sort,
-		bool $isDeleted,
-		int $channelId,
-		string $include,
+	public function getOrders(
+		?int $minId,
+		?int $maxId,
+		float|int|null $minTotal,
+		float|int|null $maxTotal,
+		?int $customerId,
+		?string $email,
+		?int $statusId,
+		?string $cartId,
+		?string $paymentMethod,
+		?string $minDateCreated,
+		?string $maxDateCreated,
+		?string $minDateModified,
+		?string $maxDateModified,
+		?string $sort,
+		?bool $isDeleted,
+		?int $channelId,
+		?string $include,
 	): Response
 	{
-		return $this->connector->send(new GetAllOrders($minId, $maxId, $minTotal, $maxTotal, $customerId, $email, $statusId, $cartId, $paymentMethod, $minDateCreated, $maxDateCreated, $minDateModified, $maxDateModified, $sort, $isDeleted, $channelId, $include));
+		return $this->connector->send(new GetOrders($minId, $maxId, $minTotal, $maxTotal, $customerId, $email, $statusId, $cartId, $paymentMethod, $minDateCreated, $maxDateCreated, $minDateModified, $maxDateModified, $sort, $isDeleted, $channelId, $include));
 	}
 
 
@@ -116,14 +116,14 @@ class Orders extends Resource
 	 *
 	 * * `consignments.line_items` - include the response returned from the request to the `/orders/{order_id}/products` endpoint in consignments. This implies `include=consignments`.
 	 */
-	public function createAnOrder(string $include): Response
+	public function createOrder(?string $include): Response
 	{
-		return $this->connector->send(new CreateAnOrder($include));
+		return $this->connector->send(new CreateOrder($include));
 	}
 
 
-	public function deleteAllOrders(): Response
+	public function deleteOrders(): Response
 	{
-		return $this->connector->send(new DeleteAllOrders());
+		return $this->connector->send(new DeleteOrders());
 	}
 }

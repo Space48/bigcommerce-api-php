@@ -3,11 +3,11 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\ChannelMetafields\DeleteChannelsChannelIdMetafieldsMetafieldId;
-use Space48\Bigcommerce\Requests\ChannelMetafields\GetChannelsChannelIdMetafields;
-use Space48\Bigcommerce\Requests\ChannelMetafields\GetChannelsChannelIdMetafieldsMetafieldId;
-use Space48\Bigcommerce\Requests\ChannelMetafields\PostChannelsChannelIdMetafields;
-use Space48\Bigcommerce\Requests\ChannelMetafields\PutChannelsChannelIdMetafieldsMetafieldId;
+use Space48\Bigcommerce\Requests\ChannelMetafields\CreateChannelMetafield;
+use Space48\Bigcommerce\Requests\ChannelMetafields\DeleteChannelMetafield;
+use Space48\Bigcommerce\Requests\ChannelMetafields\GetChannelMetafield;
+use Space48\Bigcommerce\Requests\ChannelMetafields\GetChannelMetafields;
+use Space48\Bigcommerce\Requests\ChannelMetafields\UpdateChannelMetafield;
 use Space48\Bigcommerce\Resource;
 
 class ChannelMetafields extends Resource
@@ -18,33 +18,18 @@ class ChannelMetafields extends Resource
 	 * @param string $namespace Filter based on a metafield's namespace.
 	 * @param string $direction Sort direction.
 	 */
-	public function getChannelsChannelIdMetafields(
-		int $channelId,
-		string $key,
-		string $namespace,
-		string $direction,
-	): Response
+	public function getChannelMetafields(int $channelId, ?string $key, ?string $namespace, ?string $direction): Response
 	{
-		return $this->connector->send(new GetChannelsChannelIdMetafields($channelId, $key, $namespace, $direction));
+		return $this->connector->send(new GetChannelMetafields($channelId, $key, $namespace, $direction));
 	}
 
 
 	/**
 	 * @param int $channelId The ID of a channel.
 	 */
-	public function postChannelsChannelIdMetafields(int $channelId): Response
+	public function createChannelMetafield(int $channelId): Response
 	{
-		return $this->connector->send(new PostChannelsChannelIdMetafields($channelId));
-	}
-
-
-	/**
-	 * @param int $channelId The ID of a channel.
-	 * @param string $metafieldId
-	 */
-	public function getChannelsChannelIdMetafieldsMetafieldId(int $channelId, string $metafieldId): Response
-	{
-		return $this->connector->send(new GetChannelsChannelIdMetafieldsMetafieldId($channelId, $metafieldId));
+		return $this->connector->send(new CreateChannelMetafield($channelId));
 	}
 
 
@@ -52,9 +37,9 @@ class ChannelMetafields extends Resource
 	 * @param int $channelId The ID of a channel.
 	 * @param string $metafieldId
 	 */
-	public function putChannelsChannelIdMetafieldsMetafieldId(int $channelId, string $metafieldId): Response
+	public function getChannelMetafield(int $channelId, string $metafieldId): Response
 	{
-		return $this->connector->send(new PutChannelsChannelIdMetafieldsMetafieldId($channelId, $metafieldId));
+		return $this->connector->send(new GetChannelMetafield($channelId, $metafieldId));
 	}
 
 
@@ -62,8 +47,18 @@ class ChannelMetafields extends Resource
 	 * @param int $channelId The ID of a channel.
 	 * @param string $metafieldId
 	 */
-	public function deleteChannelsChannelIdMetafieldsMetafieldId(int $channelId, string $metafieldId): Response
+	public function updateChannelMetafield(int $channelId, string $metafieldId): Response
 	{
-		return $this->connector->send(new DeleteChannelsChannelIdMetafieldsMetafieldId($channelId, $metafieldId));
+		return $this->connector->send(new UpdateChannelMetafield($channelId, $metafieldId));
+	}
+
+
+	/**
+	 * @param int $channelId The ID of a channel.
+	 * @param string $metafieldId
+	 */
+	public function deleteChannelMetafield(int $channelId, string $metafieldId): Response
+	{
+		return $this->connector->send(new DeleteChannelMetafield($channelId, $metafieldId));
 	}
 }

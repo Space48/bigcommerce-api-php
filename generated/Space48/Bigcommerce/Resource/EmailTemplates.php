@@ -14,7 +14,7 @@ class EmailTemplates extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function getEmailTemplates(int $channelId): Response
+	public function getEmailTemplates(?int $channelId): Response
 	{
 		return $this->connector->send(new GetEmailTemplates($channelId));
 	}
@@ -24,7 +24,7 @@ class EmailTemplates extends Resource
 	 * @param string $templateName
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function getEmailTemplate(string $templateName, int $channelId): Response
+	public function getEmailTemplate(string $templateName, ?int $channelId): Response
 	{
 		return $this->connector->send(new GetEmailTemplate($templateName, $channelId));
 	}
@@ -34,7 +34,7 @@ class EmailTemplates extends Resource
 	 * @param string $templateName
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function updateEmailTemplate(string $templateName, int $channelId): Response
+	public function updateEmailTemplate(string $templateName, ?int $channelId): Response
 	{
 		return $this->connector->send(new UpdateEmailTemplate($templateName, $channelId));
 	}

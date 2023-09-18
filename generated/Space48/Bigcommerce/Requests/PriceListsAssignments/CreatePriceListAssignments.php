@@ -9,7 +9,7 @@ use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
 
 /**
- * CreatePriceListAssignments
+ * createPriceListAssignments
  *
  * Creates a batch of `Price List Assignments`.
  * **Note:** The batch limit for `Price List Assignments`

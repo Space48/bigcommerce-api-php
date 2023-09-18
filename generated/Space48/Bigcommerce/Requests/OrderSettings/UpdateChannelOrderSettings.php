@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * UpdateChannelOrderSettings
+ * updateChannelOrderSettings
  *
  * Updates order settings for a specific channel.
  *

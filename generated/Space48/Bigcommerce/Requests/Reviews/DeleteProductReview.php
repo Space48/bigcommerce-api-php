@@ -25,7 +25,6 @@ class DeleteProductReview extends Request
 	/**
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
 	 * @param int $reviewId The ID of the `review` that is being operated on.
-	 * @param int $reviewId The ID of the `review` that is being operated on.
 	 */
 	public function __construct(
 		protected int $productId,

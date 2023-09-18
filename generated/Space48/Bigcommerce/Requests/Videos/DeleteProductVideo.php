@@ -25,7 +25,6 @@ class DeleteProductVideo extends Request
 	/**
 	 * @param int $productId The ID of the `Product` to which the resource belongs.
 	 * @param int $id The BigCommerce ID of the `Video`
-	 * @param int $id The BigCommerce ID of the `Video`
 	 */
 	public function __construct(
 		protected int $productId,

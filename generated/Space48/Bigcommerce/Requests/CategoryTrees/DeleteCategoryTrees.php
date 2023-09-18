@@ -23,16 +23,16 @@ class DeleteCategoryTrees extends Request
 
 
 	/**
-	 * @param string $idIn
+	 * @param null|string $idIn
 	 */
 	public function __construct(
-		protected string $idIn,
+		protected ?string $idIn = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['id:in' => $this->idIn];
+		return array_filter(['id:in' => $this->idIn]);
 	}
 }

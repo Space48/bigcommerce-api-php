@@ -9,7 +9,7 @@ use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
 
 /**
- * create-tax-zones
+ * createTaxZones
  *
  * Create one or more tax zones.
  *

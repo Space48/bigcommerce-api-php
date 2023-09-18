@@ -23,18 +23,18 @@ class DeleteProductsCategoryAssignments extends Request
 
 
 	/**
-	 * @param string $productIdIn
-	 * @param string $categoryIdIn
+	 * @param null|string $productIdIn
+	 * @param null|string $categoryIdIn
 	 */
 	public function __construct(
-		protected string $productIdIn,
-		protected string $categoryIdIn,
+		protected ?string $productIdIn = null,
+		protected ?string $categoryIdIn = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['product_id:in' => $this->productIdIn, 'category_id:in' => $this->categoryIdIn];
+		return array_filter(['product_id:in' => $this->productIdIn, 'category_id:in' => $this->categoryIdIn]);
 	}
 }

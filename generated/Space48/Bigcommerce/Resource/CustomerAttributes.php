@@ -3,10 +3,10 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\CustomerAttributes\CustomersAttributesDelete;
-use Space48\Bigcommerce\Requests\CustomerAttributes\CustomersAttributesGet;
-use Space48\Bigcommerce\Requests\CustomerAttributes\CustomersAttributesPost;
-use Space48\Bigcommerce\Requests\CustomerAttributes\CustomersAttributesPut;
+use Space48\Bigcommerce\Requests\CustomerAttributes\CreateCustomersAttributes;
+use Space48\Bigcommerce\Requests\CustomerAttributes\DeleteCustomersAttributes;
+use Space48\Bigcommerce\Requests\CustomerAttributes\GetCustomersAttributes;
+use Space48\Bigcommerce\Requests\CustomerAttributes\UpdateCustomersAttributes;
 use Space48\Bigcommerce\Resource;
 
 class CustomerAttributes extends Resource
@@ -22,39 +22,39 @@ class CustomerAttributes extends Resource
 	 * @param string $dateModifiedMax Filter items by maximum `date_modified`. ISO 8601 full-date is required, ISO 8601 full-time is not required. UNIX timestamp also accepted. `date_created=2021-01-07` or `date_created=1610051296000`
 	 * @param string $dateModifiedMin Filter items by minimum `date_modified`. ISO 8601 full-date is required, ISO 8601 full-time is not required. UNIX timestamp also accepted. `date_created=2021-01-07` or `date_created=1610051296000`
 	 */
-	public function customersAttributesGet(
-		string $name,
-		string $nameLike,
-		string $type,
-		string $dateCreated,
-		string $dateCreatedMax,
-		string $dateCreatedMin,
-		string $dateModified,
-		string $dateModifiedMax,
-		string $dateModifiedMin,
+	public function getCustomersAttributes(
+		?string $name,
+		?string $nameLike,
+		?string $type,
+		?string $dateCreated,
+		?string $dateCreatedMax,
+		?string $dateCreatedMin,
+		?string $dateModified,
+		?string $dateModifiedMax,
+		?string $dateModifiedMin,
 	): Response
 	{
-		return $this->connector->send(new CustomersAttributesGet($name, $nameLike, $type, $dateCreated, $dateCreatedMax, $dateCreatedMin, $dateModified, $dateModifiedMax, $dateModifiedMin));
+		return $this->connector->send(new GetCustomersAttributes($name, $nameLike, $type, $dateCreated, $dateCreatedMax, $dateCreatedMin, $dateModified, $dateModifiedMax, $dateModifiedMin));
 	}
 
 
-	public function customersAttributesPut(): Response
+	public function updateCustomersAttributes(): Response
 	{
-		return $this->connector->send(new CustomersAttributesPut());
+		return $this->connector->send(new UpdateCustomersAttributes());
 	}
 
 
-	public function customersAttributesPost(): Response
+	public function createCustomersAttributes(): Response
 	{
-		return $this->connector->send(new CustomersAttributesPost());
+		return $this->connector->send(new CreateCustomersAttributes());
 	}
 
 
 	/**
 	 * @param array $idIn Filter items by ID.
 	 */
-	public function customersAttributesDelete(array $idIn): Response
+	public function deleteCustomersAttributes(array $idIn): Response
 	{
-		return $this->connector->send(new CustomersAttributesDelete($idIn));
+		return $this->connector->send(new DeleteCustomersAttributes($idIn));
 	}
 }

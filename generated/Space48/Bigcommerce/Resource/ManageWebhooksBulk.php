@@ -4,7 +4,7 @@ namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
 use Space48\Bigcommerce\Requests\ManageWebhooksBulk\CreateWebhooks;
-use Space48\Bigcommerce\Requests\ManageWebhooksBulk\GetAllWebhooks;
+use Space48\Bigcommerce\Requests\ManageWebhooksBulk\GetWebhooks;
 use Space48\Bigcommerce\Resource;
 
 class ManageWebhooksBulk extends Resource
@@ -14,9 +14,9 @@ class ManageWebhooksBulk extends Resource
 	 * @param string $scope Enables user to filter for webhooks by scope.
 	 * @param string $destination Enables user to filter for webhooks by destination.
 	 */
-	public function getAllWebhooks(bool $isActive, string $scope, string $destination): Response
+	public function getWebhooks(?bool $isActive, ?string $scope, ?string $destination): Response
 	{
-		return $this->connector->send(new GetAllWebhooks($isActive, $scope, $destination));
+		return $this->connector->send(new GetWebhooks($isActive, $scope, $destination));
 	}
 
 

@@ -3,12 +3,12 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\GiftCertificates\CreateAgiftCertificate;
-use Space48\Bigcommerce\Requests\GiftCertificates\DeleteAgiftCertificate;
-use Space48\Bigcommerce\Requests\GiftCertificates\DeleteAllGiftCertificates;
-use Space48\Bigcommerce\Requests\GiftCertificates\GetAgiftCertificate;
-use Space48\Bigcommerce\Requests\GiftCertificates\GetAllGiftCertificates;
-use Space48\Bigcommerce\Requests\GiftCertificates\UpdateAgiftCertificate;
+use Space48\Bigcommerce\Requests\GiftCertificates\CreateGiftCertificate;
+use Space48\Bigcommerce\Requests\GiftCertificates\DeleteGiftCertificate;
+use Space48\Bigcommerce\Requests\GiftCertificates\DeleteGiftCertificates;
+use Space48\Bigcommerce\Requests\GiftCertificates\GetGiftCertificate;
+use Space48\Bigcommerce\Requests\GiftCertificates\GetGiftCertificates;
+use Space48\Bigcommerce\Requests\GiftCertificates\UpdateGiftCertificate;
 use Space48\Bigcommerce\Resource;
 
 class GiftCertificates extends Resource
@@ -16,27 +16,27 @@ class GiftCertificates extends Resource
 	/**
 	 * @param int $id ID of the gift certificate.
 	 */
-	public function getAgiftCertificate(int $id): Response
+	public function getGiftCertificate(int $id): Response
 	{
-		return $this->connector->send(new GetAgiftCertificate($id));
+		return $this->connector->send(new GetGiftCertificate($id));
 	}
 
 
 	/**
 	 * @param int $id ID of the gift certificate.
 	 */
-	public function updateAgiftCertificate(int $id): Response
+	public function updateGiftCertificate(int $id): Response
 	{
-		return $this->connector->send(new UpdateAgiftCertificate($id));
+		return $this->connector->send(new UpdateGiftCertificate($id));
 	}
 
 
 	/**
 	 * @param int $id ID of the gift certificate.
 	 */
-	public function deleteAgiftCertificate(int $id): Response
+	public function deleteGiftCertificate(int $id): Response
 	{
-		return $this->connector->send(new DeleteAgiftCertificate($id));
+		return $this->connector->send(new DeleteGiftCertificate($id));
 	}
 
 
@@ -50,29 +50,29 @@ class GiftCertificates extends Resource
 	 * @param string $fromName
 	 * @param string $fromEmail
 	 */
-	public function getAllGiftCertificates(
-		int $minId,
-		int $maxId,
-		string $code,
-		int $orderId,
-		string $toName,
-		string $toEmail,
-		string $fromName,
-		string $fromEmail,
+	public function getGiftCertificates(
+		?int $minId,
+		?int $maxId,
+		?string $code,
+		?int $orderId,
+		?string $toName,
+		?string $toEmail,
+		?string $fromName,
+		?string $fromEmail,
 	): Response
 	{
-		return $this->connector->send(new GetAllGiftCertificates($minId, $maxId, $code, $orderId, $toName, $toEmail, $fromName, $fromEmail));
+		return $this->connector->send(new GetGiftCertificates($minId, $maxId, $code, $orderId, $toName, $toEmail, $fromName, $fromEmail));
 	}
 
 
-	public function createAgiftCertificate(): Response
+	public function createGiftCertificate(): Response
 	{
-		return $this->connector->send(new CreateAgiftCertificate());
+		return $this->connector->send(new CreateGiftCertificate());
 	}
 
 
-	public function deleteAllGiftCertificates(): Response
+	public function deleteGiftCertificates(): Response
 	{
-		return $this->connector->send(new DeleteAllGiftCertificates());
+		return $this->connector->send(new DeleteGiftCertificates());
 	}
 }

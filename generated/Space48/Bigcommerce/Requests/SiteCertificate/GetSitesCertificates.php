@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * get-sites-certificates
+ * getSitesCertificates
  *
  * Return all SSL certificates connected to domains within a store.
  */
@@ -23,16 +23,16 @@ class GetSitesCertificates extends Request
 
 
 	/**
-	 * @param string $urlsIn Query certificates by one or more URLs
+	 * @param null|string $urlsIn Query certificates by one or more URLs
 	 */
 	public function __construct(
-		protected string $urlsIn,
+		protected ?string $urlsIn = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['urls:in' => $this->urlsIn];
+		return array_filter(['urls:in' => $this->urlsIn]);
 	}
 }

@@ -3,11 +3,11 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\SiteRoutes\DeleteRoute;
+use Space48\Bigcommerce\Requests\SiteRoutes\CreateSiteRoute;
+use Space48\Bigcommerce\Requests\SiteRoutes\DeleteSiteRoute;
 use Space48\Bigcommerce\Requests\SiteRoutes\GetSiteRoute;
-use Space48\Bigcommerce\Requests\SiteRoutes\IndexSiteRoutes;
-use Space48\Bigcommerce\Requests\SiteRoutes\PostSiteRoute;
-use Space48\Bigcommerce\Requests\SiteRoutes\PutSiteRoute;
+use Space48\Bigcommerce\Requests\SiteRoutes\GetSiteRoutes;
+use Space48\Bigcommerce\Requests\SiteRoutes\UpdateSiteRoute;
 use Space48\Bigcommerce\Requests\SiteRoutes\UpdateSitesRoutes;
 use Space48\Bigcommerce\Resource;
 
@@ -17,9 +17,9 @@ class SiteRoutes extends Resource
 	 * @param int $siteId
 	 * @param string $type Filter routes by a specified resource type.
 	 */
-	public function indexSiteRoutes(int $siteId, string $type): Response
+	public function getSiteRoutes(int $siteId, ?string $type): Response
 	{
-		return $this->connector->send(new IndexSiteRoutes($siteId, $type));
+		return $this->connector->send(new GetSiteRoutes($siteId, $type));
 	}
 
 
@@ -35,9 +35,9 @@ class SiteRoutes extends Resource
 	/**
 	 * @param int $siteId
 	 */
-	public function postSiteRoute(int $siteId): Response
+	public function createSiteRoute(int $siteId): Response
 	{
-		return $this->connector->send(new PostSiteRoute($siteId));
+		return $this->connector->send(new CreateSiteRoute($siteId));
 	}
 
 
@@ -55,9 +55,9 @@ class SiteRoutes extends Resource
 	 * @param string $siteId
 	 * @param string $routeId
 	 */
-	public function putSiteRoute(string $siteId, string $routeId): Response
+	public function updateSiteRoute(string $siteId, string $routeId): Response
 	{
-		return $this->connector->send(new PutSiteRoute($siteId, $routeId));
+		return $this->connector->send(new UpdateSiteRoute($siteId, $routeId));
 	}
 
 
@@ -65,8 +65,8 @@ class SiteRoutes extends Resource
 	 * @param string $siteId
 	 * @param string $routeId
 	 */
-	public function deleteRoute(string $siteId, string $routeId): Response
+	public function deleteSiteRoute(string $siteId, string $routeId): Response
 	{
-		return $this->connector->send(new DeleteRoute($siteId, $routeId));
+		return $this->connector->send(new DeleteSiteRoute($siteId, $routeId));
 	}
 }

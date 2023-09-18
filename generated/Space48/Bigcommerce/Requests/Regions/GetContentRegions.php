@@ -33,6 +33,6 @@ class GetContentRegions extends Request
 
 	public function defaultQuery(): array
 	{
-		return ['template_file' => $this->templateFile];
+		return array_filter(['template_file' => $this->templateFile]);
 	}
 }

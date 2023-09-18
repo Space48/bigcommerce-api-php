@@ -3,10 +3,10 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\CartsSingle\CreateAcart;
-use Space48\Bigcommerce\Requests\CartsSingle\DeleteAcart;
-use Space48\Bigcommerce\Requests\CartsSingle\GetAcart;
-use Space48\Bigcommerce\Requests\CartsSingle\UpdateAcart;
+use Space48\Bigcommerce\Requests\CartsSingle\CreateCart;
+use Space48\Bigcommerce\Requests\CartsSingle\DeleteCart;
+use Space48\Bigcommerce\Requests\CartsSingle\GetCart;
+use Space48\Bigcommerce\Requests\CartsSingle\UpdateCart;
 use Space48\Bigcommerce\Resource;
 
 class CartsSingle extends Resource
@@ -17,9 +17,9 @@ class CartsSingle extends Resource
 	 * * `line_items.digital_items.options`: The cart returns an abbreviated result. Use this to return digital items product options. To return the extended cart object, use in a /POST request.
 	 * * `promotions.banners`: Returns a list of eligible banners.
 	 */
-	public function createAcart(string $include): Response
+	public function createCart(?string $include): Response
 	{
-		return $this->connector->send(new CreateAcart($include));
+		return $this->connector->send(new CreateCart($include));
 	}
 
 
@@ -30,9 +30,9 @@ class CartsSingle extends Resource
 	 * * `line_items.digital_items.options`: The cart returns an abbreviated result. Use this to return digital items product options. To return the extended cart object, use in a /POST request.
 	 * * `promotions.banners`: Returns a list of eligible banners.
 	 */
-	public function getAcart(string $cartId, string $include): Response
+	public function getCart(string $cartId, ?string $include): Response
 	{
-		return $this->connector->send(new GetAcart($cartId, $include));
+		return $this->connector->send(new GetCart($cartId, $include));
 	}
 
 
@@ -43,17 +43,17 @@ class CartsSingle extends Resource
 	 * * `line_items.digital_items.options`: The cart returns an abbreviated result. Use this to return digital items product options. To return the extended cart object, use in a /POST request.
 	 * * `promotions.banners`: Returns a list of eligible banners.
 	 */
-	public function updateAcart(string $cartId, string $include): Response
+	public function updateCart(string $cartId, ?string $include): Response
 	{
-		return $this->connector->send(new UpdateAcart($cartId, $include));
+		return $this->connector->send(new UpdateCart($cartId, $include));
 	}
 
 
 	/**
 	 * @param string $cartId The identifier of a specific cart.
 	 */
-	public function deleteAcart(string $cartId): Response
+	public function deleteCart(string $cartId): Response
 	{
-		return $this->connector->send(new DeleteAcart($cartId));
+		return $this->connector->send(new DeleteCart($cartId));
 	}
 }

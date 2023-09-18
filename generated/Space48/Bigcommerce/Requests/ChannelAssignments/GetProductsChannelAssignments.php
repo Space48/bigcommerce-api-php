@@ -23,18 +23,18 @@ class GetProductsChannelAssignments extends Request
 
 
 	/**
-	 * @param string $productIdIn
-	 * @param string $channelIdIn
+	 * @param null|string $productIdIn
+	 * @param null|string $channelIdIn
 	 */
 	public function __construct(
-		protected string $productIdIn,
-		protected string $channelIdIn,
+		protected ?string $productIdIn = null,
+		protected ?string $channelIdIn = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['product_id:in' => $this->productIdIn, 'channel_id:in' => $this->channelIdIn];
+		return array_filter(['product_id:in' => $this->productIdIn, 'channel_id:in' => $this->channelIdIn]);
 	}
 }

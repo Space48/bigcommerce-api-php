@@ -24,17 +24,17 @@ class UpdateEmailTemplate extends Request
 
 	/**
 	 * @param string $templateName
-	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
+	 * @param null|int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
 	public function __construct(
 		protected string $templateName,
-		protected int $channelId,
+		protected ?int $channelId = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['channel_id' => $this->channelId];
+		return array_filter(['channel_id' => $this->channelId]);
 	}
 }

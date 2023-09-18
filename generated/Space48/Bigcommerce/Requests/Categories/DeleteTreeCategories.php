@@ -25,27 +25,27 @@ class DeleteTreeCategories extends Request
 
 
 	/**
-	 * @param string $categoryUuidIn
-	 * @param string $categoryIdIn
-	 * @param string $treeIdIn
-	 * @param string $parentIdIn
+	 * @param null|string $categoryUuidIn
+	 * @param null|string $categoryIdIn
+	 * @param null|string $treeIdIn
+	 * @param null|string $parentIdIn
 	 */
 	public function __construct(
-		protected string $categoryUuidIn,
-		protected string $categoryIdIn,
-		protected string $treeIdIn,
-		protected string $parentIdIn,
+		protected ?string $categoryUuidIn = null,
+		protected ?string $categoryIdIn = null,
+		protected ?string $treeIdIn = null,
+		protected ?string $parentIdIn = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return [
+		return array_filter([
 			'category_uuid:in' => $this->categoryUuidIn,
 			'category_id:in' => $this->categoryIdIn,
 			'tree_id:in' => $this->treeIdIn,
 			'parent_id:in' => $this->parentIdIn,
-		];
+		]);
 	}
 }

@@ -23,7 +23,7 @@ class GetChannelAbandonedCartSettings extends Request
 
 
 	/**
-	 * @param string $channelId
+	 * @param int $channelId The channel ID of the settings overrides
 	 * @param int $channelId The channel ID of the settings overrides
 	 */
 	public function __construct(

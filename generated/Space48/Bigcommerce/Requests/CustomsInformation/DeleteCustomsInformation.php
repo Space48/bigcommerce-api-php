@@ -43,6 +43,6 @@ class DeleteCustomsInformation extends Request
 
 	public function defaultQuery(): array
 	{
-		return ['product_id:in' => $this->productIdIn];
+		return array_filter(['product_id:in' => $this->productIdIn]);
 	}
 }

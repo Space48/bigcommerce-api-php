@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * Get Store Information
+ * getStoreInformation
  *
  * Returns metadata about a store.
  */

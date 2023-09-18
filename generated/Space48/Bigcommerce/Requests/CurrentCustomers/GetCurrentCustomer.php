@@ -37,6 +37,6 @@ class GetCurrentCustomer extends Request
 
 	public function defaultQuery(): array
 	{
-		return ['app_client_id' => $this->appClientId];
+		return array_filter(['app_client_id' => $this->appClientId]);
 	}
 }

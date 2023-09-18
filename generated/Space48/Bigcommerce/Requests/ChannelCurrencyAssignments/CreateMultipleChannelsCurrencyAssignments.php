@@ -13,7 +13,7 @@ use Saloon\Traits\Body\HasJsonBody;
  *
  * Sets enabled currencies and default currency for multiple channels. Note that currencies must be
  * added first in the **Settings > Setup > Currencies** settings from an active MSF-enabled BigCommerce
- * Control Panel before the currencies can be assigned to a channel.
+ * store control panel before the currencies can be assigned to a channel.
  */
 class CreateMultipleChannelsCurrencyAssignments extends Request implements HasBody
 {

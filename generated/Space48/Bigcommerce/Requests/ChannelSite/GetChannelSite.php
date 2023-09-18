@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * get-channel-site
+ * getChannelSite
  *
  * Alias of `GET /sites?channel_id=channel_id`
  *

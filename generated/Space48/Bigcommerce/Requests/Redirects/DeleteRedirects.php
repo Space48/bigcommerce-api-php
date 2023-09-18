@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * DeleteRedirects
+ * deleteRedirects
  *
  * Deletes redirects.
  */
@@ -24,17 +24,17 @@ class DeleteRedirects extends Request
 
 	/**
 	 * @param array $idIn List of Redirect IDs to delete explicitly.
-	 * @param int $siteId Site ID provided to delete all redirects for a given Site.
+	 * @param null|int $siteId Site ID provided to delete all redirects for a given Site.
 	 */
 	public function __construct(
 		protected array $idIn,
-		protected int $siteId,
+		protected ?int $siteId = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['id:in' => $this->idIn, 'site_id' => $this->siteId];
+		return array_filter(['id:in' => $this->idIn, 'site_id' => $this->siteId]);
 	}
 }

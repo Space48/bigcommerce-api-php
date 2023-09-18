@@ -32,16 +32,16 @@ class GetCustomsInformation extends Request
 
 
 	/**
-	 * @param array $productIdIn A comma-separated list of product IDs. For more information, see [Filtering](/api-docs/getting-started/filtering).
+	 * @param null|array $productIdIn A comma-separated list of product IDs. For more information, see [Filtering](/api-docs/getting-started/filtering).
 	 */
 	public function __construct(
-		protected array $productIdIn,
+		protected ?array $productIdIn = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['product_id:in' => $this->productIdIn];
+		return array_filter(['product_id:in' => $this->productIdIn]);
 	}
 }

@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * GetGlobalOrderSettings
+ * getGlobalOrderSettings
  *
  * Returns global order settings.
  */

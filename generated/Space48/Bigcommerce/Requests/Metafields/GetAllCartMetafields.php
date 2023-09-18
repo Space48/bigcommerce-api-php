@@ -24,21 +24,21 @@ class GetAllCartMetafields extends Request
 
 	/**
 	 * @param string $cartId The ID of the `Cart` to which the transactions belong.
-	 * @param string $key Filter based on a metafieldʼs key.
-	 * @param string $namespace Filter based on a metafieldʼs key.
-	 * @param string $direction Sort direction. Acceptable values are: `asc`, `desc`.
+	 * @param null|string $key Filter based on a metafieldʼs key.
+	 * @param null|string $namespace Filter based on a metafieldʼs key.
+	 * @param null|string $direction Sort direction. Acceptable values are: `asc`, `desc`.
 	 */
 	public function __construct(
 		protected string $cartId,
-		protected string $key,
-		protected string $namespace,
-		protected string $direction,
+		protected ?string $key = null,
+		protected ?string $namespace = null,
+		protected ?string $direction = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['key' => $this->key, 'namespace' => $this->namespace, 'direction' => $this->direction];
+		return array_filter(['key' => $this->key, 'namespace' => $this->namespace, 'direction' => $this->direction]);
 	}
 }

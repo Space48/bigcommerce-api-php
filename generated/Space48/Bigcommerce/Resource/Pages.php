@@ -3,50 +3,50 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\Pages\CreateApage;
-use Space48\Bigcommerce\Requests\Pages\DeleteApage;
-use Space48\Bigcommerce\Requests\Pages\GetAllPages;
-use Space48\Bigcommerce\Requests\Pages\GetApage;
-use Space48\Bigcommerce\Requests\Pages\UpdateApage;
+use Space48\Bigcommerce\Requests\Pages\CreatePage;
+use Space48\Bigcommerce\Requests\Pages\DeletePage;
+use Space48\Bigcommerce\Requests\Pages\GetPage;
+use Space48\Bigcommerce\Requests\Pages\GetPages;
+use Space48\Bigcommerce\Requests\Pages\UpdatePage;
 use Space48\Bigcommerce\Resource;
 
 class Pages extends Resource
 {
-	public function getAllPages(): Response
+	public function getPages(): Response
 	{
-		return $this->connector->send(new GetAllPages());
+		return $this->connector->send(new GetPages());
 	}
 
 
-	public function createApage(): Response
+	public function createPage(): Response
 	{
-		return $this->connector->send(new CreateApage());
-	}
-
-
-	/**
-	 * @param int $id ID of the page.
-	 */
-	public function getApage(int $id): Response
-	{
-		return $this->connector->send(new GetApage($id));
+		return $this->connector->send(new CreatePage());
 	}
 
 
 	/**
 	 * @param int $id ID of the page.
 	 */
-	public function updateApage(int $id): Response
+	public function getPage(int $id): Response
 	{
-		return $this->connector->send(new UpdateApage($id));
+		return $this->connector->send(new GetPage($id));
 	}
 
 
 	/**
 	 * @param int $id ID of the page.
 	 */
-	public function deleteApage(int $id): Response
+	public function updatePage(int $id): Response
 	{
-		return $this->connector->send(new DeleteApage($id));
+		return $this->connector->send(new UpdatePage($id));
+	}
+
+
+	/**
+	 * @param int $id ID of the page.
+	 */
+	public function deletePage(int $id): Response
+	{
+		return $this->connector->send(new DeletePage($id));
 	}
 }

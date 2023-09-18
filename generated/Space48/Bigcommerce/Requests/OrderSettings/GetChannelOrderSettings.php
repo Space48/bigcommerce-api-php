@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * GetChannelOrderSettings
+ * getChannelOrderSettings
  *
  * Returns order settings for a specific channel.
  */

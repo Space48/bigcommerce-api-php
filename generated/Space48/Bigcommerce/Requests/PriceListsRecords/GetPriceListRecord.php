@@ -31,20 +31,20 @@ class GetPriceListRecord extends Request
 	 * @param int $priceListId The ID of the `Price List` requested.
 	 * @param int $variantId ID of the variant on a product, or on an associated Price List Record.
 	 * @param string $currencyCode The currency code associated with the price record being acted upon.
-	 * @param string $include Sub-resources to include on a price record, in a comma-separated list. Valid expansions currently include `bulk_pricing_tiers` and `sku`. Other values will be ignored.
+	 * @param null|string $include Sub-resources to include on a price record, in a comma-separated list. Valid expansions currently include `bulk_pricing_tiers` and `sku`. Other values will be ignored.
 	 * Sub-resources to include on a price record, in a comma-separated list. Valid expansions currently include `bulk_pricing_tiers` and `sku`. Other values will be ignored.
 	 */
 	public function __construct(
 		protected int $priceListId,
 		protected int $variantId,
 		protected string $currencyCode,
-		protected string $include,
+		protected ?string $include = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['include' => $this->include];
+		return array_filter(['include' => $this->include]);
 	}
 }

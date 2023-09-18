@@ -3,12 +3,12 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\Coupons\CreateAnewCoupon;
-use Space48\Bigcommerce\Requests\Coupons\DeleteAcoupon;
-use Space48\Bigcommerce\Requests\Coupons\DeleteAllCoupons;
-use Space48\Bigcommerce\Requests\Coupons\GetAcountOfCoupons;
-use Space48\Bigcommerce\Requests\Coupons\GetAllCoupons;
-use Space48\Bigcommerce\Requests\Coupons\UpdateAcoupon;
+use Space48\Bigcommerce\Requests\Coupons\CreateCoupon;
+use Space48\Bigcommerce\Requests\Coupons\DeleteCoupon;
+use Space48\Bigcommerce\Requests\Coupons\DeleteCoupons;
+use Space48\Bigcommerce\Requests\Coupons\GetCoupons;
+use Space48\Bigcommerce\Requests\Coupons\GetCouponsCount;
+use Space48\Bigcommerce\Requests\Coupons\UpdateCoupon;
 use Space48\Bigcommerce\Resource;
 
 class Coupons extends Resource
@@ -36,55 +36,55 @@ class Coupons extends Resource
 	 * |`free_shipping`|
 	 * |`promotion`|
 	 */
-	public function getAllCoupons(
-		string $id,
-		string $code,
-		string $name,
-		string $type,
-		int $minId,
-		int $maxId,
-		string $excludeType,
+	public function getCoupons(
+		?string $id,
+		?string $code,
+		?string $name,
+		?string $type,
+		?int $minId,
+		?int $maxId,
+		?string $excludeType,
 	): Response
 	{
-		return $this->connector->send(new GetAllCoupons($id, $code, $name, $type, $minId, $maxId, $excludeType));
+		return $this->connector->send(new GetCoupons($id, $code, $name, $type, $minId, $maxId, $excludeType));
 	}
 
 
-	public function createAnewCoupon(): Response
+	public function createCoupon(): Response
 	{
-		return $this->connector->send(new CreateAnewCoupon());
+		return $this->connector->send(new CreateCoupon());
 	}
 
 
 	/**
 	 * @param string $idIn Optional param to identify a comma separated list of ids for coupons to delete in a batch. `/api/v2/coupons?id:in=1,2,3`
 	 */
-	public function deleteAllCoupons(string $idIn): Response
+	public function deleteCoupons(?string $idIn): Response
 	{
-		return $this->connector->send(new DeleteAllCoupons($idIn));
+		return $this->connector->send(new DeleteCoupons($idIn));
 	}
 
 
-	public function getAcountOfCoupons(): Response
+	public function getCouponsCount(): Response
 	{
-		return $this->connector->send(new GetAcountOfCoupons());
-	}
-
-
-	/**
-	 * @param float|int $id ID of the coupon.
-	 */
-	public function updateAcoupon(float|int $id): Response
-	{
-		return $this->connector->send(new UpdateAcoupon($id));
+		return $this->connector->send(new GetCouponsCount());
 	}
 
 
 	/**
 	 * @param float|int $id ID of the coupon.
 	 */
-	public function deleteAcoupon(float|int $id): Response
+	public function updateCoupon(float|int $id): Response
 	{
-		return $this->connector->send(new DeleteAcoupon($id));
+		return $this->connector->send(new UpdateCoupon($id));
+	}
+
+
+	/**
+	 * @param float|int $id ID of the coupon.
+	 */
+	public function deleteCoupon(float|int $id): Response
+	{
+		return $this->connector->send(new DeleteCoupon($id));
 	}
 }

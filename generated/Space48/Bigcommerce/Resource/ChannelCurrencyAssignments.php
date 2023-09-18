@@ -6,17 +6,17 @@ use Saloon\Contracts\Response;
 use Space48\Bigcommerce\Requests\ChannelCurrencyAssignments\CreateMultipleChannelsCurrencyAssignments;
 use Space48\Bigcommerce\Requests\ChannelCurrencyAssignments\CreateSingleChannelCurrencyAssignments;
 use Space48\Bigcommerce\Requests\ChannelCurrencyAssignments\DeleteSingleChannelCurrencyAssignments;
+use Space48\Bigcommerce\Requests\ChannelCurrencyAssignments\GetAllCurrencyAssignments;
 use Space48\Bigcommerce\Requests\ChannelCurrencyAssignments\GetSingleChannelCurrencyAssignments;
-use Space48\Bigcommerce\Requests\ChannelCurrencyAssignments\ListAllCurrencyAssignments;
 use Space48\Bigcommerce\Requests\ChannelCurrencyAssignments\UpdateMultipleChannelsCurrencyAssignments;
 use Space48\Bigcommerce\Requests\ChannelCurrencyAssignments\UpdateSingleChannelCurrencyAssignments;
 use Space48\Bigcommerce\Resource;
 
 class ChannelCurrencyAssignments extends Resource
 {
-	public function listAllCurrencyAssignments(): Response
+	public function getAllCurrencyAssignments(): Response
 	{
-		return $this->connector->send(new ListAllCurrencyAssignments());
+		return $this->connector->send(new GetAllCurrencyAssignments());
 	}
 
 

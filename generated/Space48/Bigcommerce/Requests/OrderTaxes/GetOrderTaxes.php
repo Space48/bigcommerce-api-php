@@ -31,17 +31,17 @@ class GetOrderTaxes extends Request
 
 	/**
 	 * @param int $orderId ID of the order.
-	 * @param string $details To return detailed tax information, pass in the details query.
+	 * @param null|string $details To return detailed tax information, pass in the details query.
 	 */
 	public function __construct(
 		protected int $orderId,
-		protected string $details,
+		protected ?string $details = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['details' => $this->details];
+		return array_filter(['details' => $this->details]);
 	}
 }

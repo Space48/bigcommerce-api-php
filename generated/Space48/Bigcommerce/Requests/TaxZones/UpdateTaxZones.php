@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * update-tax-zones
+ * updateTaxZones
  *
  * Update one or more tax zones. Only the tax zone `id` field is required. Fields unspecified by the
  * request will retain their current state.

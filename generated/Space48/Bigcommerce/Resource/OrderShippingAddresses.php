@@ -3,9 +3,9 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\OrderShippingAddresses\GetAllShippingAddresses;
-use Space48\Bigcommerce\Requests\OrderShippingAddresses\GetAshippingAddress;
-use Space48\Bigcommerce\Requests\OrderShippingAddresses\UpdateAshippingAddress;
+use Space48\Bigcommerce\Requests\OrderShippingAddresses\GetOrderShippingAddress;
+use Space48\Bigcommerce\Requests\OrderShippingAddresses\GetOrderShippingAddresses;
+use Space48\Bigcommerce\Requests\OrderShippingAddresses\UpdateOrderShippingAddress;
 use Space48\Bigcommerce\Resource;
 
 class OrderShippingAddresses extends Resource
@@ -13,9 +13,9 @@ class OrderShippingAddresses extends Resource
 	/**
 	 * @param int $orderId ID of the order.
 	 */
-	public function getAllShippingAddresses(int $orderId): Response
+	public function getOrderShippingAddresses(int $orderId): Response
 	{
-		return $this->connector->send(new GetAllShippingAddresses($orderId));
+		return $this->connector->send(new GetOrderShippingAddresses($orderId));
 	}
 
 
@@ -23,9 +23,9 @@ class OrderShippingAddresses extends Resource
 	 * @param int $orderId ID of the order.
 	 * @param string $id Shipping address ID.
 	 */
-	public function getAshippingAddress(int $orderId, string $id): Response
+	public function getOrderShippingAddress(int $orderId, string $id): Response
 	{
-		return $this->connector->send(new GetAshippingAddress($orderId, $id));
+		return $this->connector->send(new GetOrderShippingAddress($orderId, $id));
 	}
 
 
@@ -33,8 +33,8 @@ class OrderShippingAddresses extends Resource
 	 * @param int $orderId ID of the order.
 	 * @param string $id Shipping address ID.
 	 */
-	public function updateAshippingAddress(int $orderId, string $id): Response
+	public function updateOrderShippingAddress(int $orderId, string $id): Response
 	{
-		return $this->connector->send(new UpdateAshippingAddress($orderId, $id));
+		return $this->connector->send(new UpdateOrderShippingAddress($orderId, $id));
 	}
 }

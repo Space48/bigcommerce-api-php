@@ -23,16 +23,16 @@ class GetHooksAdmin extends Request
 
 
 	/**
-	 * @param bool $isActive Enables user to filter for webhooks that are active or not.
+	 * @param null|bool $isActive Enables user to filter for webhooks that are active or not.
 	 */
 	public function __construct(
-		protected bool $isActive,
+		protected ?bool $isActive = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['is_active' => $this->isActive];
+		return array_filter(['is_active' => $this->isActive]);
 	}
 }

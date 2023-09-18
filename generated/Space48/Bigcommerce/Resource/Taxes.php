@@ -3,23 +3,23 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\Taxes\GetAllTaxClasses;
-use Space48\Bigcommerce\Requests\Taxes\GetAtaxClass;
+use Space48\Bigcommerce\Requests\Taxes\GetTaxClass;
+use Space48\Bigcommerce\Requests\Taxes\GetTaxClasses;
 use Space48\Bigcommerce\Resource;
 
 class Taxes extends Resource
 {
-	public function getAllTaxClasses(): Response
+	public function getTaxClasses(): Response
 	{
-		return $this->connector->send(new GetAllTaxClasses());
+		return $this->connector->send(new GetTaxClasses());
 	}
 
 
 	/**
 	 * @param int $id ID of the tax class.
 	 */
-	public function getAtaxClass(int $id): Response
+	public function getTaxClass(int $id): Response
 	{
-		return $this->connector->send(new GetAtaxClass($id));
+		return $this->connector->send(new GetTaxClass($id));
 	}
 }

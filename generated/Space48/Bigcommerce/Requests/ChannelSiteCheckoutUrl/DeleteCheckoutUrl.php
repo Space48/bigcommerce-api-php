@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * delete-checkout-url
+ * deleteCheckoutUrl
  *
  * Deletes a siteʼs checkout URL. After deletion, a shared checkout URL is used.
  */

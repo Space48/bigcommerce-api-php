@@ -24,38 +24,38 @@ class GetOrderMessages extends Request
 
 	/**
 	 * @param int $orderId ID of the order.
-	 * @param int $minId The minimum order ID.
-	 * @param int $maxId The maximum order ID.
-	 * @param int $customerId Customer ID.
-	 * @param string $minDateCreated Minimum date the order was created in RFC-2822 or ISO-8601.
+	 * @param null|int $minId The minimum order ID.
+	 * @param null|int $maxId The maximum order ID.
+	 * @param null|int $customerId Customer ID.
+	 * @param null|string $minDateCreated Minimum date the order was created in RFC-2822 or ISO-8601.
 	 *
 	 * RFC-2822: `Thu, 20 Apr 2017 11:32:00 -0400`
 	 *
 	 * ISO-8601: `2017-04-20T11:32:00.000-04:00`
-	 * @param string $maxDateCreated Maximum date the order was created in RFC-2822 or ISO-8601.
+	 * @param null|string $maxDateCreated Maximum date the order was created in RFC-2822 or ISO-8601.
 	 *
 	 * RFC-2822: `Thu, 20 Apr 2017 11:32:00 -0400`
 	 *
 	 * ISO-8601: `2017-04-20T11:32:00.000-04:00`
-	 * @param bool $isFlagged If the message is [flagged](https://support.bigcommerce.com/s/article/Communicating-with-Customers#Messages).
-	 * @param string $status Status of the order message.
+	 * @param null|bool $isFlagged If the message is [flagged](https://support.bigcommerce.com/s/article/Communicating-with-Customers#Messages).
+	 * @param null|string $status Status of the order message.
 	 */
 	public function __construct(
 		protected int $orderId,
-		protected int $minId,
-		protected int $maxId,
-		protected int $customerId,
-		protected string $minDateCreated,
-		protected string $maxDateCreated,
-		protected bool $isFlagged,
-		protected string $status,
+		protected ?int $minId = null,
+		protected ?int $maxId = null,
+		protected ?int $customerId = null,
+		protected ?string $minDateCreated = null,
+		protected ?string $maxDateCreated = null,
+		protected ?bool $isFlagged = null,
+		protected ?string $status = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return [
+		return array_filter([
 			'min_id' => $this->minId,
 			'max_id' => $this->maxId,
 			'customer_id' => $this->customerId,
@@ -63,6 +63,6 @@ class GetOrderMessages extends Request
 			'max_date_created' => $this->maxDateCreated,
 			'is_flagged' => $this->isFlagged,
 			'status' => $this->status,
-		];
+		]);
 	}
 }

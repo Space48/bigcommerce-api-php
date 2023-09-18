@@ -17,7 +17,7 @@ class AbandonedCartsSettings extends Resource
 
 
 	/**
-	 * @param string $channelId
+	 * @param int $channelId The channel ID of the settings overrides
 	 * @param int $channelId The channel ID of the settings overrides
 	 */
 	public function getChannelAbandonedCartSettings(int $channelId): Response
@@ -27,11 +27,10 @@ class AbandonedCartsSettings extends Resource
 
 
 	/**
-	 * @param string $channelId
 	 * @param int $channelId The channel ID of the settings overrides
 	 */
 	public function updateChannelAbandonedCartSettings(int $channelId): Response
 	{
-		return $this->connector->send(new UpdateChannelAbandonedCartSettings($channelId, $channelId));
+		return $this->connector->send(new UpdateChannelAbandonedCartSettings($channelId));
 	}
 }

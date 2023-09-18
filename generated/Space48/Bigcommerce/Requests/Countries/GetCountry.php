@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * Get a Country
+ * getCountry
  *
  * Returns a single *Country*.  Gets a country. A country or territory, identifiable by an ISO 3166
  * country code.

@@ -3,9 +3,9 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
+use Space48\Bigcommerce\Requests\SiteCertificate\GetSiteCertificate;
 use Space48\Bigcommerce\Requests\SiteCertificate\GetSitesCertificates;
-use Space48\Bigcommerce\Requests\SiteCertificate\GetSitesIdCertificate;
-use Space48\Bigcommerce\Requests\SiteCertificate\PutSiteIdCertificate;
+use Space48\Bigcommerce\Requests\SiteCertificate\UpsertSiteCertificate;
 use Space48\Bigcommerce\Resource;
 
 class SiteCertificate extends Resource
@@ -13,25 +13,25 @@ class SiteCertificate extends Resource
 	/**
 	 * @param int $siteId
 	 */
-	public function getSitesIdCertificate(int $siteId): Response
+	public function getSiteCertificate(int $siteId): Response
 	{
-		return $this->connector->send(new GetSitesIdCertificate($siteId));
+		return $this->connector->send(new GetSiteCertificate($siteId));
 	}
 
 
 	/**
 	 * @param int $siteId
 	 */
-	public function putSiteIdCertificate(int $siteId): Response
+	public function upsertSiteCertificate(int $siteId): Response
 	{
-		return $this->connector->send(new PutSiteIdCertificate($siteId));
+		return $this->connector->send(new UpsertSiteCertificate($siteId));
 	}
 
 
 	/**
 	 * @param string $urlsIn Query certificates by one or more URLs
 	 */
-	public function getSitesCertificates(string $urlsIn): Response
+	public function getSitesCertificates(?string $urlsIn): Response
 	{
 		return $this->connector->send(new GetSitesCertificates($urlsIn));
 	}

@@ -23,18 +23,18 @@ class GetCategoryTrees extends Request
 
 
 	/**
-	 * @param string $idIn
-	 * @param string $channelIdIn
+	 * @param null|string $idIn
+	 * @param null|string $channelIdIn
 	 */
 	public function __construct(
-		protected string $idIn,
-		protected string $channelIdIn,
+		protected ?string $idIn = null,
+		protected ?string $channelIdIn = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['id:in' => $this->idIn, 'channel_id:in' => $this->channelIdIn];
+		return array_filter(['id:in' => $this->idIn, 'channel_id:in' => $this->channelIdIn]);
 	}
 }

@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * update-product-tax-properties
+ * updateProductTaxProperties
  *
  * Update the tax properties associated with one or more products. This operation will be additive to
  * any tax property values already associated with the product, overwriting any existing tax property

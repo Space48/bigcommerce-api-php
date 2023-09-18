@@ -4,7 +4,7 @@ namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
 use Space48\Bigcommerce\Requests\Logo\GetSettingsLogo;
-use Space48\Bigcommerce\Requests\Logo\PutSettingsLogo;
+use Space48\Bigcommerce\Requests\Logo\UpdateSettingsLogo;
 use Space48\Bigcommerce\Resource;
 
 class Logo extends Resource
@@ -12,7 +12,7 @@ class Logo extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function getSettingsLogo(int $channelId): Response
+	public function getSettingsLogo(?int $channelId): Response
 	{
 		return $this->connector->send(new GetSettingsLogo($channelId));
 	}
@@ -21,8 +21,8 @@ class Logo extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function putSettingsLogo(int $channelId): Response
+	public function updateSettingsLogo(?int $channelId): Response
 	{
-		return $this->connector->send(new PutSettingsLogo($channelId));
+		return $this->connector->send(new UpdateSettingsLogo($channelId));
 	}
 }

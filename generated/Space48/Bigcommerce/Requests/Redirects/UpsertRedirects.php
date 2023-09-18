@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * UpsertRedirects
+ * upsertRedirects
  *
  * Upserts new redirect data across all storefronts.
  */

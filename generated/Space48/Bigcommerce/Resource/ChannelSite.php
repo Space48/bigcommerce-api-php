@@ -3,10 +3,10 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
+use Space48\Bigcommerce\Requests\ChannelSite\CreateChannelSite;
 use Space48\Bigcommerce\Requests\ChannelSite\DeleteChannelSite;
 use Space48\Bigcommerce\Requests\ChannelSite\GetChannelSite;
-use Space48\Bigcommerce\Requests\ChannelSite\PostChannelSite;
-use Space48\Bigcommerce\Requests\ChannelSite\PutChannelSite;
+use Space48\Bigcommerce\Requests\ChannelSite\UpdateChannelSite;
 use Space48\Bigcommerce\Resource;
 
 class ChannelSite extends Resource
@@ -23,18 +23,18 @@ class ChannelSite extends Resource
 	/**
 	 * @param int $channelId The ID of a channel.
 	 */
-	public function putChannelSite(int $channelId): Response
+	public function updateChannelSite(int $channelId): Response
 	{
-		return $this->connector->send(new PutChannelSite($channelId));
+		return $this->connector->send(new UpdateChannelSite($channelId));
 	}
 
 
 	/**
 	 * @param int $channelId The ID of a channel.
 	 */
-	public function postChannelSite(int $channelId): Response
+	public function createChannelSite(int $channelId): Response
 	{
-		return $this->connector->send(new PostChannelSite($channelId));
+		return $this->connector->send(new CreateChannelSite($channelId));
 	}
 
 

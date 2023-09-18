@@ -5,9 +5,9 @@ namespace Space48\Bigcommerce\Resource;
 use Saloon\Contracts\Response;
 use Space48\Bigcommerce\Requests\PriceLists\CreatePriceList;
 use Space48\Bigcommerce\Requests\PriceLists\DeletePriceList;
-use Space48\Bigcommerce\Requests\PriceLists\DeletePriceListsByFilter;
+use Space48\Bigcommerce\Requests\PriceLists\DeletePriceLists;
 use Space48\Bigcommerce\Requests\PriceLists\GetPriceList;
-use Space48\Bigcommerce\Requests\PriceLists\GetPriceListCollection;
+use Space48\Bigcommerce\Requests\PriceLists\GetPriceLists;
 use Space48\Bigcommerce\Requests\PriceLists\UpdatePriceList;
 use Space48\Bigcommerce\Resource;
 
@@ -25,20 +25,20 @@ class PriceLists extends Resource
 	 * @param string $dateModifiedMax
 	 * @param string $dateModifiedMin
 	 */
-	public function getPriceListCollection(
-		int $id,
-		string $name,
-		string $dateCreated,
-		string $dateModified,
-		array $idIn,
-		array $nameLike,
-		string $dateCreatedMax,
-		string $dateCreatedMin,
-		string $dateModifiedMax,
-		string $dateModifiedMin,
+	public function getPriceLists(
+		?int $id,
+		?string $name,
+		?string $dateCreated,
+		?string $dateModified,
+		?array $idIn,
+		?array $nameLike,
+		?string $dateCreatedMax,
+		?string $dateCreatedMin,
+		?string $dateModifiedMax,
+		?string $dateModifiedMin,
 	): Response
 	{
-		return $this->connector->send(new GetPriceListCollection($id, $name, $dateCreated, $dateModified, $idIn, $nameLike, $dateCreatedMax, $dateCreatedMin, $dateModifiedMax, $dateModifiedMin));
+		return $this->connector->send(new GetPriceLists($id, $name, $dateCreated, $dateModified, $idIn, $nameLike, $dateCreatedMax, $dateCreatedMin, $dateModifiedMax, $dateModifiedMin));
 	}
 
 
@@ -52,9 +52,9 @@ class PriceLists extends Resource
 	 * @param int $id Filter items by ID.
 	 * @param string $name Filter items by name.
 	 */
-	public function deletePriceListsByFilter(int $id, string $name): Response
+	public function deletePriceLists(?int $id, ?string $name): Response
 	{
-		return $this->connector->send(new DeletePriceListsByFilter($id, $name));
+		return $this->connector->send(new DeletePriceLists($id, $name));
 	}
 
 
@@ -67,10 +67,10 @@ class PriceLists extends Resource
 	 */
 	public function getPriceList(
 		int $priceListId,
-		int $id,
-		string $name,
-		string $dateCreated,
-		string $dateModified,
+		?int $id,
+		?string $name,
+		?string $dateCreated,
+		?string $dateModified,
 	): Response
 	{
 		return $this->connector->send(new GetPriceList($priceListId, $id, $name, $dateCreated, $dateModified));

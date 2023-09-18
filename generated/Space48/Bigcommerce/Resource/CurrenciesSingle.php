@@ -3,9 +3,9 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\CurrenciesSingle\DeleteAcurrency;
-use Space48\Bigcommerce\Requests\CurrenciesSingle\GetAcurrency;
-use Space48\Bigcommerce\Requests\CurrenciesSingle\UpdateAcurrency;
+use Space48\Bigcommerce\Requests\CurrenciesSingle\DeleteCurrency;
+use Space48\Bigcommerce\Requests\CurrenciesSingle\GetCurrency;
+use Space48\Bigcommerce\Requests\CurrenciesSingle\UpdateCurrency;
 use Space48\Bigcommerce\Resource;
 
 class CurrenciesSingle extends Resource
@@ -13,26 +13,26 @@ class CurrenciesSingle extends Resource
 	/**
 	 * @param string $id Currency ID
 	 */
-	public function getAcurrency(string $id): Response
+	public function getCurrency(string $id): Response
 	{
-		return $this->connector->send(new GetAcurrency($id));
+		return $this->connector->send(new GetCurrency($id));
 	}
 
 
 	/**
 	 * @param string $id Currency ID
 	 */
-	public function updateAcurrency(string $id): Response
+	public function updateCurrency(string $id): Response
 	{
-		return $this->connector->send(new UpdateAcurrency($id));
+		return $this->connector->send(new UpdateCurrency($id));
 	}
 
 
 	/**
 	 * @param string $id Currency ID
 	 */
-	public function deleteAcurrency(string $id): Response
+	public function deleteCurrency(string $id): Response
 	{
-		return $this->connector->send(new DeleteAcurrency($id));
+		return $this->connector->send(new DeleteCurrency($id));
 	}
 }

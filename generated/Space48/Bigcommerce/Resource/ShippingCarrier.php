@@ -3,22 +3,22 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\ShippingCarrier\CreateAcarrierConnection;
+use Space48\Bigcommerce\Requests\ShippingCarrier\CreateCarrierConnection;
 use Space48\Bigcommerce\Requests\ShippingCarrier\DeleteCarrierConnection;
-use Space48\Bigcommerce\Requests\ShippingCarrier\UpdateAcarrierConnection;
+use Space48\Bigcommerce\Requests\ShippingCarrier\UpdateCarrierConnection;
 use Space48\Bigcommerce\Resource;
 
 class ShippingCarrier extends Resource
 {
-	public function updateAcarrierConnection(): Response
+	public function updateCarrierConnection(): Response
 	{
-		return $this->connector->send(new UpdateAcarrierConnection());
+		return $this->connector->send(new UpdateCarrierConnection());
 	}
 
 
-	public function createAcarrierConnection(): Response
+	public function createCarrierConnection(): Response
 	{
-		return $this->connector->send(new CreateAcarrierConnection());
+		return $this->connector->send(new CreateCarrierConnection());
 	}
 
 

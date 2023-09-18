@@ -18,12 +18,12 @@ class VariantsBatch extends Resource
 	 * @param string $productId A comma-separated list of IDs of products whose variants were requested. For example:`?product_id=:id``?product_id:in=77,80,81`
 	 */
 	public function getVariants(
-		int $id,
-		string $sku,
-		string $upc,
-		string $includeFields,
-		string $excludeFields,
-		string $productId,
+		?int $id,
+		?string $sku,
+		?string $upc,
+		?string $includeFields,
+		?string $excludeFields,
+		?string $productId,
 	): Response
 	{
 		return $this->connector->send(new GetVariants($id, $sku, $upc, $includeFields, $excludeFields, $productId));

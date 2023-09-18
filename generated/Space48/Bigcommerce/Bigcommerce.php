@@ -14,9 +14,6 @@ use Space48\Bigcommerce\Resource\BlogPosts;
 use Space48\Bigcommerce\Resource\BlogTags;
 use Space48\Bigcommerce\Resource\Brands;
 use Space48\Bigcommerce\Resource\BulkPricingRules;
-use Space48\Bigcommerce\Resource\Cart;
-use Space48\Bigcommerce\Resource\CartCurrency;
-use Space48\Bigcommerce\Resource\CartItems;
 use Space48\Bigcommerce\Resource\CartsSingle;
 use Space48\Bigcommerce\Resource\Catalog;
 use Space48\Bigcommerce\Resource\Categories;
@@ -33,18 +30,13 @@ use Space48\Bigcommerce\Resource\ChannelSiteCheckoutUrl;
 use Space48\Bigcommerce\Resource\Channels;
 use Space48\Bigcommerce\Resource\Checkout;
 use Space48\Bigcommerce\Resource\CheckoutBillingAddress;
-use Space48\Bigcommerce\Resource\CheckoutCartItems;
 use Space48\Bigcommerce\Resource\CheckoutConsignments;
 use Space48\Bigcommerce\Resource\CheckoutCoupons;
 use Space48\Bigcommerce\Resource\CheckoutDiscounts;
-use Space48\Bigcommerce\Resource\CheckoutGiftCertificates;
 use Space48\Bigcommerce\Resource\CheckoutOrders;
 use Space48\Bigcommerce\Resource\CheckoutSettings;
-use Space48\Bigcommerce\Resource\CheckoutSpamProtection;
-use Space48\Bigcommerce\Resource\CheckoutStoreCredit;
 use Space48\Bigcommerce\Resource\CheckoutToken;
 use Space48\Bigcommerce\Resource\ComplexRules;
-use Space48\Bigcommerce\Resource\Consent;
 use Space48\Bigcommerce\Resource\Countries;
 use Space48\Bigcommerce\Resource\Coupons;
 use Space48\Bigcommerce\Resource\CurrenciesBulk;
@@ -70,7 +62,6 @@ use Space48\Bigcommerce\Resource\EmailStatuses;
 use Space48\Bigcommerce\Resource\EmailTemplates;
 use Space48\Bigcommerce\Resource\Experiment;
 use Space48\Bigcommerce\Resource\FaviconImage;
-use Space48\Bigcommerce\Resource\FormFields;
 use Space48\Bigcommerce\Resource\GiftCertificates;
 use Space48\Bigcommerce\Resource\Images;
 use Space48\Bigcommerce\Resource\Inventory;
@@ -84,7 +75,6 @@ use Space48\Bigcommerce\Resource\ManageWebhooksSingle;
 use Space48\Bigcommerce\Resource\Metafields;
 use Space48\Bigcommerce\Resource\Methods;
 use Space48\Bigcommerce\Resource\MethodsDeprecated;
-use Space48\Bigcommerce\Resource\Order;
 use Space48\Bigcommerce\Resource\OrderConsignments;
 use Space48\Bigcommerce\Resource\OrderCoupons;
 use Space48\Bigcommerce\Resource\OrderMessages;
@@ -136,7 +126,6 @@ use Space48\Bigcommerce\Resource\StorefrontSecurity;
 use Space48\Bigcommerce\Resource\StorefrontSeo;
 use Space48\Bigcommerce\Resource\StorefrontStatus;
 use Space48\Bigcommerce\Resource\Subscribers;
-use Space48\Bigcommerce\Resource\Subscription;
 use Space48\Bigcommerce\Resource\Summary;
 use Space48\Bigcommerce\Resource\SystemLogs;
 use Space48\Bigcommerce\Resource\TaxProperties;
@@ -205,24 +194,6 @@ class Bigcommerce extends Connector
 	public function abandonedCartsSettings(): AbandonedCartsSettings
 	{
 		return new AbandonedCartsSettings($this);
-	}
-
-
-	public function cart(): Cart
-	{
-		return new Cart($this);
-	}
-
-
-	public function cartCurrency(): CartCurrency
-	{
-		return new CartCurrency($this);
-	}
-
-
-	public function cartItems(): CartItems
-	{
-		return new CartItems($this);
 	}
 
 
@@ -430,12 +401,6 @@ class Bigcommerce extends Connector
 	}
 
 
-	public function checkoutCartItems(): CheckoutCartItems
-	{
-		return new CheckoutCartItems($this);
-	}
-
-
 	public function checkoutConsignments(): CheckoutConsignments
 	{
 		return new CheckoutConsignments($this);
@@ -445,24 +410,6 @@ class Bigcommerce extends Connector
 	public function checkoutCoupons(): CheckoutCoupons
 	{
 		return new CheckoutCoupons($this);
-	}
-
-
-	public function checkoutGiftCertificates(): CheckoutGiftCertificates
-	{
-		return new CheckoutGiftCertificates($this);
-	}
-
-
-	public function checkoutSpamProtection(): CheckoutSpamProtection
-	{
-		return new CheckoutSpamProtection($this);
-	}
-
-
-	public function checkoutStoreCredit(): CheckoutStoreCredit
-	{
-		return new CheckoutStoreCredit($this);
 	}
 
 
@@ -487,12 +434,6 @@ class Bigcommerce extends Connector
 	public function checkoutToken(): CheckoutToken
 	{
 		return new CheckoutToken($this);
-	}
-
-
-	public function consent(): Consent
-	{
-		return new Consent($this);
 	}
 
 
@@ -526,12 +467,6 @@ class Bigcommerce extends Connector
 	}
 
 
-	public function customers(): Customers
-	{
-		return new Customers($this);
-	}
-
-
 	public function customerAddresses(): CustomerAddresses
 	{
 		return new CustomerAddresses($this);
@@ -547,6 +482,12 @@ class Bigcommerce extends Connector
 	public function customerPasswords(): CustomerPasswords
 	{
 		return new CustomerPasswords($this);
+	}
+
+
+	public function customers(): Customers
+	{
+		return new Customers($this);
 	}
 
 
@@ -604,12 +545,6 @@ class Bigcommerce extends Connector
 	}
 
 
-	public function formFields(): FormFields
-	{
-		return new FormFields($this);
-	}
-
-
 	public function countries(): Countries
 	{
 		return new Countries($this);
@@ -643,12 +578,6 @@ class Bigcommerce extends Connector
 	public function giftCertificates(): GiftCertificates
 	{
 		return new GiftCertificates($this);
-	}
-
-
-	public function order(): Order
-	{
-		return new Order($this);
 	}
 
 
@@ -997,12 +926,6 @@ class Bigcommerce extends Connector
 	public function subscribers(): Subscribers
 	{
 		return new Subscribers($this);
-	}
-
-
-	public function subscription(): Subscription
-	{
-		return new Subscription($this);
 	}
 
 

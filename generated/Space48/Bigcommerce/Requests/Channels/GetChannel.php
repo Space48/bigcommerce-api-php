@@ -24,17 +24,17 @@ class GetChannel extends Request
 
 	/**
 	 * @param int $channelId The ID of a channel.
-	 * @param string $include Channels subresources that can be included in the response.
+	 * @param null|string $include Channels subresources that can be included in the response.
 	 */
 	public function __construct(
 		protected int $channelId,
-		protected string $include,
+		protected ?string $include = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return ['include' => $this->include];
+		return array_filter(['include' => $this->include]);
 	}
 }

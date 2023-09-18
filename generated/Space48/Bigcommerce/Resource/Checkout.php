@@ -3,8 +3,8 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\Checkout\CheckoutsByCheckoutIdGet;
-use Space48\Bigcommerce\Requests\Checkout\CheckoutsByCheckoutIdPut;
+use Space48\Bigcommerce\Requests\Checkout\GetCheckout;
+use Space48\Bigcommerce\Requests\Checkout\UpdateCheckout;
 use Space48\Bigcommerce\Resource;
 
 class Checkout extends Resource
@@ -16,17 +16,17 @@ class Checkout extends Resource
 	 * * `consignments.available_shipping_options` - shipping options
 	 * * `promotions.banners` - promotion options
 	 */
-	public function checkoutsByCheckoutIdGet(string $checkoutId, string $include): Response
+	public function getCheckout(string $checkoutId, ?string $include): Response
 	{
-		return $this->connector->send(new CheckoutsByCheckoutIdGet($checkoutId, $include));
+		return $this->connector->send(new GetCheckout($checkoutId, $include));
 	}
 
 
 	/**
 	 * @param string $checkoutId ID of the checkout; the same as the cart ID.
 	 */
-	public function checkoutsByCheckoutIdPut(string $checkoutId): Response
+	public function updateCheckout(string $checkoutId): Response
 	{
-		return $this->connector->send(new CheckoutsByCheckoutIdPut($checkoutId));
+		return $this->connector->send(new UpdateCheckout($checkoutId));
 	}
 }

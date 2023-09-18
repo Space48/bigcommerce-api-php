@@ -4,12 +4,11 @@ namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
 use Space48\Bigcommerce\Requests\PriceListsRecords\DeletePriceListRecord;
-use Space48\Bigcommerce\Requests\PriceListsRecords\DeletePriceListRecordsByFilter;
+use Space48\Bigcommerce\Requests\PriceListsRecords\DeletePriceListRecords;
 use Space48\Bigcommerce\Requests\PriceListsRecords\GetPriceListRecord;
-use Space48\Bigcommerce\Requests\PriceListsRecords\GetPriceListRecordCollection;
+use Space48\Bigcommerce\Requests\PriceListsRecords\GetPriceListRecords;
 use Space48\Bigcommerce\Requests\PriceListsRecords\GetPriceListRecordsByVariantId;
 use Space48\Bigcommerce\Requests\PriceListsRecords\SetPriceListRecord;
-use Space48\Bigcommerce\Requests\PriceListsRecords\SetPriceListRecordCollection;
 use Space48\Bigcommerce\Requests\PriceListsRecords\UpsertPriceListRecords;
 use Space48\Bigcommerce\Resource;
 
@@ -52,48 +51,49 @@ class PriceListsRecords extends Resource
 	 * @param string $dateModifiedMax
 	 * @param string $dateModifiedMin
 	 */
-	public function getPriceListRecordCollection(
+	public function getPriceListRecords(
 		int $priceListId,
-		int $variantIdIn,
-		string $productIdIn,
-		string $currency,
-		string $include,
-		float|int $price,
-		float|int $salePrice,
-		float|int $retailPrice,
-		float|int $mapPrice,
-		float|int $calculatedPrice,
-		string $dateCreated,
-		string $dateModified,
-		string $sku,
-		array $skuIn,
-		array $currencyIn,
-		float|int $priceMax,
-		float|int $priceMin,
-		float|int $salePriceMax,
-		float|int $salePriceMin,
-		float|int $retailPriceMax,
-		float|int $retailPriceMin,
-		float|int $mapPriceMax,
-		float|int $mapPriceMin,
-		float|int $calculatedPriceMax,
-		float|int $calculatedPriceMin,
-		string $dateCreatedMax,
-		string $dateCreatedMin,
-		string $dateModifiedMax,
-		string $dateModifiedMin,
+		?int $variantIdIn,
+		?string $productIdIn,
+		?string $currency,
+		?string $include,
+		float|int|null $price,
+		float|int|null $salePrice,
+		float|int|null $retailPrice,
+		float|int|null $mapPrice,
+		float|int|null $calculatedPrice,
+		?string $dateCreated,
+		?string $dateModified,
+		?string $sku,
+		?array $skuIn,
+		?array $currencyIn,
+		float|int|null $priceMax,
+		float|int|null $priceMin,
+		float|int|null $salePriceMax,
+		float|int|null $salePriceMin,
+		float|int|null $retailPriceMax,
+		float|int|null $retailPriceMin,
+		float|int|null $mapPriceMax,
+		float|int|null $mapPriceMin,
+		float|int|null $calculatedPriceMax,
+		float|int|null $calculatedPriceMin,
+		?string $dateCreatedMax,
+		?string $dateCreatedMin,
+		?string $dateModifiedMax,
+		?string $dateModifiedMin,
 	): Response
 	{
-		return $this->connector->send(new GetPriceListRecordCollection($priceListId, $variantIdIn, $productIdIn, $currency, $include, $price, $salePrice, $retailPrice, $mapPrice, $calculatedPrice, $dateCreated, $dateModified, $sku, $skuIn, $currencyIn, $priceMax, $priceMin, $salePriceMax, $salePriceMin, $retailPriceMax, $retailPriceMin, $mapPriceMax, $mapPriceMin, $calculatedPriceMax, $calculatedPriceMin, $dateCreatedMax, $dateCreatedMin, $dateModifiedMax, $dateModifiedMin));
+		return $this->connector->send(new GetPriceListRecords($priceListId, $variantIdIn, $productIdIn, $currency, $include, $price, $salePrice, $retailPrice, $mapPrice, $calculatedPrice, $dateCreated, $dateModified, $sku, $skuIn, $currencyIn, $priceMax, $priceMin, $salePriceMax, $salePriceMin, $retailPriceMax, $retailPriceMin, $mapPriceMax, $mapPriceMin, $calculatedPriceMax, $calculatedPriceMin, $dateCreatedMax, $dateCreatedMin, $dateModifiedMax, $dateModifiedMin));
 	}
 
 
 	/**
+	 * @todo Fix duplicated method name
 	 * @param int $priceListId The ID of the `Price List` requested.
 	 */
-	public function setPriceListRecordCollection(int $priceListId): Response
+	public function upsertPriceListRecordsDuplicate1(int $priceListId): Response
 	{
-		return $this->connector->send(new SetPriceListRecordCollection($priceListId));
+		return $this->connector->send(new UpsertPriceListRecords($priceListId));
 	}
 
 
@@ -101,9 +101,9 @@ class PriceListsRecords extends Resource
 	 * @param int $priceListId The ID of the `Price List` requested.
 	 * @param int $variantIdIn The ID of the `Variant` for which prices were requested.
 	 */
-	public function deletePriceListRecordsByFilter(int $priceListId, int $variantIdIn): Response
+	public function deletePriceListRecords(int $priceListId, ?int $variantIdIn): Response
 	{
-		return $this->connector->send(new DeletePriceListRecordsByFilter($priceListId, $variantIdIn));
+		return $this->connector->send(new DeletePriceListRecords($priceListId, $variantIdIn));
 	}
 
 
@@ -124,7 +124,12 @@ class PriceListsRecords extends Resource
 	 * @param string $include Sub-resources to include on a price record, in a comma-separated list. Valid expansions currently include `bulk_pricing_tiers` and `sku`. Other values will be ignored.
 	 * Sub-resources to include on a price record, in a comma-separated list. Valid expansions currently include `bulk_pricing_tiers` and `sku`. Other values will be ignored.
 	 */
-	public function getPriceListRecord(int $priceListId, int $variantId, string $currencyCode, string $include): Response
+	public function getPriceListRecord(
+		int $priceListId,
+		int $variantId,
+		string $currencyCode,
+		?string $include,
+	): Response
 	{
 		return $this->connector->send(new GetPriceListRecord($priceListId, $variantId, $currencyCode, $include));
 	}

@@ -3,11 +3,11 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\States\GetAllCountryStates;
-use Space48\Bigcommerce\Requests\States\GetAllStates;
-use Space48\Bigcommerce\Requests\States\GetCountOfAllStates;
-use Space48\Bigcommerce\Requests\States\GetCountOfCountrysStates;
 use Space48\Bigcommerce\Requests\States\GetCountryState;
+use Space48\Bigcommerce\Requests\States\GetCountryStates;
+use Space48\Bigcommerce\Requests\States\GetCountryStatesCount;
+use Space48\Bigcommerce\Requests\States\GetStates;
+use Space48\Bigcommerce\Requests\States\GetStatesCount;
 use Space48\Bigcommerce\Resource;
 
 class States extends Resource
@@ -17,9 +17,9 @@ class States extends Resource
 	 * @param string $state Name of the state/province.
 	 * @param string $stateAbbreviation Abbreviation for the state/province.
 	 */
-	public function getAllCountryStates(string $countryId, string $state, string $stateAbbreviation): Response
+	public function getCountryStates(string $countryId, ?string $state, ?string $stateAbbreviation): Response
 	{
-		return $this->connector->send(new GetAllCountryStates($countryId, $state, $stateAbbreviation));
+		return $this->connector->send(new GetCountryStates($countryId, $state, $stateAbbreviation));
 	}
 
 
@@ -33,23 +33,23 @@ class States extends Resource
 	}
 
 
-	public function getCountOfAllStates(): Response
+	public function getStatesCount(): Response
 	{
-		return $this->connector->send(new GetCountOfAllStates());
+		return $this->connector->send(new GetStatesCount());
 	}
 
 
-	public function getAllStates(): Response
+	public function getStates(): Response
 	{
-		return $this->connector->send(new GetAllStates());
+		return $this->connector->send(new GetStates());
 	}
 
 
 	/**
 	 * @param string $countryId
 	 */
-	public function getCountOfCountrysStates(string $countryId): Response
+	public function getCountryStatesCount(string $countryId): Response
 	{
-		return $this->connector->send(new GetCountOfCountrysStates($countryId));
+		return $this->connector->send(new GetCountryStatesCount($countryId));
 	}
 }

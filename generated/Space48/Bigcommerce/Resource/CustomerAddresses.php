@@ -3,54 +3,79 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\CustomerAddresses\CustomersAddressesDelete;
-use Space48\Bigcommerce\Requests\CustomerAddresses\CustomersAddressesGet;
-use Space48\Bigcommerce\Requests\CustomerAddresses\CustomersAddressesPost;
-use Space48\Bigcommerce\Requests\CustomerAddresses\CustomersAddressesPut;
+use Space48\Bigcommerce\Requests\CustomerAddresses\CreateCustomerAddress;
+use Space48\Bigcommerce\Requests\CustomerAddresses\DeleteCustomerAddresses;
+use Space48\Bigcommerce\Requests\CustomerAddresses\DeletesCustomerAddress;
+use Space48\Bigcommerce\Requests\CustomerAddresses\GetCustomerAddress;
+use Space48\Bigcommerce\Requests\CustomerAddresses\GetCustomerAddresses;
+use Space48\Bigcommerce\Requests\CustomerAddresses\GetCustomerAddressesCount;
+use Space48\Bigcommerce\Requests\CustomerAddresses\UpdateCustomerAddress;
 use Space48\Bigcommerce\Resource;
 
 class CustomerAddresses extends Resource
 {
 	/**
-	 * @param array $companyIn Filter items by company. `company:in=bigcommerce,commongood`
-	 * @param array $nameIn Filter items by first_name and last_name. `name:in=James+Moriarty`
-	 * @param array $customerIdIn Filter by the ID of the customer. Also accepts comma-separated IDs to filter for multiple customers. `customer_id:in=23,24,55`
-	 * @param string $include Indicates whether to include customer address sub-resources:
-	 * * `formfields` - address form fields
-	 * `include=formfields`
-	 * @param array $idIn Filter items by ID.
-	 * `id:in=4,5,6`
+	 * @param int $customerId Unique numeric ID of the customer.
 	 */
-	public function customersAddressesGet(
-		array $companyIn,
-		array $nameIn,
-		array $customerIdIn,
-		string $include,
-		array $idIn,
-	): Response
+	public function getCustomerAddresses(int $customerId): Response
 	{
-		return $this->connector->send(new CustomersAddressesGet($companyIn, $nameIn, $customerIdIn, $include, $idIn));
-	}
-
-
-	public function customersAddressesPut(): Response
-	{
-		return $this->connector->send(new CustomersAddressesPut());
-	}
-
-
-	public function customersAddressesPost(): Response
-	{
-		return $this->connector->send(new CustomersAddressesPost());
+		return $this->connector->send(new GetCustomerAddresses($customerId));
 	}
 
 
 	/**
-	 * @param array $idIn Filter items by ID.
-	 * `id:in=4,5,6`
+	 * @param int $customerId Unique numeric ID of the customer.
 	 */
-	public function customersAddressesDelete(array $idIn): Response
+	public function createCustomerAddress(int $customerId): Response
 	{
-		return $this->connector->send(new CustomersAddressesDelete($idIn));
+		return $this->connector->send(new CreateCustomerAddress($customerId));
+	}
+
+
+	/**
+	 * @param int $customerId Unique numeric ID of the customer.
+	 */
+	public function deleteCustomerAddresses(int $customerId): Response
+	{
+		return $this->connector->send(new DeleteCustomerAddresses($customerId));
+	}
+
+
+	/**
+	 * @param int $customerId Unique numeric ID of the customer.
+	 * @param int $customerAddressId ID of the customer address.
+	 */
+	public function getCustomerAddress(int $customerId, int $customerAddressId): Response
+	{
+		return $this->connector->send(new GetCustomerAddress($customerId, $customerAddressId));
+	}
+
+
+	/**
+	 * @param int $customerId Unique numeric ID of the customer.
+	 * @param int $customerAddressId ID of the customer address.
+	 */
+	public function updateCustomerAddress(int $customerId, int $customerAddressId): Response
+	{
+		return $this->connector->send(new UpdateCustomerAddress($customerId, $customerAddressId));
+	}
+
+
+	/**
+	 * @param int $customerId Unique numeric ID of the customer.
+	 * @param int $customerAddressId ID of the customer address.
+	 */
+	public function deletesCustomerAddress(int $customerId, int $customerAddressId): Response
+	{
+		return $this->connector->send(new DeletesCustomerAddress($customerId, $customerAddressId));
+	}
+
+
+	/**
+	 * @param int $customerId Unique numeric ID of the customer.
+	 */
+	public function getCustomerAddressesCount(int $customerId): Response
+	{
+		return $this->connector->send(new GetCustomerAddressesCount($customerId));
 	}
 }

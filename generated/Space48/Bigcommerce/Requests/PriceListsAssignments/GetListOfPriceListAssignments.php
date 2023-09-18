@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * GetListOfPriceListAssignments
+ * getListOfPriceListAssignments
  *
  * Fetches an array of `Price List Assignments` matching a particular Customer Group and Price List and
  * Channel.
@@ -24,31 +24,31 @@ class GetListOfPriceListAssignments extends Request
 
 
 	/**
-	 * @param int $id The ID of the `Price List Assignment`.
-	 * @param int $priceListId The ID of the `Price List`.
-	 * @param int $customerGroupId The ID of the `Customer Group`.
-	 * @param int $channelId The ID of the `Channel`.
-	 * @param array $idIn Filter items by a comma-separated list of `id`s.
-	 * @param array $customerGroupIdIn Filter items by a comma-separated list of `customer_group_id`s.
-	 * @param array $priceListIdIn Filter items by a comma-separated list of `price_list_id`s.
-	 * @param array $channelIdIn Filter items by a comma-separated list of `channel_id`s.
+	 * @param null|int $id The ID of the `Price List Assignment`.
+	 * @param null|int $priceListId The ID of the `Price List`.
+	 * @param null|int $customerGroupId The ID of the `Customer Group`.
+	 * @param null|int $channelId The ID of the `Channel`.
+	 * @param null|array $idIn Filter items by a comma-separated list of `id`s.
+	 * @param null|array $customerGroupIdIn Filter items by a comma-separated list of `customer_group_id`s.
+	 * @param null|array $priceListIdIn Filter items by a comma-separated list of `price_list_id`s.
+	 * @param null|array $channelIdIn Filter items by a comma-separated list of `channel_id`s.
 	 */
 	public function __construct(
-		protected int $id,
-		protected int $priceListId,
-		protected int $customerGroupId,
-		protected int $channelId,
-		protected array $idIn,
-		protected array $customerGroupIdIn,
-		protected array $priceListIdIn,
-		protected array $channelIdIn,
+		protected ?int $id = null,
+		protected ?int $priceListId = null,
+		protected ?int $customerGroupId = null,
+		protected ?int $channelId = null,
+		protected ?array $idIn = null,
+		protected ?array $customerGroupIdIn = null,
+		protected ?array $priceListIdIn = null,
+		protected ?array $channelIdIn = null,
 	) {
 	}
 
 
 	public function defaultQuery(): array
 	{
-		return [
+		return array_filter([
 			'id' => $this->id,
 			'price_list_id' => $this->priceListId,
 			'customer_group_id' => $this->customerGroupId,
@@ -57,6 +57,6 @@ class GetListOfPriceListAssignments extends Request
 			'customer_group_id:in' => $this->customerGroupIdIn,
 			'price_list_id:in' => $this->priceListIdIn,
 			'channel_id:in' => $this->channelIdIn,
-		];
+		]);
 	}
 }

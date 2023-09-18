@@ -4,7 +4,7 @@ namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
 use Space48\Bigcommerce\Requests\TemplateSettings\GetAbandonedCartEmailTemplateSettings;
-use Space48\Bigcommerce\Requests\TemplateSettings\UpdateEmailTemplateSettings;
+use Space48\Bigcommerce\Requests\TemplateSettings\UpdateAbandonedCartEmailTemplateSettings;
 use Space48\Bigcommerce\Resource;
 
 class TemplateSettings extends Resource
@@ -21,8 +21,8 @@ class TemplateSettings extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-level data.
 	 */
-	public function updateEmailTemplateSettings(int $channelId): Response
+	public function updateAbandonedCartEmailTemplateSettings(?int $channelId): Response
 	{
-		return $this->connector->send(new UpdateEmailTemplateSettings($channelId));
+		return $this->connector->send(new UpdateAbandonedCartEmailTemplateSettings($channelId));
 	}
 }

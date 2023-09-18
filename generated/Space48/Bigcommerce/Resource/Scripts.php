@@ -17,7 +17,7 @@ class Scripts extends Resource
 	 * @param string $direction Sort direction. Acceptable values are: `asc`, `desc`.
 	 * @param array $channelIdIn Filters list of scripts by the associated channel_id.
 	 */
-	public function getScripts(string $sort, string $direction, array $channelIdIn): Response
+	public function getScripts(?string $sort, ?string $direction, ?array $channelIdIn): Response
 	{
 		return $this->connector->send(new GetScripts($sort, $direction, $channelIdIn));
 	}

@@ -4,9 +4,9 @@ namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
 use Space48\Bigcommerce\Requests\Subscribers\CreateSubscriber;
-use Space48\Bigcommerce\Requests\Subscribers\DeleteSubscriberById;
+use Space48\Bigcommerce\Requests\Subscribers\DeleteSubscriber;
 use Space48\Bigcommerce\Requests\Subscribers\DeleteSubscribers;
-use Space48\Bigcommerce\Requests\Subscribers\GetSubscriberById;
+use Space48\Bigcommerce\Requests\Subscribers\GetSubscriber;
 use Space48\Bigcommerce\Requests\Subscribers\GetSubscribers;
 use Space48\Bigcommerce\Requests\Subscribers\UpdateSubscriber;
 use Space48\Bigcommerce\Resource;
@@ -24,14 +24,14 @@ class Subscribers extends Resource
 	 * @param int $id Filter items by id.
 	 */
 	public function getSubscribers(
-		string $email,
-		string $firstName,
-		string $lastName,
-		string $source,
-		int $orderId,
-		string $dateCreated,
-		string $dateModified,
-		int $id,
+		?string $email,
+		?string $firstName,
+		?string $lastName,
+		?string $source,
+		?int $orderId,
+		?string $dateCreated,
+		?string $dateModified,
+		?int $id,
 	): Response
 	{
 		return $this->connector->send(new GetSubscribers($email, $firstName, $lastName, $source, $orderId, $dateCreated, $dateModified, $id));
@@ -54,13 +54,13 @@ class Subscribers extends Resource
 	 * @param string $dateModified Filter items by date_modified. For example `v3/catalog/products?date_last_imported:min=2018-06-15`
 	 */
 	public function deleteSubscribers(
-		string $email,
-		string $firstName,
-		string $lastName,
-		string $source,
-		int $orderId,
-		string $dateCreated,
-		string $dateModified,
+		?string $email,
+		?string $firstName,
+		?string $lastName,
+		?string $source,
+		?int $orderId,
+		?string $dateCreated,
+		?string $dateModified,
 	): Response
 	{
 		return $this->connector->send(new DeleteSubscribers($email, $firstName, $lastName, $source, $orderId, $dateCreated, $dateModified));
@@ -70,9 +70,9 @@ class Subscribers extends Resource
 	/**
 	 * @param int $subscriberId The ID of the `Subscriber` requested.
 	 */
-	public function getSubscriberById(int $subscriberId): Response
+	public function getSubscriber(int $subscriberId): Response
 	{
-		return $this->connector->send(new GetSubscriberById($subscriberId));
+		return $this->connector->send(new GetSubscriber($subscriberId));
 	}
 
 
@@ -88,8 +88,8 @@ class Subscribers extends Resource
 	/**
 	 * @param int $subscriberId The ID of the `Subscriber` requested.
 	 */
-	public function deleteSubscriberById(int $subscriberId): Response
+	public function deleteSubscriber(int $subscriberId): Response
 	{
-		return $this->connector->send(new DeleteSubscriberById($subscriberId));
+		return $this->connector->send(new DeleteSubscriber($subscriberId));
 	}
 }

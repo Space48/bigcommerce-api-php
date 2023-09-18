@@ -12,7 +12,7 @@ class StorefrontRobotstxt extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function getRobotsTxtSettings(int $channelId): Response
+	public function getRobotsTxtSettings(?int $channelId): Response
 	{
 		return $this->connector->send(new GetRobotsTxtSettings($channelId));
 	}
@@ -21,7 +21,7 @@ class StorefrontRobotstxt extends Resource
 	/**
 	 * @param int $channelId Channel ID to use for channel-specific setting. If omitted, you will interact with the global setting only.
 	 */
-	public function updateRobotsTxtSettings(int $channelId): Response
+	public function updateRobotsTxtSettings(?int $channelId): Response
 	{
 		return $this->connector->send(new UpdateRobotsTxtSettings($channelId));
 	}

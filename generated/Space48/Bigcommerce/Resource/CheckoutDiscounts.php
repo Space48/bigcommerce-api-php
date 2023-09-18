@@ -3,7 +3,7 @@
 namespace Space48\Bigcommerce\Resource;
 
 use Saloon\Contracts\Response;
-use Space48\Bigcommerce\Requests\CheckoutDiscounts\PostStoreHashV3CheckoutsCheckoutIdDiscounts;
+use Space48\Bigcommerce\Requests\CheckoutDiscounts\AddCheckoutDiscount;
 use Space48\Bigcommerce\Resource;
 
 class CheckoutDiscounts extends Resource
@@ -11,8 +11,8 @@ class CheckoutDiscounts extends Resource
 	/**
 	 * @param string $checkoutId ID of the checkout; the same as the cart ID.
 	 */
-	public function postStoreHashV3checkoutsCheckoutIdDiscounts(string $checkoutId): Response
+	public function addCheckoutDiscount(string $checkoutId): Response
 	{
-		return $this->connector->send(new PostStoreHashV3CheckoutsCheckoutIdDiscounts($checkoutId));
+		return $this->connector->send(new AddCheckoutDiscount($checkoutId));
 	}
 }
